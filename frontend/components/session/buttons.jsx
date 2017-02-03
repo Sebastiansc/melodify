@@ -1,7 +1,7 @@
 import React from 'react';
 import SessionContainer from './session_container';
 
-class Buttons extends React.Component {
+class SessionButtons extends React.Component {
   constructor(){
     super();
     this.state = {open: false, action: ''};
@@ -13,14 +13,16 @@ class Buttons extends React.Component {
 
   render(){
     return(
-      <ul className="nav navbar-nav navbar-right">
-          <li onClick={() => this.toggleModal("login")}>
-            <a className='login'>
+      <ul className="session-buttons">
+          <li onClick={() => this.toggleModal("login")}
+              className='login'>
+            <a>
               Login
             </a>
           </li>
-        <li onClick={() => this.toggleModal("create")}>
-          <a className='login'>
+        <li onClick={() => this.toggleModal("create")}
+            className='login signup'>
+          <a>
               Create account
           </a>
         </li>
@@ -32,4 +34,4 @@ class Buttons extends React.Component {
 }
 
 
-export default Buttons;
+export default SessionButtons;

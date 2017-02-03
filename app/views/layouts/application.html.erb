@@ -4,7 +4,19 @@
     <title>Sauti</title>
     <%= csrf_meta_tags %>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+    <script src="https://widget.cloudinary.com/global/all.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+      window.cloudinaryOptions = {
+        cloud_name: 'flikr',
+        upload_preset: 'ozmwc4ev',
+        theme: "minimal"
+      }
+    </script>
+
     <%= javascript_include_tag 'application' =%>
     <%= stylesheet_link_tag 'application', media: 'all' =%>
   </head>

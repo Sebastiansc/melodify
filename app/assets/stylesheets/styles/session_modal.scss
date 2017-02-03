@@ -1,7 +1,23 @@
-$round: 5px;
+@import '../base/global.scss';
+@import '../base/mixins.scss';
 
 .login {
   cursor: pointer;
+  @include buttonTransparent(5px, 10px);
+  margin-right: 10px;
+  font-size: $fontMed;
+    a {
+      color: white;
+    }
+}
+
+.signup {
+  background-color: $orange;
+  border-color: $orange;
+}
+
+.session-buttons {
+  @include flex(flex-end);
 }
 
 .ReactModal__Body--open {
@@ -31,10 +47,12 @@ $round: 5px;
   border-radius: 4px;
   outline: none;
   padding: 70px 20px;
+  z-index: 100;
 }
 
 .react-modal-overlay {
   position: fixed;
+  z-index: 100;
   top: 0;
   left: 0;
   right: 0;

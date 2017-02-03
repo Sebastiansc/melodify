@@ -7,6 +7,7 @@ import { isEmpty } from 'lodash';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './app';
+import Splash from './splash/splash';
 
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
@@ -34,7 +35,7 @@ const Root = ({ store }) => {
     <Provider store={store}>
 
       <Router history={hashHistory}>
-        <Route path='/' component={App}/>
+        <Route path='/' component={Splash}/>
       </Router>
 
     </Provider>

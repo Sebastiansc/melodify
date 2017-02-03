@@ -1,3 +1,27 @@
+$round: 5px;
+$orange: #f50;
+$fontBig: 2rem;
+$fontMed: 1.5rem;
+$fontXL: 3.5rem;
+
 .body-wrapper {
   width: 80%;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+@media (min-width: 1350px) {
+  .container {
+    width: 1250px;
+  }
 }

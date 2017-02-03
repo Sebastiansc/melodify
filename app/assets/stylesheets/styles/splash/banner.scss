@@ -1,0 +1,40 @@
+@import '../../base/mixins.scss';
+@import '../../base/global.scss';
+
+.banner-signup {
+  @include flex(space-between);
+  @include zUp(10);
+  padding: 10px;
+}
+
+.brand {
+  font-size: $fontBig;
+}
+
+.banner {
+  background-image: url('https://res.cloudinary.com/flikr/image/upload/c_scale,w_1200/v1486158999/by96lar-34o-hans-vivek_wndlsy.jpg');
+  height: 450px;
+  background-size: cover;
+  padding: 10px 20px;
+  color: white;
+  position: relative;
+  position: relative;
+
+}
+
+.banner-overlay {
+  @include overlay;
+}
+
+.banner-message {
+  font-size: $fontXL;
+  margin: 100px auto;
+  @include zUp(10);
+  width: 65%;
+  text-align: center;
+
+}
+
+.message-pop {
+  color: $orange;
+}
