@@ -1,0 +1,14 @@
+$background_color: rgba(21,21,23,.95);
+
+.nav-bar {
+  background-color: $background_color;
+  height: 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  width: 100%;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+}

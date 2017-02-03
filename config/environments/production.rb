@@ -46,8 +46,7 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
-  config.serve_static_files = true
-
+  config.public_file_server.enabled = true
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 

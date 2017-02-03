@@ -1,0 +1,70 @@
+$round: 5px;
+
+.login {
+  cursor: pointer;
+}
+
+.ReactModal__Body--open {
+    overflow: hidden;
+}
+
+.facebook {
+  background-color: #264285;
+  background-image: linear-gradient(#3857A1,#264285);
+  border-color: #264285;
+  color: #fff;
+  line-height: 18px;
+  border-style: none;
+  border-radius: $round;
+  margin-bottom: 30px;
+}
+
+.react-modal {
+  margin: 120px auto;
+  height: 550px;
+  width: 450px;
+  display: flex;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  outline: none;
+  padding: 70px 20px;
+}
+
+.react-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+}
+
+.separator div {
+  height: 1px;
+  width: 43%;
+  background: black;
+}
+
+.separator span {
+  padding: 0 33px;
+}
+
+.modal-container input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-style: groove;
+  border-radius: $round;
+}
+
+.modal-container > * {
+  margin-bottom: 10px;
+}

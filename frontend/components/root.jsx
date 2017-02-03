@@ -8,9 +8,6 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './app';
 
-import SessionFormContainer from './session/session_form_container';
-
-
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
     const state = store.getState();
@@ -37,8 +34,7 @@ const Root = ({ store }) => {
     <Provider store={store}>
 
       <Router history={hashHistory}>
-
-    
+        <Route path='/' component={App}/>
       </Router>
 
     </Provider>
