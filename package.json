@@ -1,7 +1,7 @@
 {
-  "name": "Flikr",
+  "name": "melodify",
   "version": "1.0.0",
-  "description": "https://flikr.herokuapp.com/#/",
+  "description": "https://melodify.herokuapp.com/#/",
   "main": "index.js",
   "directories": {
     "doc": "docs",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sebastiansc/Flikr"
+    "url": "https://github.com/Sebastiansc/melodify"
   },
   "keywords": [],
   "author": "Sebastian Cruz",
