@@ -4,7 +4,7 @@ import Footer from './shared/footer';
 
 const App = ({ children }) => {
   return (
-    <div>
+    <div className='body-wrapper'>
       <NavBarContainer/>
       {children}
     </div>

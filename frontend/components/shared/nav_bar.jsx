@@ -11,15 +11,6 @@ export default class NavBar extends React.Component {
     this.setState({ open: !this.state.open, action });
   }
 
-  logout(){
-    this.props.logout();
-    FB.getLoginStatus(response => {
-      if (response.status === "connected") {
-        FB.logout();
-      }
-    });
-  }
-
   render(){
     return(
       <nav role="navigation"
