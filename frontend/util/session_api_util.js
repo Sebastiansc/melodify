@@ -1,6 +1,6 @@
 export const login = (user, success, error) => {
   $.ajax({
-    url: 'api/session',
+    url: 'auth/identity/callback',
     type: 'post',
     data: {user},
     success,
@@ -10,9 +10,9 @@ export const login = (user, success, error) => {
 
 export const signup = (user, success, error) => {
   $.ajax({
-    url: 'api/users',
+    url: 'auth/identity/register',
     type: 'post',
-    data: {user},
+    data: user,
     success,
     error
   });
