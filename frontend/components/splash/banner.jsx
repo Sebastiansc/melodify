@@ -1,12 +1,12 @@
 import React from 'react';
-import SessionButtons from '../session/buttons';
+import SessionButtonsContainer from '../session/buttons_container';
 
 const Banner = () => (
   <div className='banner'>
     <div className='banner-overlay'></div>
     <div className='banner-signup'>
       <span className='brand'>Melodify</span>
-      <SessionButtons/>
+      <SessionButtonsContainer/>
     </div>
     <div className='banner-message'>
       <p>Stream all your favorite music</p>

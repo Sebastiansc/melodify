@@ -36,6 +36,7 @@ const Root = ({ store }) => {
 
       <Router history={hashHistory}>
         <Route path='/' component={Splash}/>
+        <Route path='home' component={App}/>
       </Router>
 
     </Provider>
