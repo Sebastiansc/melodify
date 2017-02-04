@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  audio_url: MyString
+  artist: MyString
+  uploader_id: 
+  cover_photo: MyString
+  title: MyString
+  plays: 
+  genre: MyString
+
+two:
+  audio_url: MyString
+  artist: MyString
+  uploader_id: 
+  cover_photo: MyString
+  title: MyString
+  plays: 
+  genre: MyString
