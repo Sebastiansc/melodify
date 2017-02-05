@@ -1,6 +1,7 @@
 class Api::SongsController < ApplicationController
   def show
-    @song = Song.find(params[:song_id])
+    @user = User.find(username: params[:username])
+    @song = Song.find(title: params[:title], user_id: @user.id)
     render :show
   end
 
@@ -23,6 +24,10 @@ class Api::SongsController < ApplicationController
   end
 
   private
+
+  def song_info
+    @song
+  end
 
   def song_params
     params.require(:song).permit(:title,

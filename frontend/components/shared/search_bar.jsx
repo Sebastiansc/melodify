@@ -4,7 +4,7 @@
 // />
 import React from 'react';
 
-class SearchBar extends React.Component {
+export default class SearchBar extends React.Component {
   constructor(props){
     super(props);
     this.query = '';
@@ -23,7 +23,8 @@ class SearchBar extends React.Component {
       <form className={this.props.formClass}>
       <input type='text'
              onChange={e => this.update(e)}
-             className={this.props.inputClass}>
+             className={this.props.inputClass}
+             placeholder='Search for songs, artists, albums and more'>
       </input>
       <button className={this.props.buttonClass}
               onClick={() => this.search()}

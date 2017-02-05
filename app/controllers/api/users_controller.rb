@@ -11,6 +11,9 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.valid?
+      unless user_params[:username]
+        @user.username = user_params[:email].split('@')[0]
+      end
       @user.save!
       login(@user)
       render 'api/sessions/show'
@@ -24,5 +27,4 @@ class Api::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :password, :email)
   end
-
 end
