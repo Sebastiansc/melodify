@@ -14,7 +14,7 @@ const Splash = () => (
         <h2>Trending today</h2>
         <TrendingContainer/>
         <div className='top-50'>
-          <button className='splash-explote'>
+          <button className='splash-explore'>
             Explore our top 50
           </button>
         </div>
