@@ -1,5 +1,11 @@
 export const CREATE_SONG = "CREATE_SONG";
 export const GET_SONG = "GET_SONG";
+export const RECEIVE_SONG = "RECEIVE_SONG";
+export const GET_SONGS = "GET_SONGS";
+
+export const getSongs = () => ({
+  type: GET_SONGS,
+});
 
 export const createSong = song => ({
   type: CREATE_SONG,

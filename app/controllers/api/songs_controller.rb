@@ -1,4 +1,8 @@
 class Api::SongsController < ApplicationController
+  def index
+    @songs = Song.all
+  end
+
   def show
     @user = User.find(username: params[:username])
     @song = Song.find(title: params[:title], user_id: @user.id)
@@ -11,6 +15,7 @@ class Api::SongsController < ApplicationController
 
   def create
     @song = Song.new(son_params)
+    @song.user_id = current_user.id
     if @song.valid?
       @song.save!
       render :show
