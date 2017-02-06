@@ -79,7 +79,7 @@
       padding: 10px 20px;
   }
   h2 {
-    margin: 25px 0;
+    margin: 35px 0;
   }
 }
 
@@ -91,7 +91,7 @@
 }
 
 .trending-item {
-  width: 80%;
+  width: 33%;
   height: 240px;
   cursor: pointer;
   background-size: cover;
@@ -110,7 +110,7 @@
 @include respond-to('medium') {
   .trending-item {
     width: 25%;
-    height: 200px;
+    height: 250px;
   }
 }
 
