@@ -1,14 +1,9 @@
 import { connect } from 'react-redux';
 import Trending from './trending';
-import { getTracks } from '../actions/tracks_actions';
+import { getTracks } from '../../actions/tracks_actions';
 
-const mapStateToProps = () => ({});
-
-const mapDispatchToProps = dispatch => ({
-  getTracks: () => dispatch(getTracks())
+const mapStateToProps = ({tracks}) => ({
+  tracks
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Trending);
+export default connect(mapStateToProps)(Trending);

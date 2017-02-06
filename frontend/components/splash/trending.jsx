@@ -1,10 +1,10 @@
 import React from 'react';
-import Masonry from 'react-masonry';
-import Track from '../shared/track';
+import Masonry from 'react-masonry-component';
+import TrackContainer from '../shared/track_container';
 
 const Trending = ({tracks}) => (
   <Masonry>
-    {tracks.map(track => <Track track={track}/>)}
+    {tracks.map(track => <TrackContainer track={track}/>)}
   </Masonry>
 );
 
