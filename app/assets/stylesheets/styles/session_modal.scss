@@ -1,19 +1,15 @@
-@import '../base/global.scss';
-@import '../base/mixins.scss';
-
 .login {
   cursor: pointer;
-  @include buttonTransparent(5px, 10px);
+  @include button-transparent(5px, 10px);
   margin-right: 10px;
-  font-size: $fontMed;
+  font-size: $font-sm;
     a {
       color: white;
     }
 }
 
 .signup {
-  background-color: $orange;
-  border-color: $orange;
+  @include orange-button($font-sm);
 }
 
 .session-buttons {

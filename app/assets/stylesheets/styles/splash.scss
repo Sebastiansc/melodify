@@ -1,19 +1,21 @@
-@import '../base/mixins.scss';
-@import '../base/global.scss';
-
 .splash-info {
   margin: 20px 0;
+  padding: 0px 30px;
+}
+
+.splash {
+  padding: 0;
 }
 
 // -------------------- BANNER --------------------
 .banner-signup {
   @include flex(space-between);
-  @include zUp(10);
+  @include z-up(10);
   padding: 10px;
 }
 
 .brand {
-  font-size: $fontBig;
+  font-size: $font-lg;
 }
 
 .banner {
@@ -32,9 +34,9 @@
 }
 
 .banner-message {
-  font-size: $fontXL;
+  font-size: $font-xl;
   margin: 100px auto;
-  @include zUp(10);
+  @include z-up(10);
   width: 65%;
   text-align: center;
 
@@ -68,4 +70,53 @@
     }
 }
 
-// --------------------  --------------------
+// -------------------- TRENDING --------------------
+
+.splash-trending {
+  text-align: center;
+  button {
+      @include orange-button($font-md);
+      padding: 10px 20px;
+  }
+  h2 {
+    margin: 25px 0;
+  }
+}
+
+.trending {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -20px;
+  text-align: left;
+}
+
+.trending-item {
+  width: 80%;
+  height: 240px;
+  cursor: pointer;
+  background-size: cover;
+  padding-right: 20px;
+  background-position: center;
+  span {
+    width: 100%;
+    display: block;
+    height: 70%;
+  }
+  a {
+    display: block;
+  }
+}
+
+@include respond-to('medium') {
+  .trending-item {
+    width: 25%;
+    height: 200px;
+  }
+}
+
+@include respond-to('large') {
+  .trending-item {
+    width: 16.666%;
+    height: 240px;
+  }
+}

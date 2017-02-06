@@ -4,13 +4,13 @@ import SearchBarContainer from '../shared/search_bar_container';
 import TrendingContainer from './trending_container';
 
 const Splash = () => (
-  <div className='container'>
+  <div className='container splash'>
     <Banner/>
     <div className='splash-info'>
       <SearchBarContainer
         formClass="splash-search"
       />
-      <div>
+    <div className='splash-trending'>
         <h2>Trending today</h2>
         <TrendingContainer/>
         <div className='top-50'>

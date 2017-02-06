@@ -38,16 +38,25 @@ $breakpoints: (
   right: 0;
 }
 
-@mixin buttonTransparent($paddingY, $paddingX) {
+@mixin button-transparent($paddingY, $paddingX) {
   border-radius: $round;
   background: transparent;
   border: 1px solid white;
   padding: $paddingY $paddingX;
 }
 
-@mixin zUp($z) {
+@mixin z-up($z) {
   z-index: $z;
   position: relative;
+}
+
+@mixin orange-button($font-size) {
+  background-color: $orange;
+  border-color: $orange;
+  font-size: $font-size;
+  cursor: pointer;
+  color: white;
+  border-radius: $round;
 }
 
 @mixin searchbar($width) {

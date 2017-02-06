@@ -1,17 +1,25 @@
-@import './mixins.scss';
-
-$round: 5px;
+$round: 4px;
 $orange: #f50;
-$fontBig: 2rem;
-$fontMed: 1.5rem;
-$fontXL: 3.5rem;
+$font-sm: 1.5rem;
+$font-md: 1.8rem;
+$font-lg: 2.5rem;
+$font-xl: 3.5rem;
 
 .body-wrapper {
   width: 80%;
 }
 
+.container {
+  background: white;
+}
+
+ul {
+  padding: 5px 7px;
+}
+
 body {
   font-family: 'Ubuntu', sans-serif;
+  background: #f2f2f2;
 }
 
 ul {
@@ -22,7 +30,7 @@ a:hover {
   text-decoration: none;
 }
 
-input {
+input, button {
   border-style: none;
 }
 
