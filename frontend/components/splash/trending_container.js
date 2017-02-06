@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import Trending from './trending';
-import { getSongs } from '../actions/song_actions';
+import { getTracks } from '../actions/tracks_actions';
 
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
-  getSongs: () => dispatch(getSongs())
+  getTracks: () => dispatch(getTracks())
 });
 
 export default connect(

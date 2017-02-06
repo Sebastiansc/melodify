@@ -1,13 +1,12 @@
 import React from 'react';
-
 import { Provider } from 'react-redux';
-
 import { isEmpty } from 'lodash';
-
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
-
+// LOCAL COMPONENTS
 import App from './app';
 import Splash from './splash/splash';
+// UTIL AND METHODS
+import { getTracks } from '../actions/tracks_actions';
 
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
@@ -30,12 +29,19 @@ const Root = ({ store }) => {
     }
   };
 
+  const fetchTracks = nextState => {
+    store.dispatch(getTracks());
+  };
+
 
   return(
     <Provider store={store}>
 
       <Router history={hashHistory}>
-        <Route path='/' component={Splash}/>
+        <Route
+          path='/' component={Splash}
+          onEnter={() => fetchTracks()}
+        />
         <Route path='home' component={App}/>
       </Router>
 

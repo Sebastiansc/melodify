@@ -1,5 +1,5 @@
-json.songs @songs do |song|
+@songs.each do |song|
   json.set! song.id do
-    json.partial! 'song', song
+    json.partial! 'song', song: song
   end
 end
