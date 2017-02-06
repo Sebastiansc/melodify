@@ -6,13 +6,13 @@ import TrendingContainer from './trending_container';
 const Splash = () => (
   <div className='container'>
     <Banner/>
-    <div>
+    <div className='splash-info'>
       <SearchBarContainer
         formClass="splash-search"
-        />
+      />
       <div>
         <h2>Trending today</h2>
-        <Trending/>
+        <TrendingContainer/>
         <div className='top-50'>
           <button>Explore our top 50</button>
         </div>

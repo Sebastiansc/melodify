@@ -1,2 +1,71 @@
-@import 'splash/banner.scss';
-@import 'splash/search_bar.scss'
+@import '../base/mixins.scss';
+@import '../base/global.scss';
+
+.splash-info {
+  margin: 20px 0;
+}
+
+// -------------------- BANNER --------------------
+.banner-signup {
+  @include flex(space-between);
+  @include zUp(10);
+  padding: 10px;
+}
+
+.brand {
+  font-size: $fontBig;
+}
+
+.banner {
+  background-image: url('https://res.cloudinary.com/flikr/image/upload/c_scale,w_1200/v1486158999/by96lar-34o-hans-vivek_wndlsy.jpg');
+  height: 450px;
+  background-size: cover;
+  padding: 10px 20px;
+  color: white;
+  position: relative;
+  position: relative;
+
+}
+
+.banner-overlay {
+  @include overlay;
+}
+
+.banner-message {
+  font-size: $fontXL;
+  margin: 100px auto;
+  @include zUp(10);
+  width: 65%;
+  text-align: center;
+
+}
+
+.message-pop {
+  color: $orange;
+}
+
+// -------------------- SEARCH BAR --------------------
+
+.splash-search {
+  color: #666;
+  outline: 0;
+  border: 0;
+  padding: 5px 7px;
+  display: inline-block;
+  position: relative;
+  width: 600px;
+    input {
+      background: #e5e5e5;
+      padding-left: 12px;
+      border-radius: $round;
+      width: 100%;
+      height: 40px;
+    }
+    button {
+      position: absolute;
+      right: 17px;
+      top: 15px;
+    }
+}
+
+// --------------------  --------------------

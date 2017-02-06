@@ -1,3 +1,5 @@
+@import './mixins.scss';
+
 $round: 5px;
 $orange: #f50;
 $fontBig: 2rem;
@@ -20,7 +22,15 @@ a:hover {
   text-decoration: none;
 }
 
-@media (min-width: 1350px) {
+input {
+  border-style: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+@include respond-to('xlarge') {
   .container {
     width: 1250px;
   }

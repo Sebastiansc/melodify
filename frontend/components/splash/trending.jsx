@@ -4,7 +4,7 @@ import TrackContainer from '../shared/track_container';
 
 const Trending = ({tracks}) => (
   <Masonry>
-    {tracks.map(track => <TrackContainer track={track}/>)}
+    {tracks.map(track => <TrackContainer track={track} key={track.id}/>)}
   </Masonry>
 );
 
