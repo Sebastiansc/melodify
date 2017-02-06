@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+50.times do |i|
+  Song.create({
+    title: "Test#{i}",
+    user_id: 5,
+    audio_url: "https://res.cloudinary.com/flikr/video/upload/v1486323594/automation_bwwogm.mp3",
+    cover_photo: "https://res.cloudinary.com/flikr/image/upload/c_scale,w_214/v1480896511/oi18tltq5yxmuweme5y1.jpg",
+    genre: "Test",
+    artist: "Napoleon"
+    })
+end
