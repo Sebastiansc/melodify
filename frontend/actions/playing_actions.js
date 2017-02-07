@@ -1,6 +1,7 @@
 export const NOW_PLAYING = "NOW_PLAYING";
 export const PAUSE = "PAUSE";
 export const PLAY = "PLAY";
+export const NEXT = "NEXT";
 
 export const nowPlaying = (songId, tracks) => ({
   type: NOW_PLAYING,
@@ -14,4 +15,9 @@ export const pause = () => ({
 
 export const play = () => ({
   type: PLAY,
+});
+
+export const next = idx => ({
+  type: NEXT,
+  idx
 });

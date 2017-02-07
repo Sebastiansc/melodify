@@ -23,6 +23,7 @@ ul {
 body {
   font-family: 'Ubuntu', sans-serif;
   background: #f2f2f2;
+  padding-bottom: 46px;
 }
 
 ul {
@@ -35,6 +36,7 @@ a:hover {
 
 input, button {
   border-style: none;
+  background-color: transparent;
 }
 
 input:focus {
