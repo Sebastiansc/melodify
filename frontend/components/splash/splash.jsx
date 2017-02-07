@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from './banner';
 import SearchBarContainer from '../shared/search_bar_container';
+import PlayerContainer from '../shared/player_container';
 import TrendingContainer from './trending_container';
 
 const Splash = () => (
@@ -20,6 +21,7 @@ const Splash = () => (
         </div>
       </div>
     </div>
+    <PlayerContainer/>
   </div>
 );
 

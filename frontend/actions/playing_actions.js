@@ -1,7 +1,12 @@
-export const PLAYING = "PLAYING";
+export const NOW_PLAYING = "NOW_PLAYING";
+export const PAUSE = "PAUSE";
 
-export const playing = (songId, tracks) => ({
-  type: PLAYING,
+export const nowPlaying = (songId, tracks) => ({
+  type: NOW_PLAYING,
   songId,
-  tracks
+  tracks,
+});
+
+export const pause = () => ({
+  type: PAUSE,
 });

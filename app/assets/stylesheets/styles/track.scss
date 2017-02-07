@@ -55,8 +55,8 @@
   border-color: $dark-orange;
 }
 
-.play-button:before {
-  background-image: url("https://res.cloudinary.com/flikr/image/upload/v1486414416/play-arrow_khem0o.svg");
+@mixin play-action($url) {
+  background-image: url($url);
   content: '';
   content: '';
   position: absolute;
@@ -70,6 +70,20 @@
   background-repeat: no-repeat;
   transition: opacity .3s;
   opacity: 1;
+}
+
+
+.play-button:before {
+  @include play-action("https://res.cloudinary.com/flikr/image/upload/v1486414416/play-arrow_khem0o.svg")
+}
+
+.playing {
+  display: block;
+  .play-button:before {
+    @include play-action("https://res.cloudinary.com/flikr/image/upload/v1486437837/pause_z4qn3l.svg");
+    background-size: 42% 56%;
+    background-position: 50% 51%;
+  }
 }
 
 .track-actions {

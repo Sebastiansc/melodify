@@ -46,3 +46,7 @@ input:focus {
     width: 1250px;
   }
 }
+
+:focus {
+  outline: none;
+}
