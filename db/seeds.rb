@@ -5,7 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-50.times do |i|
+Song.create({
+  title: "iSpy feat. Lil Yachty",
+  user_id: 5,
+  audio_url: "https://res.cloudinary.com/flikr/video/upload/v1486441928/iSpy_feat._Lil_Yachty_295926514_soundcloud_g5l48g.mp3",
+  cover_photo: "https://res.cloudinary.com/flikr/image/upload/v1486442039/artworks-000196529492-77zopd-t500x500_ogtnrg.jpg",
+  genre: "Hip hop & Rap",
+  artist: "KYLE."
+  })
+
+11.times do |i|
   Song.create({
     title: "Test#{i}",
     user_id: 5,

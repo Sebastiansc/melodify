@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Track from './track';
+import { pause } from '../../actions/playing_actions';
 
 const mapStateToProps = ({session, playing}) => ({
   user: session.currentUser,
@@ -7,4 +8,8 @@ const mapStateToProps = ({session, playing}) => ({
   state: playing.state
 });
 
-export default connect(mapStateToProps)(Track);
+const mapDispatchToProps = dispatch => ({
+  pause: () => dispatch(pause())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Track);

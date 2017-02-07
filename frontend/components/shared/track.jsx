@@ -5,13 +5,20 @@ import { Link } from 'react-router';
 export default class Track extends React.Component {
   constructor(props){
     super(props);
-    this.state = {playing: false};
   }
 
   playState() {
     const isSelected = this.props.track.id === this.props.songId;
     const isPlaying = this.props.state;
     if (isSelected && isPlaying) return 'playing';
+  }
+
+  togglePlay() {
+    if (this.props.state) {
+      this.props.pause();
+    } else {
+      this.props.play(this.props.track.id);
+    }
   }
 
   render(){
@@ -23,7 +30,7 @@ export default class Track extends React.Component {
           <div className='artwork-shade'></div>
           <div className={`play-overlay ${this.playState()}`}>
             <button className={`play-button `}
-                    onClick={() => this.props.play(this.props.track.id)}>
+                    onClick={() => this.togglePlay()}>
             </button>
           </div>
           <div className='track-actions'>
