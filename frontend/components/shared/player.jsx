@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 
+const style = {
+  width: "100%",
+  height: "auto"
+};
+
 export default class Player extends React.Component {
   constructor(props){
     super(props);
@@ -24,7 +29,10 @@ export default class Player extends React.Component {
         <ReactPlayer
           url={this.findSong()}
           playing={this.props.playing.state}
-          controls={true}
+          controls={false}
+          className="player"
+          height={0}
+          width={"100%"}
           onPlay={() => this.resumePlaying()}
           onPause={() => this.props.pause()}/>
       );
