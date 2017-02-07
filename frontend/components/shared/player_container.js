@@ -1,9 +1,14 @@
 import { connect } from 'react-redux';
 import Player from './player';
-import { toArray } from '../../reducers/selectors';
+import { play, pause } from '../../actions/playing_actions';
 
 const mapStateToProps = ({playing}) => ({
   playing
 });
 
-export default connect(mapStateToProps)(Player);
+const mapDispatchToProps = dispatch => ({
+  play: () => dispatch(play()),
+  pause: () => dispatch(pause())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Player);
