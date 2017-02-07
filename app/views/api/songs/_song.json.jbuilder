@@ -4,4 +4,5 @@ json.extract! song,
               :audio_url,
               :cover_photo,
               :genre,
-              :id
+              :id,
+              :thumbnail

@@ -87,6 +87,12 @@ data = [
   },
 ]
 
+def thumburl(url)
+  rootUrl = url[0...46];
+  tailUrl = url[46...-1];
+  "#{rootUrl}c_scale,h_120/#{tailUrl}"
+end
+
 data.each do |info|
   Song.create({
     title: info[:title],
@@ -94,6 +100,7 @@ data.each do |info|
     audio_url: info[:audio_url],
     cover_photo: info[:cover_photo],
     genre: info[:cover_photo],
+    thumbnail: thumburl(info[:audio_url]),
     artist: info[:artist]
   })
 end
@@ -104,5 +111,6 @@ end
     audio_url: "https://res.cloudinary.com/flikr/video/upload/v1486323594/automation_bwwogm.mp3",
     cover_photo: "https://res.cloudinary.com/flikr/image/upload/v1486411231/cover_o90m2w.jpg",
     genre: "Test",
+    thumbnail: thumburl("https://res.cloudinary.com/flikr/video/upload/v1486323594/automation_bwwogm.mp3"),
     artist: "Napoleon Bonandapart"
     })

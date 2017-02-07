@@ -10,6 +10,9 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    unless user_params[:username]
+      @user.username = user_params[:email].split('@')[0]
+    end
     if @user.valid?
       unless user_params[:username]
         @user.username = user_params[:email].split('@')[0]
