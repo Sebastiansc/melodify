@@ -7,14 +7,17 @@ export default class Track extends React.Component {
     super(props);
   }
 
+  _isSelected() {
+    return this.props.track.id === this.props.songId;
+  }
+
   playState() {
-    const isSelected = this.props.track.id === this.props.songId;
     const isPlaying = this.props.state;
-    if (isSelected && isPlaying) return 'playing';
+    if (this._isSelected() && isPlaying) return 'playing';
   }
 
   togglePlay() {
-    if (this.props.state) {
+    if (this.props.state && this._isSelected()) {
       this.props.pause();
     } else {
       this.props.play(this.props.track.id);

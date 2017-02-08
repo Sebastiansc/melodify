@@ -67,7 +67,15 @@ export default class Player extends React.Component {
     if (this.timePassed % 1 === 0) {
       $(this.timeElapsed).text(this.formatTime(this.timePassed));
     }
-    $(this.progressBar).css('width', `${progress.played * 100}%`);
+    const percentagePlayed = progress.played * 100;
+    $(this.progressBar).css('width', percentagePlayed);
+    $(this.handle).css('left', percentagePlayed);
+  }
+
+  clearProgress() {
+    this.timePassed = 0;
+    $(this.timeElapsed).text('0:00');
+    $(this.progressBar).css('width', 0);
   }
 
 
@@ -93,6 +101,7 @@ export default class Player extends React.Component {
             width={"100%"}
             onPlay={() => this.resumePlaying()}
             onPause={() => this.props.pause()}
+            onStart={() => this.clearProgress()}
             progressFrequency={500}
             onProgress={progress => this.recordProgress(progress)}/>
 
@@ -120,7 +129,9 @@ export default class Player extends React.Component {
                     <div className='playback-progress-tracker'
                          ref={progressBar => {this.progressBar = progressBar;}}>
                     </div>
-                    <div className='playback-progress-handle'></div>
+                    <div className='playback-progress-handle'
+                         ref={handle => this.handle = handle}>
+                    </div>
                   </div>
                   <div className='playback-duration duration'>
                     <span ref={totalTime => {this.totalTime = totalTime;}}>

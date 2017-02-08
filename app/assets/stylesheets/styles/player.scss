@@ -77,10 +77,15 @@
   margin: 13px 10px 0 10px;
   @include grow;
   position: relative;
+  cursor: pointer;
 }
 
 .duration {
   text-align: left;
+}
+
+.playback-progress-tracker, .playback-progress-handle {
+  position: absolute;
 }
 
 .playback-progress-bar {
@@ -94,12 +99,11 @@
   height: 1px;
   background-color: $orange;
   transition: width 50ms;
-  position: absolute;
   top: 10px;
 }
 
 .playback-progress-handle {
-  border: 1px solid #f50;
+  border: 1px solid $orange;
   border-radius: 100%;
   height: 8px;
   width: 8px;
@@ -108,6 +112,10 @@
   margin-top: -3px;
   opacity: 0;
   transition: opacity 150ms;
+}
+
+.playback-scroll-container:hover .playback-progress-handle {
+  opacity: 1;
 }
 
 //----------------------------------- Volume -----------------------------
