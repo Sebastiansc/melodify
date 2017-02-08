@@ -49,10 +49,17 @@ export default class Player extends React.Component {
     if (!this._isPlaying()) this.props.play();
   }
 
+  playState() {
+    if (this._isPlaying()) {
+      return 'is-playing';
+    } else {
+      return 'is-paused';
+    }
+  }
+
   // Playbacktimeline methods
 
   formatTime(duration) {
-    this.duration = duration;
     const minutes = parseInt(duration / 60);
     let seconds = parseInt(duration % 60);
     if (seconds < 10) seconds = `0${seconds}`;
@@ -60,29 +67,16 @@ export default class Player extends React.Component {
   }
 
   songLength(duration){
+    this.duration = duration;
     $(this.totalTime).text(this.formatTime(duration));
   }
 
-  // recordProgress(progress){
-  //   this.timePassed = this.timePassed || 0;
-  //   this.timePassed += 0.5;
-  //   if (this.timePassed % 1 === 0) {
-  //     $(this.timeElapsed).text(this.formatTime(this.timePassed));
-  //   }
-  //   const percentagePlayed = progress.played * 100;
-  //   $(this.progressBar).css('width', percentagePlayed);
-  //   $(this.handle).css('left', percentagePlayed);
-  // }
-
   recordProgress(progress){
-    this.timePassed = this.timePassed || 0;
-    this.timePassed += 0.5;
-    if (this.timePassed % 1 === 0) {
-      $(this.timeElapsed).text(this.formatTime(this.timePassed));
-    }
     const percentagePlayed = progress.played * 100;
-    $(this.progressBar).css('width', percentagePlayed);
-    $(this.handle).css('left', percentagePlayed);
+    const timePassed = (percentagePlayed * this.duration) / 100;
+    $(this.timeElapsed).text(this.formatTime(parseInt(timePassed)));
+    $(this.progressBar).css('width', `${percentagePlayed}%`);
+    $(this.handle).css('left', `${percentagePlayed}%`);
   }
 
   clearProgress() {
@@ -92,17 +86,10 @@ export default class Player extends React.Component {
   }
 
   dragging(e){
-    e.dataTransfer.setDataImage(this.handle, -99999, -99999);
-
   }
 
-
-  playState() {
-    if (this._isPlaying()) {
-      return 'is-playing';
-    } else {
-      return 'is-paused';
-    }
+  dragStart(e){
+    e.dataTransfer.setDragImage(this.handle, -99999, -99999);
   }
 
   render(){
@@ -151,8 +138,8 @@ export default class Player extends React.Component {
                     <div className='playback-progress-handle'
                          ref={handle => this.handle = handle}
                          draggable={true}
-                         onDrag={e => this.dragging()}
-                         onDragStart={e => console.log("onDragStart ", e)}
+                         onDrag={e => this.dragging(e)}
+                         onDragStart={e => this.dragStart(e)}
                          onDragEnd={e => console.log("onDragEnd ", e)}>
                     </div>
                   </div>
