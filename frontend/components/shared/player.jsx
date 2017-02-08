@@ -49,6 +49,8 @@ export default class Player extends React.Component {
     if (!this._isPlaying()) this.props.play();
   }
 
+  // Playbacktimeline methods
+
   formatTime(duration) {
     this.duration = duration;
     const minutes = parseInt(duration / 60);
@@ -60,6 +62,17 @@ export default class Player extends React.Component {
   songLength(duration){
     $(this.totalTime).text(this.formatTime(duration));
   }
+
+  // recordProgress(progress){
+  //   this.timePassed = this.timePassed || 0;
+  //   this.timePassed += 0.5;
+  //   if (this.timePassed % 1 === 0) {
+  //     $(this.timeElapsed).text(this.formatTime(this.timePassed));
+  //   }
+  //   const percentagePlayed = progress.played * 100;
+  //   $(this.progressBar).css('width', percentagePlayed);
+  //   $(this.handle).css('left', percentagePlayed);
+  // }
 
   recordProgress(progress){
     this.timePassed = this.timePassed || 0;
@@ -76,6 +89,11 @@ export default class Player extends React.Component {
     this.timePassed = 0;
     $(this.timeElapsed).text('0:00');
     $(this.progressBar).css('width', 0);
+  }
+
+  dragging(e){
+    e.dataTransfer.setDataImage(this.handle, -99999, -99999);
+
   }
 
 
@@ -107,6 +125,7 @@ export default class Player extends React.Component {
 
           <div className='player-controls container'>
             <div className='player-controls-elements'>
+
               <button className='skip-control previous'></button>
               <button
                 className={`track-state ${this.playState()}`}
@@ -130,7 +149,11 @@ export default class Player extends React.Component {
                          ref={progressBar => {this.progressBar = progressBar;}}>
                     </div>
                     <div className='playback-progress-handle'
-                         ref={handle => this.handle = handle}>
+                         ref={handle => this.handle = handle}
+                         draggable={true}
+                         onDrag={e => this.dragging()}
+                         onDragStart={e => console.log("onDragStart ", e)}
+                         onDragEnd={e => console.log("onDragEnd ", e)}>
                     </div>
                   </div>
                   <div className='playback-duration duration'>
@@ -158,9 +181,10 @@ export default class Player extends React.Component {
                   <Link className='player-artist' to='#'></Link>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
+
         </div>
       );
     } else {
