@@ -53,9 +53,7 @@
 
 .player-timeline {
   margin-right: 30px;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+  @include grow;
 }
 
 //----------------------------------- TIMELINE -----------------------------
@@ -77,9 +75,8 @@
 .playback-scroll-container {
   padding: 10px 0;
   margin: 13px 10px 0 10px;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+  @include grow;
+  position: relative;
 }
 
 .duration {
@@ -97,6 +94,8 @@
   height: 1px;
   background-color: $orange;
   transition: width 50ms;
+  position: absolute;
+  top: 10px;
 }
 
 .playback-progress-handle {
@@ -115,6 +114,7 @@
 
 .player-volume {
   width: 25px;
+  @include grow;
 }
 
 .volume-control {

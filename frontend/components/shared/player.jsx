@@ -24,8 +24,12 @@ export default class Player extends React.Component {
     }
   }
 
+  currentTrack(){
+    return this.props.tracks[this._findTrackIdx()];
+  }
+
   audioUrl() {
-    return this.props.tracks[this._findTrackIdx()].audio_url;
+    return this.currentTrack().audio_url;
   }
 
   togglePlay() {
@@ -45,8 +49,25 @@ export default class Player extends React.Component {
     if (!this._isPlaying()) this.props.play();
   }
 
-  getLength(duration){
+  formatTime(duration) {
+    this.duration = duration;
+    const minutes = parseInt(duration / 60);
+    let seconds = parseInt(duration % 60);
+    if (seconds < 10) seconds = `0${seconds}`;
+    return `${minutes}:${seconds}`;
+  }
 
+  songLength(duration){
+    $(this.totalTime).text(this.formatTime(duration));
+  }
+
+  recordProgress(progress){
+    this.timePassed = this.timePassed || 0;
+    this.timePassed += 0.5;
+    if (this.timePassed % 1 === 0) {
+      $(this.timeElapsed).text(this.formatTime(this.timePassed));
+    }
+    $(this.progressBar).css('width', `${progress.played * 100}%`);
   }
 
 
@@ -68,10 +89,12 @@ export default class Player extends React.Component {
             playing={this.props.state}
             controls={false}
             height={0}
-            onDuration={length => this.getLength(length)}
+            onDuration={duration => this.songLength(duration)}
             width={"100%"}
             onPlay={() => this.resumePlaying()}
-            onPause={() => this.props.pause()}/>
+            onPause={() => this.props.pause()}
+            progressFrequency={500}
+            onProgress={progress => this.recordProgress(progress)}/>
 
           <div className='player-controls container'>
             <div className='player-controls-elements'>
@@ -88,15 +111,20 @@ export default class Player extends React.Component {
               <div className='player-timeline'>
                 <div className='playbacktime'>
                   <div className='playback-duration time-passed'>
-                    <span>0:09</span>
+                    <span ref={timeElapsed => this.timeElapsed = timeElapsed}>
+                      0:00
+                    </span>
                   </div>
                   <div className='playback-scroll-container'>
                     <div className='playback-progress-bar'></div>
-                    <div className='playback-progress-tracker'></div>
+                    <div className='playback-progress-tracker'
+                         ref={progressBar => {this.progressBar = progressBar;}}>
+                    </div>
                     <div className='playback-progress-handle'></div>
                   </div>
                   <div className='playback-duration duration'>
-                    <span>4:13</span>
+                    <span ref={totalTime => {this.totalTime = totalTime;}}>
+                    </span>
                   </div>
                 </div>
               </div>

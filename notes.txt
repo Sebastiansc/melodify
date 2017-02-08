@@ -49,5 +49,7 @@ logout(){
 // }
 
 
-- Challenge:
-  - Player component must be able to identify what collection of songs is expect to be played (Playlist, top 50, categories, album)
+- Challenges:
+  - Player component must be able to identify what collection of songs is expected to be played (Playlist, top 50, categories, album)
+  - Roll out custom audio player
+  - Maximize usability of common functionality components (session modal, track)
