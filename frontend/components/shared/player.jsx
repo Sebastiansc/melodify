@@ -83,7 +83,7 @@ export default class Player extends React.Component {
   }
 
   _updateProgressTrackers(percentagePlayed) {
-    if (percentagePlayed > 0) {
+    if (percentagePlayed >= 0 && percentagePlayed <= 100) {
       $(this.progressBar).css('width', `${percentagePlayed}%`);
       $(this.handle).css('left', `${percentagePlayed}%`);
     }
@@ -103,29 +103,27 @@ export default class Player extends React.Component {
     this.dragStartPercent = this.progress;
   }
 
-  _percentageSeeked(currentX) {
-    return (currentX * this.dragStartPercent) / this.dragStartX;
+  _fractionSeeked(offsetX) {
+    return offsetX / $('.playback-progress-bar').width();
   }
 
   dragging(e){
-    // Use starting coordinate and percentage to calculate current percentage
-    // seeked and update the playbar progress trackers
-    const currentX = e.nativeEvent.clientX;
-    this._updateProgressTrackers(this._percentageSeeked(currentX));
+    e.preventDefault();
+    const seekPosition = (
+      e.nativeEvent.offsetX / $('.playback-progress-bar').width()
+    ) * 100;
+    this._updateProgressTrackers(seekPosition);
   }
 
   jumpTo(e) {
-    this.player.seekTo(
-      e.nativeEvent.offsetX/$('.playback-progress-bar').width()
-    );
+    this.player.seekTo(this._fractionSeeked(e.nativeEvent.offsetX));
   }
 
   endDrag(e) {
     // For reason uknown the dragEnd nativeEvent element adds a leading 100 to
     // the clientX coordinate
-    const currentX = e.nativeEvent.clientX % 1000;
-    this.player.seekTo(this._percentageSeeked(currentX) / 100);
     this.seeking = false;
+    this.player.seekTo(this._fractionSeeked(e.nativeEvent.offsetX % 1000));
   }
 
   render(){
@@ -168,17 +166,20 @@ export default class Player extends React.Component {
                     </span>
                   </div>
                   <div className='playback-scroll-container'
-                       onClick={ e => this.jumpTo(e)}>
-                    <div className='playback-progress-bar'></div>
-                    <div className='playback-progress-tracker'
-                         ref={progressBar => {this.progressBar = progressBar;}}>
+                       onClick={ e => this.jumpTo(e)}
+                       draggable={true}
+                       onDrag={e => this.dragging(e)}
+                       onDragStart={e => this.startDrag(e)}
+                       onDragEnd={e => this.endDrag(e)}>
+                    <div className='playback-progress-bar' >
                     </div>
-                    <div className='playback-progress-handle'
-                         ref={handle => this.handle = handle}
-                         draggable={true}
-                         onDrag={e => this.dragging(e)}
-                         onDragStart={e => this.startDrag(e)}
-                         onDragEnd={e => this.endDrag(e)}>
+                    <div
+                      className='playback-progress-tracker'
+                      ref={progressBar => {this.progressBar = progressBar;}}>
+                    </div>
+                    <div
+                      className='playback-progress-handle'
+                      ref={handle => this.handle = handle} >
                     </div>
                   </div>
                   <div className='playback-duration duration'>
