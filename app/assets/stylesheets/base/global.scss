@@ -1,6 +1,7 @@
 $round: 4px;
 $orange: #f50;
 $dark-orange: #f30;
+$gray: #333;
 $font-sm: 1.5rem;
 $font-md: 1.8rem;
 $font-lg: 2.5rem;
@@ -28,6 +29,10 @@ body {
 
 ul {
   list-style: none;
+}
+
+a {
+  color: #000;
 }
 
 a:hover {

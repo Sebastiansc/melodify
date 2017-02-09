@@ -53,7 +53,7 @@
 
 .player-timeline {
   margin-right: 30px;
-  @include grow;
+  @include grow(5);
 }
 
 //----------------------------------- TIMELINE -----------------------------
@@ -122,7 +122,7 @@
 
 .player-volume {
   width: 25px;
-  @include grow;
+  margin-right: 40px;
 }
 
 .volume-control {
@@ -134,4 +134,36 @@
 
 .volume-slider {
   display: none;
+}
+
+//----------------------------------- PlayerSoundbadge ------------------------
+
+.player-soundbadge {
+  @include grow;
+  margin-right: 20px;
+  display: flex;
+  padding: 8px 0;
+  line-height: 1.5em;
+}
+
+.player-soundbadge-cover {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background-size: cover;
+}
+
+.player-soundbadge-titlefield {
+  a {
+    display: block;
+  }
+
+  line-height: 1.5rem;
+  @include hide-text-overflow;
+  margin-left: 10px;
+  letter-spacing: 0.8px;
+}
+
+.player-tracks-source {
+  color: #999;
 }

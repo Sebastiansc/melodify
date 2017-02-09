@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import { Link } from 'react-router';
+import PlayerSoundbadge from './player_soundbadge.jsx';
 
 const style = {
   width: "100%",
@@ -197,15 +197,7 @@ export default class Player extends React.Component {
                 </div>
               </div>
 
-              <div className='player-soundbadge'>
-                <Link to='#'>
-                  <span className='player-soundbadge-cover'></span>
-                </Link>
-                <div className='player-soundbadge-titlefield'>
-                  <Link className='player-tracks-source' to='#'></Link>
-                  <Link className='player-artist' to='#'></Link>
-                </div>
-              </div>
+              <PlayerSoundbadge track={this.currentTrack()}/>
 
             </div>
           </div>

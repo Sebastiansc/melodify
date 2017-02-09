@@ -60,8 +60,15 @@ $breakpoints: (
 
 }
 
-@mixin grow(){
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+@mixin grow($size: 1){
+  -webkit-flex-grow: $size;
+  -ms-flex-positive: $size;
+  flex-grow: $size;
+}
+
+@mixin hide-text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: normal;
 }

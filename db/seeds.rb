@@ -89,7 +89,7 @@ data = [
 
 def thumburl(url)
   rootUrl = url[0...46];
-  tailUrl = url[46...-1];
+  tailUrl = url[46..-1];
   "#{rootUrl}c_scale,h_120/#{tailUrl}"
 end
 
@@ -100,7 +100,7 @@ data.each do |info|
     audio_url: info[:audio_url],
     cover_photo: info[:cover_photo],
     genre: info[:cover_photo],
-    thumbnail: thumburl(info[:audio_url]),
+    thumbnail: thumburl(info[:cover_photo]),
     artist: info[:artist]
   })
 end
