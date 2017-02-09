@@ -10,6 +10,7 @@ const style = {
 export default class Player extends React.Component {
   constructor(props){
     super(props);
+    this.seeking = false;
   }
 
   _isPlaying(){
@@ -72,11 +73,20 @@ export default class Player extends React.Component {
   }
 
   recordProgress(progress){
-    const percentagePlayed = progress.played * 100;
-    const timePassed = (percentagePlayed * this.duration) / 100;
-    $(this.timeElapsed).text(this.formatTime(parseInt(timePassed)));
-    $(this.progressBar).css('width', `${percentagePlayed}%`);
-    $(this.handle).css('left', `${percentagePlayed}%`);
+    if (!this.seeking){
+      const percentagePlayed = progress.played * 100;
+      this.progress = percentagePlayed;
+      const timePassed = (percentagePlayed * this.duration) / 100;
+      $(this.timeElapsed).text(this.formatTime(parseInt(timePassed)));
+      this._updateProgressTrackers(percentagePlayed);
+    }
+  }
+
+  _updateProgressTrackers(percentagePlayed) {
+    if (percentagePlayed > 0) {
+      $(this.progressBar).css('width', `${percentagePlayed}%`);
+      $(this.handle).css('left', `${percentagePlayed}%`);
+    }
   }
 
   clearProgress() {
@@ -85,11 +95,32 @@ export default class Player extends React.Component {
     $(this.progressBar).css('width', 0);
   }
 
-  dragging(e){
+  startDrag(e){
+    e.dataTransfer.setDragImage(this.handle, -99999, -99999);
+    this.seeking = true;
+    // Save starting x coordinate and percentage of track played
+    this.dragStartX = e.nativeEvent.clientX;
+    this.dragStartPercent = this.progress;
+    console.log(this.dragStartX, this.dragStartPercent);
   }
 
-  dragStart(e){
-    e.dataTransfer.setDragImage(this.handle, -99999, -99999);
+  _percentageSeeked(currentX) {
+    return (currentX * this.dragStartPercent) / this.dragStartX;
+  }
+
+  dragging(e){
+    // Use starting coordinate and percentage to calculate current percentage
+    // seeked and update the playbar progress trackers
+    const currentX = e.nativeEvent.clientX;
+    this._updateProgressTrackers(this._percentageSeeked(currentX));
+  }
+
+  endDrag(e) {
+    // For reason uknown the dragEnd nativeEvent element adds a leading 100 to
+    // the clientX coordinate
+    const currentX = e.nativeEvent.clientX % 1000;
+    this.player.seekTo(this._percentageSeeked(currentX) / 100);
+    this.seeking = false;
   }
 
   render(){
@@ -98,6 +129,7 @@ export default class Player extends React.Component {
       return(
         <div className='player'>
           <ReactPlayer
+            ref={player => { this.player = player;}}
             url={this.audioUrl()}
             playing={this.props.state}
             controls={false}
@@ -139,8 +171,8 @@ export default class Player extends React.Component {
                          ref={handle => this.handle = handle}
                          draggable={true}
                          onDrag={e => this.dragging(e)}
-                         onDragStart={e => this.dragStart(e)}
-                         onDragEnd={e => console.log("onDragEnd ", e)}>
+                         onDragStart={e => this.startDrag(e)}
+                         onDragEnd={e => this.endDrag(e)}>
                     </div>
                   </div>
                   <div className='playback-duration duration'>
