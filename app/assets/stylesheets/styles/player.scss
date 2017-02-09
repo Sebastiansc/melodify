@@ -137,7 +137,7 @@
   display: none;
   position: absolute;
   width: 30px;
-  height: 100px;
+  height: 120px;
   bottom: 37px;
   right: 2px;
   background: $lightgray;
@@ -148,7 +148,20 @@
   height: 85%;
   bottom: -7px;
   position: relative;
-  transform: rotate(180deg);
+}
+
+.volume {
+  background: $orange;
+  height: 7px;
+  margin: 0 auto 3px auto;
+  cursor: pointer;
+  &:hover {
+    background: $gray;
+  }
+}
+
+.volume-off {
+  background: #a5a5a5;
 }
 
 .volume-slider-handle {
@@ -182,6 +195,7 @@
   background-color: $orange;
   transition: width 50ms;
 }
+
 
 //----------------------------------- PlayerSoundbadge ------------------------
 
