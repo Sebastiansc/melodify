@@ -3,7 +3,8 @@ import React from 'react';
 export default class PlayerVolume extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {volume: 1};
+    this.currentVolume = 1;
+    this.muted = false;
   }
 
   componentDidMount() {
@@ -13,34 +14,6 @@ export default class PlayerVolume extends React.Component {
       $(`#${i}`).addClass('volume');
       width -= 2;
     }
-  }
-
-  startDrag(e){
-    e.dataTransfer.setDragImage(this.volumeHandle, -99999, -99999);
-  }
-
-  _updateProgressTrackers(percentageRequest) {
-    if (percentageRequest >= 0 && percentageRequest <= 100) {
-      $(this.volumeBar).css('height', `${percentageRequest}%`);
-      $(this.volumeHandle).css('top', `${percentageRequest}%`);
-    }
-  }
-
-  dragging(e){
-    const percentageRequest = (
-      e.nativeEvent.offsetY / $('.volume-slider-wrapper').height()
-    ) * 100;
-    console.log(e.nativeEvent.offsetY);
-    this._updateProgressTrackers(percentageRequest);
-  }
-
-  endDrag(e) {
-    let normalizedY = e.nativeEvent.offsetY % 1000;
-    console.log(e.nativeEvent);
-    console.log(normalizedY);
-    if (normalizedY <= 0) normalizedY = 0;
-    if (normalizedY >= 100) normalizedY = 100;
-    this.props.volumeTo(normalizedY / 100);
   }
 
   volume(volume) {
@@ -53,7 +26,19 @@ export default class PlayerVolume extends React.Component {
         $(`#${id}`).removeClass('volume-off');
       }
     }
+    if (volume > 0) this.currentVolume = volume;
     this.props.volumeTo(volume);
+  }
+
+  toggleMute() {
+    $('.volume-control').toggleClass('volume-muted');
+    if (this.muted) {
+      this.volume(this.currentVolume);
+      this.muted = false;
+    } else {
+      this.volume(0);
+      this.muted = true;
+    }
   }
 
   render() {
@@ -61,7 +46,7 @@ export default class PlayerVolume extends React.Component {
       <div className='player-volume'>
         <button
           className='volume-control'
-          onClick={() => this.volume(0)}>
+          onClick={() => this.toggleMute()}>
         </button>
         <div className='volume-slider' >
           <div className='volume-slider-wrapper'>

@@ -137,7 +137,7 @@
   display: none;
   position: absolute;
   width: 30px;
-  height: 120px;
+  height: 100px;
   bottom: 37px;
   right: 2px;
   background: $lightgray;
@@ -153,7 +153,7 @@
 .volume {
   background: $orange;
   height: 7px;
-  margin: 0 auto 3px auto;
+  margin: 0 auto 1px auto;
   cursor: pointer;
   &:hover {
     background: $gray;
@@ -194,6 +194,11 @@
   height: 100%;
   background-color: $orange;
   transition: width 50ms;
+}
+
+.volume-muted {
+  background-image: url('https://res.cloudinary.com/flikr/image/upload/v1486669731/volume-muted-624fac_lmccgj.svg');
+  background-repeat: no-repeat;
 }
 
 
