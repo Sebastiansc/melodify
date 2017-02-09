@@ -12,7 +12,7 @@ const Splash = () => (
         formClass="splash-search"
       />
     <div className='splash-trending'>
-        <h2>Trending today</h2>
+        <h2>Hear what's trending today</h2>
         <TrendingContainer/>
         <div className='top-50'>
           <button className='splash-explore'>

@@ -3,7 +3,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #f2f2f2;
+  background-color: $lightgray;
   border-top: 1px solid rgba(0,0,0,.15);
   height: 46px;
   visibility: visible;
@@ -123,6 +123,7 @@
 .player-volume {
   width: 25px;
   margin-right: 40px;
+  position: relative;
 }
 
 .volume-control {
@@ -134,6 +135,36 @@
 
 .volume-slider {
   display: none;
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  transform: rotate(90deg);
+  bottom: 70px;
+  right: -35px;
+  background: $lightgray;
+  border: 1px solid rgba(0,0,0,.15);
+}
+
+.player-volume:hover .volume-slider {
+  display: block;
+}
+
+.volume-slider-bar, .volume-slider-progress {
+  position: absolute;
+  bottom: 14px;
+  right: 10px;
+  height: 2px;
+}
+
+.volume-slider-bar {
+  width: 85%;
+  background-color: #ccc;
+}
+
+.volume-slider-progress {
+  width: 5%;
+  background-color: $orange;
+  transition: width 50ms;
 }
 
 //----------------------------------- PlayerSoundbadge ------------------------

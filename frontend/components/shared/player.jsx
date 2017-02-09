@@ -11,6 +11,7 @@ export default class Player extends React.Component {
   constructor(props){
     super(props);
     this.seeking = false;
+    this.state = { volume: 1};
   }
 
   _isPlaying(){
@@ -137,6 +138,7 @@ export default class Player extends React.Component {
             playing={this.props.state}
             controls={false}
             height={0}
+            volume={this.state.volume}
             onDuration={duration => this.songLength(duration)}
             width={"100%"}
             onPlay={() => this.resumePlaying()}
@@ -193,8 +195,14 @@ export default class Player extends React.Component {
                 <button className='volume-control'></button>
                 <div className='volume-slider'>
                   <div className='volume-slider-bar'></div>
-                  <div className='volume-slider-progress'></div>
-                  <div className='volume-slider-handle'></div>
+                  <div
+                    className='volume-slider-progress'
+                    ref={volumeBar => this.volumeBar = volumeBar}>
+                  </div>
+                  <div
+                    className='volume-slider-handle'
+                    ref={volumeHandle => this.volumeHandle = volumeHandle}>
+                  </div>
                 </div>
               </div>
 
