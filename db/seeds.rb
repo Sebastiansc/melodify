@@ -6,7 +6,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+User.create({
+  username: "50 cent",
+  password: "123456",
+  email: "guest@test.com"
+})
+User.create({
+  username: "KYLE.",
+  password: "123456",
+  email: "guest@tune.com"
+})
+User.create({
+  username: "Eminem",
+  password: "123456",
+  email: "guest@goland.com"
+})
+User.create({
+  username: "guest",
+  password: "123456",
+  email: "guest@local.com"
+})
 data = [
   {
     title: "iSpy feat. Lil Yachty",
