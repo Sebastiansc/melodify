@@ -101,7 +101,6 @@ export default class Player extends React.Component {
     // Save starting x coordinate and percentage of track played
     this.dragStartX = e.nativeEvent.clientX;
     this.dragStartPercent = this.progress;
-    console.log(this.dragStartX, this.dragStartPercent);
   }
 
   _percentageSeeked(currentX) {
@@ -113,6 +112,12 @@ export default class Player extends React.Component {
     // seeked and update the playbar progress trackers
     const currentX = e.nativeEvent.clientX;
     this._updateProgressTrackers(this._percentageSeeked(currentX));
+  }
+
+  jumpTo(e) {
+    this.player.seekTo(
+      e.nativeEvent.offsetX/$('.playback-progress-bar').width()
+    );
   }
 
   endDrag(e) {
@@ -162,7 +167,8 @@ export default class Player extends React.Component {
                       0:00
                     </span>
                   </div>
-                  <div className='playback-scroll-container'>
+                  <div className='playback-scroll-container'
+                       onClick={ e => this.jumpTo(e)}>
                     <div className='playback-progress-bar'></div>
                     <div className='playback-progress-tracker'
                          ref={progressBar => {this.progressBar = progressBar;}}>
