@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 import PlayerSoundbadge from './player_soundbadge.jsx';
+import PlayerVolume from './player_volume.jsx';
 
 const style = {
   width: "100%",
@@ -76,7 +77,6 @@ export default class Player extends React.Component {
   recordProgress(progress){
     if (!this.seeking){
       const percentagePlayed = progress.played * 100;
-      this.progress = percentagePlayed;
       const timePassed = (percentagePlayed * this.duration) / 100;
       $(this.timeElapsed).text(this.formatTime(parseInt(timePassed)));
       this._updateProgressTrackers(percentagePlayed);
@@ -99,9 +99,6 @@ export default class Player extends React.Component {
   startDrag(e){
     e.dataTransfer.setDragImage(this.handle, -99999, -99999);
     this.seeking = true;
-    // Save starting x coordinate and percentage of track played
-    this.dragStartX = e.nativeEvent.clientX;
-    this.dragStartPercent = this.progress;
   }
 
   _fractionSeeked(offsetX) {
@@ -109,7 +106,6 @@ export default class Player extends React.Component {
   }
 
   dragging(e){
-    e.preventDefault();
     const seekPosition = (
       e.nativeEvent.offsetX / $('.playback-progress-bar').width()
     ) * 100;
@@ -121,11 +117,18 @@ export default class Player extends React.Component {
   }
 
   endDrag(e) {
-    // For reason uknown the dragEnd nativeEvent element adds a leading 100 to
-    // the clientX coordinate
+    // dragEnd nativeEvent element adds a leading 100 to the clientX coordinate
     this.seeking = false;
-    this.player.seekTo(this._fractionSeeked(e.nativeEvent.offsetX % 1000));
+    let media = this._fractionSeeked(e.nativeEvent.offsetX % 1000);
+    console.log(e.nativeEvent.offsetX % 1000);
+    this.player.seekTo(media);
   }
+
+  volumeTo(volume) {
+    // debugger;
+    this.setState({volume: volume});
+  }
+
 
   render(){
     // A song has been selected
@@ -142,8 +145,8 @@ export default class Player extends React.Component {
             onDuration={duration => this.songLength(duration)}
             width={"100%"}
             onPlay={() => this.resumePlaying()}
-            onPause={() => this.props.pause()}
             onStart={() => this.clearProgress()}
+            onEnd={() => this.nextSong()}
             progressFrequency={500}
             onProgress={progress => this.recordProgress(progress)}/>
 
@@ -191,20 +194,7 @@ export default class Player extends React.Component {
                 </div>
               </div>
 
-              <div className='player-volume'>
-                <button className='volume-control'></button>
-                <div className='volume-slider'>
-                  <div className='volume-slider-bar'></div>
-                  <div
-                    className='volume-slider-progress'
-                    ref={volumeBar => this.volumeBar = volumeBar}>
-                  </div>
-                  <div
-                    className='volume-slider-handle'
-                    ref={volumeHandle => this.volumeHandle = volumeHandle}>
-                  </div>
-                </div>
-              </div>
+              <PlayerVolume volumeTo={volume => this.volumeTo(volume)}/>
 
               <PlayerSoundbadge track={this.currentTrack()}/>
 

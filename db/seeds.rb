@@ -67,7 +67,7 @@ data = [
   {
     title: "drugs",
     audio_url: "https://res.cloudinary.com/flikr/video/upload/v1486505853/drugs_273653401_soundcloud_jwrvds.mp3",
-    cover_photo: "http://res.cloudinary.com/flikr/image/upload/v1486505818/artworks-000171432996-7spwh0-t500x500_agmfp7.jpg",
+    cover_photo: "https://res.cloudinary.com/flikr/image/upload/v1486505818/artworks-000171432996-7spwh0-t500x500_agmfp7.jpg",
     genre: "Indie",
     artist: "Eden"
   },
@@ -94,12 +94,13 @@ def thumburl(url)
 end
 
 data.each do |info|
+  puts "Created #{info[:title]}"
   Song.create({
     title: info[:title],
     user_id: 5,
     audio_url: info[:audio_url],
     cover_photo: info[:cover_photo],
-    genre: info[:cover_photo],
+    genre: info[:genre],
     thumbnail: thumburl(info[:cover_photo]),
     artist: info[:artist]
   })
