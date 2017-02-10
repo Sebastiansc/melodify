@@ -9,8 +9,19 @@ export default class UploadData extends React.Component {
       description: '',
       title: this.props.title,
       artist: '',
+      cover_photo: this.props.cover_photo,
       genresClass: ''
     };
+  }
+
+  componentWillMount() {
+    this.unselector = $('body').on('click', () => (
+      this.setState({genresClass: ''}))
+    );
+  }
+
+  componentWillUnmount() {
+    $('body').off(this.unselector);
   }
 
   openGenres() {
@@ -32,14 +43,21 @@ export default class UploadData extends React.Component {
     }
   }
 
-  componentWillMount() {
-    this.unselector = $('body').on('click', () => (
-      this.setState({genresClass: ''}))
-    );
+  update(field, e) {
+    this.setState({[field]: e.currentTarget.value });
   }
 
-  componentWillUnmount() {
-    $('body').off(this.unselector);
+  submit() {
+    const song = {
+      artist: this.state.artist,
+      description: this.state.description,
+      title: this.state.title,
+      cover_photo: this.state.cover_photo,
+      audio_url: this.props.audio_url,
+      genre: this.state.genre,
+      thumbnail: this.formatUrl(this.state.cover_photo)
+    };
+    this.props.createSong(song);
   }
 
   render() {
@@ -58,12 +76,20 @@ export default class UploadData extends React.Component {
         <section className='upload-data-fields'>
           <label>Title <span className='asterisk'>*</span></label>
           <div className='track-upload-text-field'>
-            <input type='text' placeholder='Name your track'></input>
+            <input
+              type='text'
+              placeholder='Name your track'
+              onChange={e => this.update('title', e)}>
+            </input>
           </div>
 
           <label>Artist</label>
           <div className='track-upload-artist-field'>
-            <input type='text' placeholder="Who's your track by"></input>
+            <input
+              type='text'
+              placeholder="Who's your track by"
+              onChange={e => this.update('artist', e)}>
+            </input>
           </div>
 
           <label>Genre</label>
@@ -72,7 +98,8 @@ export default class UploadData extends React.Component {
               {this.state.genre}
             </button>
             <ul className={`genres ${this.state.genresClass}`}
-                onClick={e => this.selectGenre(e)}>
+                onClick={e => this.selectGenre(e)}
+                onChange={e => this.update('genre', e)}>
               <li>None</li>
               <li>Classical</li>
               <li>Country</li>
@@ -96,13 +123,17 @@ export default class UploadData extends React.Component {
           <div className='track-upload-tag-field'>
             <input
               type='text'
-              placeholder='Add tags to better describe your track'>
+              placeholder='Add tags to better describe your track'
+              onChange={e => this.update('tags', e)}>
             </input>
           </div>
 
           <label>Description</label>
           <div className='track-upload-description-field'>
-            <textarea placeholder='Describe your track'></textarea>
+            <textarea
+              placeholder='Describe your track'
+              onChange={e => this.update('description', e)}>
+            </textarea>
           </div>
         </section>
         <div className='clearfix'></div>
