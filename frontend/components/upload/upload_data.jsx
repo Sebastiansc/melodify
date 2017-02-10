@@ -47,6 +47,12 @@ export default class UploadData extends React.Component {
     this.setState({[field]: e.currentTarget.value });
   }
 
+  formatUrl(url) {
+    const rootUrl = url.slice(0,46);
+    const tailUrl = url.slice(46);
+    return `${rootUrl}c_scale,h_120/${tailUrl}`;
+  }
+
   submit() {
     const song = {
       artist: this.state.artist,
@@ -142,7 +148,9 @@ export default class UploadData extends React.Component {
           <p className='legend'>
             <span className='asterisk'>*</span> Required Fields
           </p>
-          <button className='upload-save'>Save</button>
+          <button className='upload-save' onClick={() => this.submit()}>
+            Save
+          </button>
         </div>
       </div>
     );
