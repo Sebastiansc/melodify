@@ -20,13 +20,14 @@ export default class SearchBar extends React.Component {
 
   render(){
     return(
-      <form className={this.props.formClass}>
+      <form
+        className={`${this.props.formClass} ${this.props.className}`}>
       <input type='text'
              onChange={e => this.update(e)}
-             className={this.props.inputClass}
+             className={`searchbar-input ${this.props.inputClass}`}
              placeholder='Search for songs, artists, albums and more'>
       </input>
-      <button className={this.props.buttonClass}
+      <button className={`searchbar-button ${this.props.buttonClass}`}
               onClick={() => this.search()}
               type='submit'>
       </button>

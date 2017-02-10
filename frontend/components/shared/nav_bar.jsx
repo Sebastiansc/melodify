@@ -1,36 +1,57 @@
 import React from 'react';
 import SessionButtonsContainer from '../session/buttons_container';
+import SearchBarContainer from './search_bar_container';
+import { Link } from 'react-router';
 
 export default class Navbar extends React.Component {
   constructor(props){
     super(props);
-
   }
 
   render(){
     return(
-      <nav role="navigation"
-           className="navbar navbar-default navbar-fixed-top">
-
-          <div className="navbar-header">
-              <button type="button" data-target="#navbarCollapse"
-                      data-toggle="collapse" className="navbar-toggle">
-                  <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-              </button>
-              <a href="#" className="navbar-brand">Sauti</a>
+      <nav role="navigation" className="nav-bar">
+        <div className='container navbar-wrapper'>
+          <div className='row navbar-row'>
+            <div
+              className='navbar-logo
+                         col-lg-2
+                         col-md-2
+                         col-sm-2'
+            >
+              <Link to='/'>Melodify</Link>
+            </div>
+            <ul
+              className='left-navbar-wrapper
+                         col-lg-1
+                         col-md-1
+                         col-sm-1'
+            >
+              <li>Charts</li>
+            </ul>
+            <SearchBarContainer
+              formClass='navbar-search'
+              inputClass='navbar-searchfield'
+              buttonClass='navbar-searchbutton'
+              className='col-lg-6
+                         col-md-6
+                         col-sm-6'
+            />
+            <SessionButtonsContainer
+              className='navbar-session
+                         col-lg-2
+                         col-md-2
+                         col-sm-2'
+            />
+          <div
+            className='upload-wrapper
+                       col-lg-1
+                       col-md-1
+                       col-sm-1'>
+            <Link to='upload' className='navbar-upload'>Upload</Link>
           </div>
-
-          <div id="navbarCollapse" className="collapse navbar-collapse">
-              <ul className="nav navbar-nav">
-                  <li className="active"><a href="#">Home</a></li>
-                  <li><a href="#">Profile</a></li>
-                  <li><a href="#">Messages</a></li>
-              </ul>
-              <SessionButtonsContainer/>
           </div>
+        </div>
       </nav>
 
     );

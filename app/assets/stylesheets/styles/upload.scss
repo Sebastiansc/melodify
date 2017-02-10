@@ -1,0 +1,65 @@
+.upload-content {
+  width: 800px;
+  margin: 50px auto;
+  padding: 30px 0;
+  box-shadow: 0 2px 12px -5px rgba(0,0,0,.1);
+  border: 1px solid #f2f2f2;
+  text-align: center;
+  h1 {
+    font-size: $font-lg;
+  }
+  h2 {
+    font-size: $font-sm;
+  }
+}
+
+.upload-pitch {
+  display: flex;
+  width: 80%;
+  margin: 0 auto 30px auto;
+}
+
+.upload-instructions {
+  margin-bottom: 35px;
+}
+
+.upload-feature {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  flex-direction: column;
+  p {
+    text-align: center;
+  }
+}
+
+.upload-feature-image {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-self: center;
+  height: 100px;
+  width: 100%
+}
+
+.waves {
+  background-image: url('https://res.cloudinary.com/flikr/image/upload/v1486692768/waveform_2x-4d70da_mmxkuu.png');
+}
+
+.comment-bubble {
+  background-image : url('https://res.cloudinary.com/flikr/image/upload/v1486692775/messaging_2x-459e05_fiwvqr.png');
+}
+
+.upload-session {
+  justify-content: center;
+  .enter {
+    border-color: #ccc;
+    a {
+      color: black;
+    }
+  }
+  .login {
+    padding: 6px 15px;
+    font-size: $font-md;
+  }
+}

@@ -1,14 +1,107 @@
-$background_color: rgba(21,21,23,.95);
+$navbar-font: 100 14px/1.5 "Ubuntu", Arial,sans-serif;
+$font-nav-color: #ccc;
 
 .nav-bar {
-  background-color: $background_color;
+  background-color: #333;
   height: 50px;
   top: 0;
-  left: 0;
+  position: fixed;
   right: 0;
+  left: 0;
   z-index: 2000;
-  width: 100%;
+  transition: top .2s ease-in-out;
   color: white;
-  font-weight: 400;
-  font-size: 16px;
+  font: $navbar-font;
+  color: $font-nav-color;
 }
+
+.navbar-logo, .left-navbar-wrapper, .upload-wrapper {
+  cursor: pointer;
+}
+
+.navbar-wrapper {
+  height: inherit;
+  padding: 0 15px;
+  background: transparent;
+}
+
+.left-navbar-wrapper {
+  display: flex;
+  border-right: 1px solid black;
+  li {
+    padding: 0 15px;
+  }
+  li:hover {
+    color: $skullwhite;
+  }
+}
+
+.navbar-logo {
+  background: linear-gradient(#f70,#f30);
+  a {
+    font-weight: 400;
+    color: white;
+    font-size: 18px;
+    margin: auto;
+  }
+}
+
+
+.navbar-row {
+  height: inherit;
+  &>* {
+    height: inherit;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.navbar-searchfield:focus {
+  background: white;
+  font-weight: 300;
+  color: #000;
+}
+
+.navbar-searchfield {
+  height: 28px;
+  font-weight: 100;
+  font-size: 14px;
+}
+
+
+.navbar-searchbutton {
+  top: 17px;
+  right: 19px;
+}
+
+.navbar-session {
+  justify-content: flex-start;
+  font: $navbar-font;
+  li {
+    font: $navbar-font;
+    padding: 2px 9px;
+  }
+}
+
+.navbar-session .signup {
+  margin-left: 15px;
+}
+
+.navbar-upload {
+  color: white;
+}
+
+.navbar-upload:hover {
+  color: white;
+}
+
+@include respond-to('large') {
+  .navbar-session {
+    width: 19%;
+  }
+  .upload-wrapper {
+    width: 5%;
+  }
+}
+
+// ------------------------------ LOGGED IN NAV BAR ---------------------------

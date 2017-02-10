@@ -3,8 +3,9 @@ import { Provider } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 // LOCAL COMPONENTS
-import App from './app';
+import AppContainer from './app_container';
 import Splash from './splash/splash';
+import Upload from './upload/upload';
 // UTIL AND METHODS
 import { getTracks } from '../actions/tracks_actions';
 
@@ -39,10 +40,11 @@ const Root = ({ store }) => {
 
       <Router history={hashHistory}>
         <Route
-          path='/' component={Splash}
+          path='/' component={AppContainer}
           onEnter={() => fetchTracks()}
-        />
-        <Route path='home' component={App}/>
+        >
+          <Route path='upload' component={Upload}/>
+        </Route>
       </Router>
 
     </Provider>

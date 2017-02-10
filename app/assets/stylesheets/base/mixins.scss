@@ -35,10 +35,10 @@ $breakpoints: (
   right: 0;
 }
 
-@mixin button-transparent($paddingY, $paddingX) {
+@mixin button-transparent($paddingY, $paddingX, $color: #7d7d7d) {
   border-radius: $round;
   background: transparent;
-  border: 1px solid white;
+  border: 1px solid $color;
   padding: $paddingY $paddingX;
 }
 

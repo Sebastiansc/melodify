@@ -12,8 +12,16 @@
   @include orange-button($font-sm);
 }
 
+.signup:hover {
+  background-color: $dark-orange;
+}
+
 .session-buttons {
   @include flex(flex-end);
+}
+
+.enter:hover {
+  border-color: white;
 }
 
 .ReactModal__Body--open {

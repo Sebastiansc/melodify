@@ -20,9 +20,9 @@ class SessionButtons extends React.Component {
   render(){
     if (!this.props.loggedIn) {
       return(
-        <ul className="session-buttons">
+        <ul className={`session-buttons ${this.props.className}`}>
           <li onClick={() => this.toggleModal("login")}
-            className='login'>
+            className='enter login'>
             <a>
               Login
             </a>

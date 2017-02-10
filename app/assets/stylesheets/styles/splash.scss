@@ -55,21 +55,33 @@
   display: inline-block;
   position: relative;
   width: 600px;
-    input {
-      background: #e5e5e5;
-      padding-left: 12px;
-      border-radius: $round;
-      width: 100%;
-      height: 40px;
-    }
-    button {
-      position: absolute;
-      right: 17px;
-      top: 18px;
-      background: url(https://res.cloudinary.com/flikr/image/upload/v1486418506/search_pdalpb.svg);
-      min-height: 15px;
-      min-width: 15px;
-    }
+}
+
+.searchbar-input {
+  background: #e5e5e5;
+  padding-left: 12px;
+  border-radius: $round;
+  width: 100%;
+  height: 40px;
+}
+
+.searchbar-button {
+  position: absolute;
+  right: 17px;
+  top: 18px;
+  background: url(https://res.cloudinary.com/flikr/image/upload/v1486418506/search_pdalpb.svg);
+  min-height: 15px;
+  min-width: 15px;
+}
+
+.upload-button {
+  @include button-transparent(7px, 15px, #e5e5e5);
+  font-size: 1.7rem;
+}
+
+.or-separator {
+  margin: 0 23px;
+  font-size: 1.6rem;
 }
 
 // -------------------- TRENDING --------------------

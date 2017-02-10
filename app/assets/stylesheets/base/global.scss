@@ -3,6 +3,8 @@ $orange: #f50;
 $dark-orange: #f30;
 $gray: #333;
 $lightgray: #f2f2f2;
+$dustwhite: #e5e5e5;
+$skullwhite: #eee;
 $font-sm: 1.5rem;
 $font-md: 1.8rem;
 $font-lg: 2.5rem;
@@ -20,6 +22,7 @@ $font-xl: 3.5rem;
 
 ul {
   padding: 5px 7px;
+  margin: 0;
 }
 
 body {
@@ -57,4 +60,12 @@ input:focus {
 
 :focus {
   outline: none;
+}
+
+.body-wrapper {
+  position: relative;
+}
+
+.nav-body {
+  padding-top: 50px;
 }
