@@ -5,7 +5,7 @@ import SessionButtons from '../session/buttons';
 const StartUpload = ({user, openUploadModal}) => {
   if (user.id) {
     return(
-      <main className='upload-content'>
+      <div className=''>
         <h1>Upload your music and audio to Melodify</h1>
         <div className='upload-actions'>
           <button
@@ -14,11 +14,11 @@ const StartUpload = ({user, openUploadModal}) => {
              Choose a file to upload
            </button>
         </div>
-      </main>
+      </div>
     );
   } else {
     return(
-      <main className='upload-content'>
+      <div className=''>
         <h1>Make music or create audio? Share it on Melodify</h1>
         <h2 className='upload-instructions'>
           Create a free Melodify account to get started
@@ -36,7 +36,7 @@ const StartUpload = ({user, openUploadModal}) => {
           </div>
         </div>
         <SessionButtons className='upload-session'/>
-      </main>
+      </div>
     );
   }
 };
