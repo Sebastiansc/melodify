@@ -22,7 +22,6 @@ const Splash = () => (
         </div>
       </div>
     </div>
-    <PlayerContainer/>
   </div>
 );
 

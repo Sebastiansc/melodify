@@ -9,7 +9,7 @@ export default class PlayerVolume extends React.Component {
 
   componentDidMount() {
     let width = 20;
-    for (var i = 10; i > 0 ; i--) {
+    for (let i = 10; i > 0 ; i--) {
       $(`#${i}`).css('width', `${width}px`);
       $(`#${i}`).addClass('volume');
       width -= 2;
