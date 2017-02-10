@@ -4,12 +4,42 @@ export default class UploadData extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      genre: '',
+      genre: 'None',
       tags: '',
       description: '',
-      title: '',
+      title: this.props.title,
       artist: '',
+      genresClass: ''
     };
+  }
+
+  openGenres() {
+    this.setState({genresClass: 'genres-selecting'});
+  }
+
+  uncodedText(text) {
+    while (text.includes('amp')) {
+      text = text.replace('amp;', '');
+    }
+    return text;
+  }
+
+  selectGenre(e) {
+    if (e.target.tagName === 'LI') {
+      this.setState({
+        genre: this.uncodedText(e.target.innerHTML),
+        genresClass: ''});
+    }
+  }
+
+  componentWillMount() {
+    this.unselector = $('body').on('click', () => (
+      this.setState({genresClass: ''}))
+    );
+  }
+
+  componentWillUnmount() {
+    $('body').off(this.unselector);
   }
 
   render() {
@@ -36,7 +66,28 @@ export default class UploadData extends React.Component {
 
           <label>Genre</label>
           <div className='track-upload-genre-field'>
-
+            <button className='genre' onClick={() => this.openGenres()}>
+              {this.state.genre}
+            </button>
+            <ul className={`genres ${this.state.genresClass}`}
+                onClick={e => this.selectGenre(e)}>
+              <li>None</li>
+              <li>Classical</li>
+              <li>Country</li>
+              <li>Dance & EDM</li>
+              <li>Disco</li>
+              <li>Electronic</li>
+              <li>Folk</li>
+              <li>Hip-Hop & Rap</li>
+              <li>Indie</li>
+              <li>Latin</li>
+              <li>Pop</li>
+              <li>R&B & Soul</li>
+              <li>Reggae</li>
+              <li>Reggaeton</li>
+              <li>Reggaeton</li>
+              <li>Rock</li>
+            </ul>
           </div>
 
           <label>Additional tags</label>
