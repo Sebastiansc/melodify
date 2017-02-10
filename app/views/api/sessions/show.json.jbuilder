@@ -1,1 +1,1 @@
-json.extract! @user, :username, :email, :id
+json.partial! 'user', user: @user

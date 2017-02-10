@@ -7,7 +7,7 @@ import Modal from 'react-modal';
 document.addEventListener("DOMContentLoaded", () => {
 
   let store;
-  if (window.currentUser ) {
+  if (window.currentUser) {
     store = configureStore(
       {
         session: {
