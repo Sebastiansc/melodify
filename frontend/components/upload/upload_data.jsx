@@ -50,7 +50,9 @@ export default class UploadData extends React.Component {
         </div>
         <div className='track-cover-wrapper'>
           <span className='track-cover'></span>
-          <button className='track-image-upload'></button>
+          <button className='track-image-upload'>
+            <span>Update image</span>
+          </button>
         </div>
 
         <section className='upload-data-fields'>
