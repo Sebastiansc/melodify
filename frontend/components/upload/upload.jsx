@@ -17,7 +17,8 @@ export default class Upload extends React.Component {
     this.state = {
       title: '',
       cover_photo: '',
-      audio_url: ''
+      audio_url: '',
+      uploaded: true
     };
   }
 
@@ -28,19 +29,29 @@ export default class Upload extends React.Component {
         this.setState({
           title: track[0].original_filename,
           cover_photo: normalizeUrl(track[0].thumbnail_url),
-          audio_url: track[0].secure_url
+          audio_url: track[0].secure_url,
+          uploaded: true
         });
       }
     });
   }
 
   render(){
+    let component;
+    let klass;
+    if (this.state.uploaded) {
+      component = <UploadData
+                    data={this.state}
+                    createSong={this.props.createSong}/>;
+      klass = 'animated slideInDown';
+    } else {
+      component = <StartUpload
+                    openUploadModal={() => this.openUploadModal()}
+                    user={this.props.user}/>;
+    }
     return(
-      <main className='upload-content'>
-        <StartUpload
-          openUploadModal={() => this.openUploadModal()}
-          user={this.props.user}/>
-        <UploadData data={this.state} createSong={this.props.createSong}/>
+      <main className={`upload-content ${klass}`}>
+        {component}
       </main>
     );
   }

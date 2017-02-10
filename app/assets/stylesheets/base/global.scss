@@ -10,10 +10,23 @@ $font-md: 1.8rem;
 $font-lg: 2.5rem;
 $font-xl: 3.5rem;
 
-.body-wrapper {
-  width: 80%;
+@include respond-to('xlarge') {
+  .container {
+    width: 1250px;
+  }
 }
 
+@include respond-to('medium') {
+  .container {
+    width: 95%;
+  }
+}
+
+@include respond-to('small') {
+  .container {
+    width: 100%;
+  }
+}
 .container {
   background: white;
   padding-left: 30px;
@@ -59,12 +72,6 @@ input:focus {
   outline: none;
 }
 
-@include respond-to('xlarge') {
-  .container {
-    width: 1250px;
-  }
-}
-
 :focus {
   outline: none;
 }
@@ -80,4 +87,12 @@ input:focus {
 
 .player-on {
   padding-bottom: 46px;
+}
+
+label {
+  font-weight: inherit;
+}
+
+p {
+  margin: 0;
 }
