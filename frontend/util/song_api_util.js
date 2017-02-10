@@ -1,10 +1,8 @@
-export const createSong = (song, success, error) => {
+export const createSong = (song) => {
   $.ajax({
     url: 'api/songs',
     type: 'post',
     data: {song},
-    success,
-    error
   });
 };
 

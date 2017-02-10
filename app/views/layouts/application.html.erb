@@ -13,7 +13,9 @@
       window.cloudinaryOptions = {
         cloud_name: 'flikr',
         upload_preset: 'ozmwc4ev',
-        theme: "minimal"
+        theme: "minimal",
+        sources: ['local'],
+        multiple: false
       }
     </script>
 
@@ -41,7 +43,6 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
-
     <%= yield %>
   </body>
 </html>

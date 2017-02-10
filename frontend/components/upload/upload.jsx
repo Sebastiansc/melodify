@@ -1,9 +1,19 @@
 import React from 'react';
 import SessionButtons from '../session/buttons';
+import { values } from 'lodash';
 
 export default class Upload extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  openUploadModal() {
+    window.cloudinary.openUploadWidget(window.cloudinaryOptions,
+    (errors, track) => {
+      if(!values(errors).length) {
+        
+      }
+    });
   }
 
   render(){
@@ -12,7 +22,11 @@ export default class Upload extends React.Component {
         <main className='upload-content'>
           <h1>Upload your music and audio to Melodify</h1>
           <div className='upload-actions'>
-            <button className='upload-file'>Choose a file to upload</button>
+            <button
+               className='upload-file'
+               onClick={() => this.openUploadModal()}>
+               Choose a file to upload
+             </button>
           </div>
         </main>
       );
