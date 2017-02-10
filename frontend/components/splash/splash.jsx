@@ -6,7 +6,7 @@ import TrendingContainer from './trending_container';
 import { Link } from 'react-router';
 
 const Splash = () => (
-  <div className='container splash'>
+  <div className='splash'>
     <Banner/>
     <div className='splash-info'>
       <SearchBarContainer formClass='splash-search'/>
