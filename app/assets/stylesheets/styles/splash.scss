@@ -77,6 +77,11 @@
 .upload-button {
   @include button-transparent(7px, 15px, #e5e5e5);
   font-size: 1.7rem;
+  font-weight: 100;
+}
+
+.upload-button:hover {
+  border-color: #ccc;
 }
 
 .or-separator {

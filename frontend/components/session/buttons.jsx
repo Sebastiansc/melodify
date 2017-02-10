@@ -14,7 +14,7 @@ class SessionButtons extends React.Component {
 
   logout(){
     this.props.logout();
-    this.props.router.push('/');
+    this.setState({open: false, action: ''});
   }
 
   render(){

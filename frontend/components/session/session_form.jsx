@@ -11,10 +11,6 @@ class SessionForm extends React.Component {
     };
   }
 
-  componentDidUpdate(){
-    if (this.props.loggedIn) this.props.router.push('/home');
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;

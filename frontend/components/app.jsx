@@ -8,18 +8,16 @@ export default class App extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    $('body').addClass('nav-body');
-  }
-
   shouldSeeSplash() {
     return !this.props.user.id && this.props.router.location.pathname === '/';
   }
 
   render(){
     if (this.shouldSeeSplash()) {
+      $('body').removeClass('nav-body');
       return <Splash/>;
     } else {
+      $('body').addClass('nav-body');
       return(
         <div className='container body-wrapper'>
           <NavBar user={this.props.user} router={this.props.router}/>

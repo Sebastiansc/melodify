@@ -28,7 +28,6 @@ ul {
 body {
   font-family: 'Ubuntu', sans-serif;
   background: #f2f2f2;
-  padding-bottom: 46px;
 }
 
 ul {
@@ -39,8 +38,16 @@ a {
   color: #000;
 }
 
-a:hover {
+a:visited {
+  color: inherit;
+}
+
+a:visited, a:hover, a:focus {
   text-decoration: none;
+}
+
+a:hover {
+  color: inherit;
 }
 
 input, button {
@@ -64,8 +71,13 @@ input:focus {
 
 .body-wrapper {
   position: relative;
+  min-height: 100vh;
 }
 
 .nav-body {
   padding-top: 50px;
+}
+
+.player-on {
+  padding-bottom: 46px;
 }

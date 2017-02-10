@@ -38,9 +38,12 @@ $font-nav-color: #ccc;
 
 .navbar-logo {
   background: linear-gradient(#f70,#f30);
+  padding: 0;
   a {
     font-weight: 400;
     color: white;
+    width: 100%;
+    text-align: center;
     font-size: 18px;
     margin: auto;
   }

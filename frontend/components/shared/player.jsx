@@ -15,6 +15,7 @@ export default class Player extends React.Component {
     this.state = { volume: 1};
   }
 
+
   _isPlaying(){
     return this.props.state;
   }
@@ -91,6 +92,7 @@ export default class Player extends React.Component {
   }
 
   clearProgress() {
+    $('body').addClass('player-on');
     this.timePassed = 0;
     $(this.timeElapsed).text('0:00');
     $(this.progressBar).css('width', 0);

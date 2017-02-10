@@ -55,11 +55,23 @@
   .enter {
     border-color: #ccc;
     a {
-      color: black;
+      color: $gray;
     }
   }
   .login {
     padding: 6px 15px;
+    font-weight: 100;
     font-size: $font-md;
   }
+}
+
+// ------------------------ LOGGED IN -----------------------------
+
+.upload-file {
+  @include orange-button($font-md);
+  padding: 5px 10px;
+}
+
+.upload-actions {
+  margin: 65px 0;
 }

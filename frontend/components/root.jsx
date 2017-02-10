@@ -5,7 +5,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 // LOCAL COMPONENTS
 import AppContainer from './app_container';
 import Splash from './splash/splash';
-import Upload from './upload/upload';
+import UploadContainer from './upload/upload_container';
 // UTIL AND METHODS
 import { getTracks } from '../actions/tracks_actions';
 
@@ -43,7 +43,7 @@ const Root = ({ store }) => {
           path='/' component={AppContainer}
           onEnter={() => fetchTracks()}
         >
-          <Route path='upload' component={Upload}/>
+          <Route path='upload' component={UploadContainer}/>
         </Route>
       </Router>
 
