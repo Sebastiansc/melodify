@@ -8,7 +8,7 @@ function secureUrl(url) {
 }
 
 function normalizeUrl(url) {
-  secureUrl(url).split("/c_limit,h_60,w_90").join('');
+  return secureUrl(url).split("/c_limit,h_60,w_90").join('');
 }
 
 export default class Upload extends React.Component {
@@ -18,7 +18,7 @@ export default class Upload extends React.Component {
       title: '',
       cover_photo: '',
       audio_url: '',
-      uploaded: true
+      uploaded: false
     };
   }
 
@@ -26,9 +26,10 @@ export default class Upload extends React.Component {
     window.cloudinary.openUploadWidget(window.cloudinaryOptions,
     (errors, track) => {
       if(!values(errors).length) {
+        console.log(track[0]);
         this.setState({
           title: track[0].original_filename,
-          cover_photo: normalizeUrl(track[0].thumbnail_url),
+          cover_photo: track[0].thumbnail_url,
           audio_url: track[0].secure_url,
           uploaded: true
         });

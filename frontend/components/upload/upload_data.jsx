@@ -1,4 +1,5 @@
 import React from 'react';
+import { values } from 'lodash';
 
 export default class UploadData extends React.Component {
   constructor(props) {
@@ -7,9 +8,9 @@ export default class UploadData extends React.Component {
       genre: 'None',
       tags: '',
       description: '',
-      title: this.props.title,
+      title: this.props.data.title,
       artist: '',
-      cover_photo: this.props.cover_photo,
+      cover_photo: this.props.data.cover_photo,
       genresClass: ''
     };
   }
@@ -54,27 +55,43 @@ export default class UploadData extends React.Component {
   }
 
   submit() {
+    debugger;
     const song = {
       artist: this.state.artist,
       description: this.state.description,
       title: this.state.title,
       cover_photo: this.state.cover_photo,
-      audio_url: this.props.audio_url,
+      audio_url: this.props.data.audio_url,
       genre: this.state.genre,
       thumbnail: this.formatUrl(this.state.cover_photo)
     };
     this.props.createSong(song);
   }
 
+  openImageWidget() {
+    window.cloudinary.openUploadWidget(window.cloudinaryOptions,
+    (errors, image) => {
+      if(!values(errors).length) {
+        this.setState({cover_photo: image[0].secure_url});
+      }
+    });
+  }
+
+
   render() {
+    window.that = this;
     return(
       <div className=''>
         <div className='upload-data-header'>
           <span>Track Details</span>
         </div>
-        <div className='track-cover-wrapper'>
+        <div
+          className='track-cover-wrapper'
+          style={{backgroundImage: `url('${this.state.cover_photo}')`}}>
           <span className='track-cover'></span>
-          <button className='track-image-upload'>
+          <button
+            className='track-image-upload'
+            onClick={() => this.openImageWidget()}>
             <span>Update image</span>
           </button>
         </div>
@@ -85,7 +102,8 @@ export default class UploadData extends React.Component {
             <input
               type='text'
               placeholder='Name your track'
-              onChange={e => this.update('title', e)}>
+              onChange={e => this.update('title', e)}
+              value={this.state.title}>
             </input>
           </div>
 
