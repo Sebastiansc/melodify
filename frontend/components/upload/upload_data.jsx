@@ -10,7 +10,7 @@ export default class UploadData extends React.Component {
       description: '',
       title: this.props.data.title,
       artist: '',
-      cover_photo: this.props.data.cover_photo,
+      cover_photo: '',
       genresClass: ''
     };
   }
@@ -55,7 +55,6 @@ export default class UploadData extends React.Component {
   }
 
   submit() {
-    debugger;
     const song = {
       artist: this.state.artist,
       description: this.state.description,
@@ -65,6 +64,7 @@ export default class UploadData extends React.Component {
       genre: this.state.genre,
       thumbnail: this.formatUrl(this.state.cover_photo)
     };
+    debugger;
     this.props.createSong(song);
   }
 
