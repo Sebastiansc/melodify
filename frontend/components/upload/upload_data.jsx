@@ -9,8 +9,8 @@ export default class UploadData extends React.Component {
       tags: '',
       description: '',
       title: this.props.data.title,
-      artist: '',
-      cover_photo: '',
+      artist: this.props.data.artist,
+      cover_photo: this.props.data.cover_photo,
       genresClass: ''
     };
   }
@@ -112,7 +112,8 @@ export default class UploadData extends React.Component {
             <input
               type='text'
               placeholder="Who's your track by"
-              onChange={e => this.update('artist', e)}>
+              onChange={e => this.update('artist', e)}
+              value={this.state.artist}>
             </input>
           </div>
 

@@ -53,3 +53,4 @@ logout(){
   - Player component must be able to identify what collection of songs is expected to be played (Playlist, top 50, categories, album)
   - Roll out custom audio player
   - Maximize usability of common functionality components (session modal, track)
+  - Read embedded data from iv3 tags and format image 
