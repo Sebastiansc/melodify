@@ -24,41 +24,23 @@ export default class Upload extends React.Component {
     };
   }
 
-  getImage(image) {
-    const arrayBuffer = image.data;
-    const bytes = new Uint8Array(arrayBuffer);
-
-    return "data:image/png;base64,"+btoa(unescape(encodeURIComponent(bytes)));
+  getImage(track, tags) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      // do stuff with `data URI` of `image.data`
+      debugger;
+      this.setState({
+        title: tags.title,
+        audio_url: track[0].secure_url,
+        artist: tags.artist,
+        uploaded: true,
+        cover_photo: reader.result
+      });
+    };
+    const image = tags.v2.image;
+    reader.readAsDataURL(new Blob([image.data], {type:image.mime}));
   }
 
-  encode (input) {
-    var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-    var output = "";
-    var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
-    var i = 0;
-
-    while (i < input.length) {
-        chr1 = input[i++];
-        // Not sure if the index
-        chr2 = i < input.length ? input[i++] : Number.NaN;
-        // checks are needed here
-        chr3 = i < input.length ? input[i++] : Number.NaN;
-
-        enc1 = chr1 >> 2;
-        enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
-        enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
-        enc4 = chr3 & 63;
-
-        if (isNaN(chr2)) {
-            enc3 = enc4 = 64;
-        } else if (isNaN(chr3)) {
-            enc4 = 64;
-        }
-        output += keyStr.charAt(enc1) + keyStr.charAt(enc2) +
-                  keyStr.charAt(enc3) + keyStr.charAt(enc4);
-    }
-    return output;
-  }
 
   openUploadModal() {
     cloudinary.openUploadWidget(window.cloudinaryOptions,
@@ -66,13 +48,7 @@ export default class Upload extends React.Component {
       if(!values(errors).length) {
 
         id3(track[0].secure_url, (errs, tags) => {
-          this.setState({
-            title: tags.title,
-            audio_url: track[0].secure_url,
-            artist: tags.artist,
-            uploaded: true,
-            cover_photo: this.getImage(tags.v2.image)
-          });
+          this.getImage(track, tags);
         });
 
       }

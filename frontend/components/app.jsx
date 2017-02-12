@@ -17,7 +17,6 @@ export default class App extends React.Component {
     if (this.shouldSeeSplash()) {
       $('body').removeClass('nav-body');
       component = <Splash/>;
-      // return <Splash/>;
     } else {
       $('body').addClass('nav-body');
       component = <NavBar user={this.props.user} router={this.props.router}/>;

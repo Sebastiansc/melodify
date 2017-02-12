@@ -31,7 +31,6 @@ const Root = ({ store }) => {
   };
 
   const fetchTracks = nextState => {
-    if (nextState.location.pathname !== '/') return;
     store.dispatch(getTracks());
   };
 

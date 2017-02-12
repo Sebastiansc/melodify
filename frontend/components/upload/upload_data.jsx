@@ -10,15 +10,14 @@ export default class UploadData extends React.Component {
       description: '',
       title: this.props.data.title,
       artist: this.props.data.artist,
-      cover_photo: this.props.data.cover_photo,
-      genresClass: ''
+      cover_photo: this.props.data.cover_photo
     };
   }
 
   componentDidMount() {
     this.unselector = $('body').on('click', () => (
-      this.setState({genresClass: ''}))
-    );
+      $('.genres').removeClass('genres-selecting')
+    ));
   }
 
   componentWillUnmount() {
@@ -26,7 +25,7 @@ export default class UploadData extends React.Component {
   }
 
   openGenres() {
-    this.setState({genresClass: 'genres-selecting'});
+    $('.genres').addClass('genres-selecting');
   }
 
   uncodedText(text) {
@@ -126,7 +125,7 @@ export default class UploadData extends React.Component {
             <button className='genre' onClick={() => this.openGenres()}>
               {this.state.genre}
             </button>
-            <ul className={`genres ${this.state.genresClass}`}
+            <ul className={`genres`}
                 onClick={e => this.selectGenre(e)}
                 onChange={e => this.update('genre', e)}>
               <li>None</li>

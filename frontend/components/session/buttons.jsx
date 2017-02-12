@@ -39,7 +39,7 @@ class SessionButtons extends React.Component {
       );
     } else {
       return (
-        <ul className={`session-buttons col-lg-1 col-md-1`}>
+        <ul className={`session-buttons ${this.props.className}`}>
           <li onClick={() => this.logout()}
             className='login logout signup'>
             <a>

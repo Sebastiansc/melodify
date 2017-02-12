@@ -13,6 +13,9 @@ $font-nav-color: #ccc;
   color: white;
   font: $navbar-font;
   color: $font-nav-color;
+  a {
+    color: inherit;
+  }
 }
 
 .navbar-logo, .left-navbar-wrapper, .upload-wrapper {
@@ -27,12 +30,21 @@ $font-nav-color: #ccc;
 
 .left-navbar-wrapper {
   display: flex;
-  border-right: 1px solid black;
-  li {
-    padding: 0 15px;
+  padding: 0;
+  a {
+    width: 100%;
+    display: inline-block;
+    padding: 15px;
+    text-align: center;
   }
-  li:hover {
+  a:hover {
     color: $skullwhite;
+  }
+  li {
+    height: 100%;
+    width: 110px;
+    border-right: 1px solid black;
+    height: 100%;
   }
 }
 
@@ -113,3 +125,44 @@ $font-nav-color: #ccc;
 }
 
 // ------------------------------ LOGGED IN NAV BAR ---------------------------
+
+.profile-menu-dropdown {
+  display: none;
+}
+
+.profile-menu-pic {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-right: 10px;
+  background-image: url('https://res.cloudinary.com/flikr/image/upload/v1486934639/avatars-000292048508-r656e6-t120x120_eotdip.jpg');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.profile-menu-link {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-menu-name {
+  font-weight: 400;
+  span:after {
+    content: '';
+    position: absolute;
+    background-image: url("https://res.cloudinary.com/flikr/image/upload/v1486934387/dropdown-cf3420_pyl5qj.svg");
+    background-repeat: no-repeat;
+    width: 8px;
+    height: 5px;
+    opacity: .75;
+    right: 10px;
+    top: 23px;
+  }
+}
