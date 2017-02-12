@@ -15,14 +15,14 @@ export default class UploadData extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.unselector = $('body').on('click', () => (
       this.setState({genresClass: ''}))
     );
   }
 
   componentWillUnmount() {
-    $('body').off(this.unselector);
+    $('body').off('click', this.unselector);
   }
 
   openGenres() {
@@ -82,6 +82,10 @@ export default class UploadData extends React.Component {
     window.that = this;
     return(
       <div className=''>
+        <div className='upload-data-details'>
+          <span>Ready. Click save to post this track.</span>
+        </div>
+        <div className='upload-data-bar'></div>
         <div className='upload-data-header'>
           <span>Track Details</span>
         </div>

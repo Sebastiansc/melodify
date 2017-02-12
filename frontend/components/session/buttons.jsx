@@ -39,9 +39,9 @@ class SessionButtons extends React.Component {
       );
     } else {
       return (
-        <ul className="session-buttons">
+        <ul className={`session-buttons col-lg-1 col-md-1`}>
           <li onClick={() => this.logout()}
-            className='login signup'>
+            className='login logout signup'>
             <a>
               Logout
             </a>

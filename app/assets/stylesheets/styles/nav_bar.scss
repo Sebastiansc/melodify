@@ -86,6 +86,11 @@ $font-nav-color: #ccc;
   }
 }
 
+.logout {
+  font: $navbar-font;
+  padding: 2px 9px;
+}
+
 .navbar-session .signup {
   margin-left: 15px;
 }

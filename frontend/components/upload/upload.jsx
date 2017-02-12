@@ -20,16 +20,15 @@ export default class Upload extends React.Component {
       cover_photo: '',
       audio_url: '',
       artist: '',
-      uploaded: false
+      uploaded: true
     };
   }
 
   getImage(image) {
-    var arrayBufferView = new Uint8Array(image.data);
-    image.mime = image.mime || 'image/jpeg';
-    var blob = new Blob([arrayBufferView], {type: image.mime});
-    var urlCreator = window.URL || window.webkitURL;
-    return urlCreator.createObjectURL(blob);
+    var arrayBuffer = image.data;
+    var bytes = new Uint8Array(arrayBuffer);
+
+    return "data:image/png;base64,"+btoa(unescape(encodeURIComponent(bytes)));
   }
 
   // getImage(msg) {
@@ -68,28 +67,17 @@ export default class Upload extends React.Component {
   }
 
   openUploadModal() {
-    window.cloudinary.openUploadWidget(window.cloudinaryOptions,
+    cloudinary.openUploadWidget(window.cloudinaryOptions,
     (errors, track) => {
       if(!values(errors).length) {
 
         id3(track[0].secure_url, (errs, tags) => {
-          console.log(tags);
-          window.that = this;
-          const actions = new Promise(resolve => {
-            const image = this.getImage(tags.v2.image);
-            if (image) {
-              resolve(image);
-            }
-          });
-          debugger;
-          actions.then(image => {
-            this.setState({
-              title: tags.title,
-              audio_url: track[0].secure_url,
-              artist: tags.artist,
-              uploaded: true,
-              cover_photo: image
-            });
+          this.setState({
+            title: tags.title,
+            audio_url: track[0].secure_url,
+            artist: tags.artist,
+            uploaded: true,
+            cover_photo: this.getImage(tags.v2.image)
           });
         });
 

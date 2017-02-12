@@ -31,6 +31,7 @@ const Root = ({ store }) => {
   };
 
   const fetchTracks = nextState => {
+    if (nextState.location.pathname !== '/') return;
     store.dispatch(getTracks());
   };
 
@@ -41,7 +42,7 @@ const Root = ({ store }) => {
       <Router history={hashHistory}>
         <Route
           path='/' component={AppContainer}
-          onEnter={() => fetchTracks()}
+          onEnter={n => fetchTracks(n)}
         >
           <Route path='upload' component={UploadContainer}/>
         </Route>
