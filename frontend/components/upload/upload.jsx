@@ -20,22 +20,16 @@ export default class Upload extends React.Component {
       cover_photo: '',
       audio_url: '',
       artist: '',
-      uploaded: true
+      uploaded: false
     };
   }
 
   getImage(image) {
-    var arrayBuffer = image.data;
-    var bytes = new Uint8Array(arrayBuffer);
+    const arrayBuffer = image.data;
+    const bytes = new Uint8Array(arrayBuffer);
 
     return "data:image/png;base64,"+btoa(unescape(encodeURIComponent(bytes)));
   }
-
-  // getImage(msg) {
-  //  var arrayBuffer = msg.data;
-  //  var bytes = new Uint8Array(arrayBuffer);
-  //  return "data:image/png;base64,"+this.encode(bytes);
-  // }
 
   encode (input) {
     var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
