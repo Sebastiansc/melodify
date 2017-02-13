@@ -13,20 +13,21 @@ export default class App extends React.Component {
   }
 
   render(){
-    let component;
-    if (this.shouldSeeSplash()) {
-      $('body').removeClass('nav-body');
-      component = <Splash/>;
+    if (this.shouldSeeSplash()){
+      return(
+        <div className='container body-wrapper'>
+          {this.props.children}
+          <PlayerContainer/>
+        </div>
+      );
     } else {
-      $('body').addClass('nav-body');
-      component = <NavBar user={this.props.user} router={this.props.router}/>;
+      return(
+        <div className='container body-wrapper'>
+          <NavBar user={this.props.user} router={this.props.router}/>
+          {this.props.children}
+          <PlayerContainer/>
+        </div>
+      );
     }
-    return(
-      <div className='container body-wrapper'>
-        {component}
-        {this.props.children}
-        <PlayerContainer/>
-      </div>
-    );
   }
 }

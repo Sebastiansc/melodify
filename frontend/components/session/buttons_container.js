@@ -10,7 +10,7 @@ const mapStateToProps = ({session}) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout())
+  logout: redirect => dispatch(logout(redirect))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionButtons);

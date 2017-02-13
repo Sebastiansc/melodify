@@ -16,8 +16,8 @@ export default ({ getState, dispatch }) => next => action => {
       login(action.user, successCallback, errorCallback);
       return next(action);
     case LOGOUT:
-      logout(() => next(action));
-      break;
+      logout(() => action.redirect());
+      return next(action);
     case SIGNUP:
       signup(action.user, successCallback, errorCallback);
       return next(action);
