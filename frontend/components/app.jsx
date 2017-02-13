@@ -14,7 +14,12 @@ export default class App extends React.Component {
 
   render(){
     let display = '';
-    if (this.shouldSeeSplash()) display = 'none';
+    if (this.shouldSeeSplash()){
+       $('body').removeClass('nav-body');
+       display = 'none';
+    } else {
+      $('body').addClass('nav-body');
+    }
     return(
       <div className='container body-wrapper'>
         <NavBar
