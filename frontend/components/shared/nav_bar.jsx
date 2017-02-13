@@ -8,8 +8,25 @@ export default class Navbar extends React.Component {
     super(props);
   }
 
+  isLoggedIn() {
+    return Boolean(this.props.user.id);
+  }
+
+  componentDidMount() {
+    if (!this.isLoggedIn()) return;
+    $('body').on('click', () => {
+      $('.profile-menu-dropdown').removeClass('menu-visible');
+      $('.profile-menu-link').removeClass('profile-dropdown-dropped');
+    });
+  }
+
+  showDropDown() {
+    $('.profile-menu-dropdown').addClass('menu-visible');
+    $('.profile-menu-link').addClass('profile-dropdown-dropped');
+  }
+
   render(){
-    if (!this.props.user.id) {
+    if (!this.isLoggedIn()) {
       return(
         <nav role="navigation" className="nav-bar">
           <div className='container navbar-wrapper'>
@@ -60,6 +77,7 @@ export default class Navbar extends React.Component {
         <nav role="navigation" className="nav-bar">
           <div className='container navbar-wrapper'>
             <div className='row navbar-row'>
+
               <div
                 className='navbar-logo
                 col-lg-1
@@ -68,6 +86,7 @@ export default class Navbar extends React.Component {
                 >
                 <Link to='/'>Melodify</Link>
               </div>
+
               <ul
                 className='left-navbar-wrapper
                 col-lg-2
@@ -77,6 +96,7 @@ export default class Navbar extends React.Component {
                 <li><Link to='charts'>Charts</Link></li>
                 <li><Link to='collection'>Collection</Link></li>
               </ul>
+
               <SearchBarContainer
                 formClass='navbar-search'
                 inputClass='navbar-searchfield'
@@ -85,6 +105,7 @@ export default class Navbar extends React.Component {
                 col-md-5
                 col-sm-5'
                 />
+
               <div
                 className='upload-wrapper
                 col-lg-1
@@ -92,25 +113,30 @@ export default class Navbar extends React.Component {
                 col-sm-1'>
                 <Link to='upload' className='navbar-upload'>Upload</Link>
               </div>
+
               <div
                 className='profile-menu
                 col-lg-2
                 col-md-2
                 col-sm-2'>
-                <Link to='#' className='profile-menu-link'>
+                <div
+                  to='#'
+                  className={`profile-menu-link`}
+                  onClick={() => this.showDropDown()}>
                   <span className='profile-menu-pic'></span>
                   <div className='profile-menu-name'>
                     <span>Sebastian Cruz</span>
                   </div>
-                  <div className='profile-menu-dropdown'>
+                  <div className={ `profile-menu-dropdown`}>
                     <ul className='dropdown-list'>
-                      <li>Profile</li>
-                      <li>Likes</li>
-                      <li>Playlists</li>
+                      <Link className='profile-link'>Profile</Link>
+                      <Link className='likes-link'>Likes</Link>
+                      <Link className='playlists-link'>Playlists</Link>
                     </ul>
                   </div>
-                </Link>
+                </div>
               </div>
+
               <SessionButtonsContainer
                 className='
                 col-lg-1

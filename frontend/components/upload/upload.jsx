@@ -24,22 +24,32 @@ export default class Upload extends React.Component {
     };
   }
 
-  getImage(track, tags) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      // do stuff with `data URI` of `image.data`
-      debugger;
-      this.setState({
-        title: tags.title,
-        audio_url: track[0].secure_url,
-        artist: tags.artist,
-        uploaded: true,
-        cover_photo: reader.result
-      });
-    };
-    const image = tags.v2.image;
-    reader.readAsDataURL(new Blob([image.data], {type:image.mime}));
+  getImage(image) {
+    var binary = '';
+    var bytes = new Uint8Array(image.data);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode( bytes[ i ] );
+    }
+    return 'data:image/jpeg;base64,' + window.btoa( binary );
   }
+
+  // getImage(track, tags) {
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     // do stuff with `data URI` of `image.data`
+  //     debugger;
+  //     this.setState({
+  //       title: tags.title,
+  //       audio_url: track[0].secure_url,
+  //       artist: tags.artist,
+  //       uploaded: true,
+  //       cover_photo: reader.result
+  //     });
+  //   };
+  //   const image = tags.v2.image;
+  //   reader.readAsDataURL(new Blob([image.data], {type:image.mime}));
+  // }
 
 
   openUploadModal() {
@@ -48,7 +58,13 @@ export default class Upload extends React.Component {
       if(!values(errors).length) {
 
         id3(track[0].secure_url, (errs, tags) => {
-          this.getImage(track, tags);
+          this.setState({
+            title: tags.title,
+            audio_url: track[0].secure_url,
+            artist: tags.artist,
+            uploaded: true,
+            cover_photo: this.getImage(tags.v2.image)
+          });
         });
 
       }
