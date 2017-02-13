@@ -35,13 +35,14 @@
   color: #fff;
   line-height: 18px;
   border-style: none;
+  margin-bottom: 20px !important;
   border-radius: $round;
   margin-bottom: 30px;
 }
 
 .react-modal {
   margin: 120px auto;
-  height: 550px;
+  height: 450px;
   width: 450px;
   display: flex;
   border: 1px solid #ccc;
@@ -88,5 +89,20 @@
 }
 
 .modal-container > * {
-  margin-bottom: 10px;
+  margin-bottom: 29px;
+}
+
+
+.email-input {
+  margin-bottom: 15px;
+}
+
+.errors {
+  color: #8e8c8b;
+  font-weight: 700;
+}
+
+.btn-login {
+  background: $orange;
+  color: white;
 }

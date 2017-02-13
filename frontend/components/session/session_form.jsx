@@ -67,8 +67,15 @@ class SessionForm extends React.Component {
             <div></div>
           </div>
 
-          <input type='text' onChange={e => this.update(e, 'email')}
-            placeholder='Your e-mail'>
+          <div className='errors'>
+            <span>{this.props.errors[0]}</span>
+          </div>
+
+          <input
+            type='text'
+            onChange={e => this.update(e, 'email')}
+            placeholder='Your e-mail'
+            className='email-input'>
           </input>
 
           <input type='password' onChange={e => this.update(e, 'password')}
@@ -76,13 +83,10 @@ class SessionForm extends React.Component {
           </input>
 
           <button onClick={e => this.handleSubmit(e)}
-                  className='btn btn-warning btn-block btn-lg'>
+                  className='btn btn-login btn-block btn-lg'>
             Continue
           </button>
 
-          <a href="/api/v1/session/contrib/password_reset">
-            Forgot my password
-          </a>
         </div>
       </Modal>
     );
