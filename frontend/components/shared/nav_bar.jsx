@@ -28,7 +28,10 @@ export default class Navbar extends React.Component {
   render(){
     if (!this.isLoggedIn()) {
       return(
-        <nav role="navigation" className="nav-bar">
+        <nav
+          role="navigation"
+          className="nav-bar"
+          style={{display: `${this.props.display}`}}>
           <div className='container navbar-wrapper'>
             <div className='row navbar-row'>
               <div
@@ -74,7 +77,10 @@ export default class Navbar extends React.Component {
       );
     } else {
       return(
-        <nav role="navigation" className="nav-bar">
+        <nav
+          role="navigation"
+          className="nav-bar"
+          style={{display: `${this.props.display}`}}>
           <div className='container navbar-wrapper'>
             <div className='row navbar-row'>
 

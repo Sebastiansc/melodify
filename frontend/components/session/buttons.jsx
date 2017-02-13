@@ -8,6 +8,8 @@ class SessionButtons extends React.Component {
     this.state = {open: false, action: ''};
   }
 
+  
+
   toggleModal(action){
     this.setState({ open: !this.state.open, action });
   }

@@ -13,21 +13,18 @@ export default class App extends React.Component {
   }
 
   render(){
-    if (this.shouldSeeSplash()){
-      return(
-        <div className='container body-wrapper'>
-          {this.props.children}
-          <PlayerContainer/>
-        </div>
-      );
-    } else {
-      return(
-        <div className='container body-wrapper'>
-          <NavBar user={this.props.user} router={this.props.router}/>
-          {this.props.children}
-          <PlayerContainer/>
-        </div>
-      );
-    }
+    let display = '';
+    if (this.shouldSeeSplash()) display = 'none';
+    return(
+      <div className='container body-wrapper'>
+        <NavBar
+          user={this.props.user}
+          router={this.props.router}
+          display={display}
+        />
+        {this.props.children}
+        <PlayerContainer/>
+      </div>
+    );
   }
 }
