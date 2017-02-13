@@ -35,7 +35,7 @@ export default class Navbar extends React.Component {
                 className='navbar-logo
                 col-lg-2
                 col-md-2
-                col-sm-2'
+                col-sm-1'
                 >
                 <Link to='/'>Melodify</Link>
               </div>
@@ -52,14 +52,14 @@ export default class Navbar extends React.Component {
                 inputClass='navbar-searchfield'
                 buttonClass='navbar-searchbutton'
                 className='col-lg-6
-                col-md-6
-                col-sm-6'
+                col-md-5
+                col-sm-5'
                 />
               <SessionButtonsContainer
                 className='navbar-session
                 col-lg-2
-                col-md-2
-                col-sm-2'
+                col-md-3
+                col-sm-4'
                 />
               <div
                 className='upload-wrapper

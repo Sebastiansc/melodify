@@ -16,6 +16,11 @@ const Root = ({ store }) => {
     if(state.session.currentUser.id) replace('/charts/top');
   };
 
+  const splashEnter = (nextState, replace) => {
+    fetchTracks(nextState);
+    _redirectIfLoggedIn(nextState, replace);
+  };
+
   const _ensureLogin = (nextState, replace) => {
     const state = store.getState();
     if(!state.session.currentUser.id){
@@ -36,12 +41,10 @@ const Root = ({ store }) => {
 
       <Router history={hashHistory}>
         <Route
-          path='/' component={AppContainer}
-          onEnter={n => fetchTracks(n)}
-        >
+          path='/' component={AppContainer} >
         <IndexRoute
           component={Splash}
-          onEnter={(n, r) => _redirectIfLoggedIn(n, r)}/>
+          onEnter={(n, r) => splashEnter(n, r)}/>
         <Route
           path='charts/top'
           component={Chart}/>

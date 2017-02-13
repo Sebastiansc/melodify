@@ -11,6 +11,12 @@ class SessionForm extends React.Component {
     };
   }
 
+  componentWillReceiveProps() {
+    if (this.props.loggedIn) {
+      this.props.closeModal();
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
