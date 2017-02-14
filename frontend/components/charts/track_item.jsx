@@ -1,7 +1,7 @@
 import React from 'react';
 import TrackContainer from '../shared/track_container';
 
-export default class ChartItem extends React.Component {
+export default class TrackItem extends React.Component {
   constructor() {
     super();
   }
@@ -9,11 +9,15 @@ export default class ChartItem extends React.Component {
   render(){
     return(
       <div className='chart-track'>
-        <div className='chart-track-position'></div>
+        <div className='chart-track-position'>{this.props.position}</div>
         <TrackContainer
           track={this.props.track}
           play={this.props.play}
-          klass='trending-item'/>
+          klass='chart-item'/>
+        <div className='chart-track-actions'>
+          <button className='chart-heart'></button>
+          <button className='chart-playlist'></button>
+        </div>
       </div>
     );
   }

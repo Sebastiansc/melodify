@@ -41,8 +41,10 @@ export default class Track extends React.Component {
             <button className='more'></button>
           </div>
         </div>
-        <Link className='track-title' to='#'>{this.props.track.title}</Link>
-        <Link className='artist-name' to='#'>{this.props.track.artist}</Link>
+        <div className='track-text-info'>
+          <Link className='track-title' to='#'>{this.props.track.title}</Link>
+          <Link className='artist-name' to='#'>{this.props.track.artist}</Link>
+        </div>
       </li>
     );
   }
