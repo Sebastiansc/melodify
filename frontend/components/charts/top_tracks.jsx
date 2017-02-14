@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import TrackItem from './track_item';
 
 export default class TopTracks extends React.Component {
   constructor(props) {
@@ -28,6 +29,10 @@ export default class TopTracks extends React.Component {
     $('body').off('click', this.unselector);
   }
 
+  play(songId) {
+    this.props.nowPlaying(songId, this.props.tracks);
+  }
+
   render() {
     return(
       <section className='charts-table'>
@@ -43,7 +48,9 @@ export default class TopTracks extends React.Component {
             </button>
             <div className='charts-genres-wrapper'>
               <ul className='charts-genres-list'>
-                <li className='all'>All music genres</li>
+                <li className='all'>
+                  <Link to='charts/top'>All music genres</Link>
+                </li>
                 <li>
                   <Link to='charts/top?genre=classical'>Classical</Link>
                 </li>
@@ -100,6 +107,12 @@ export default class TopTracks extends React.Component {
           <div className='list-header-track'>Track</div>
           <div className='list-header-plays'>Plays (All time)</div>
         </div>
+        {this.props.tracks.map(track => (
+          <TrackItem
+            play={songId => this.play(songId)}
+            key={track.id}
+            track={track}/>)
+        )}
       </section>
     );
   }

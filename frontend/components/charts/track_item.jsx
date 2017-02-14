@@ -10,7 +10,10 @@ export default class ChartItem extends React.Component {
     return(
       <div className='chart-track'>
         <div className='chart-track-position'></div>
-        <TrackContainer play={this.props.play} />
+        <TrackContainer
+          track={this.props.track}
+          play={this.props.play}
+          klass='trending-item'/>
       </div>
     );
   }

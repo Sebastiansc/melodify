@@ -1,5 +1,5 @@
 import React from 'react';
-import TopTracks from './top_tracks';
+import TopTracksContainer from './top_tracks_container';
 import LikeHistoryContainer from './like_history_container';
 
 export default class Charts extends React.Component {
@@ -11,7 +11,7 @@ export default class Charts extends React.Component {
     return(
       <div className='charts-page-outerbox'>
         <main className='charts-page-container'>
-          <TopTracks/>
+          <TopTracksContainer/>
           <div className='clearfix'></div>
         </main>
         <section className='charts-extras'>
