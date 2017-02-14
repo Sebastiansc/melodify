@@ -1,3 +1,4 @@
+
 .charts-page-container {
   width: 70%;
   padding: 30px 30px 0 0;
@@ -85,6 +86,7 @@
 
 .charts-genres-wrapper {
   display: none;
+  z-index: 100;
   position: absolute;
   box-shadow: 0 1px 8px rgba(0,0,0,.2);
   background-color: #fff;
@@ -128,9 +130,16 @@
 
 .chart-track {
   display: flex;
-  margin-bottom: 15px;
   padding: 10px;
+  margin: 0 -10px 15px -10px;
   border-radius: $round;
+  .playing.play-overlay {
+    display: block;
+    left: 20%;
+    top: 20%;
+    right: 20%;
+    bottom: 20%;
+  }
 }
 
 .chart-track:hover {
@@ -159,6 +168,7 @@
     display: block;
   }
   .track-artwork {
+    box-shadow: rgba(0,0,0,.1)0 0 0 1px inset;
     width: 60px;
     margin-right: 20px;
     height: 60px;
@@ -173,11 +183,19 @@
     color: #999;
     font-size: 13px;
   }
+
 }
 
 .chart-item:hover {
   .track-actions {
     display: none;
+  }
+  .playing {
+    display: block;
+    left: 20%;
+    top: 20%;
+    right: 20%;
+    bottom: 20%;
   }
 }
 
