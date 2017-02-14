@@ -40,6 +40,7 @@
 
 .charts-filter-wrapper {
   color: $orange;
+  position: relative;
   span {
     margin-right: 25px;
   }
@@ -79,4 +80,39 @@
 
 .list-header-track {
   flex-grow: 1;
+}
+
+.charts-genres-wrapper {
+  display: none;
+  position: absolute;
+  box-shadow: 0 1px 8px rgba(0,0,0,.2);
+  background-color: #fff;
+  width: 218px;
+  left: 69px;
+  font-weight: 100;
+  color: $gray;
+  overflow-y: scroll;
+  height: 400px;
+}
+
+.charts-genres-list {
+  padding: 10px 15px;
+  li {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  li:hover {
+    color: $orange;
+  }
+}
+
+.all {
+  padding-bottom: 15px;
+  margin-bottom: 15px !important;
+  border-bottom: 1px solid #f2f2f2;
+  font-weight: 700;
+}
+
+.charts-genres-show {
+  display: block;
 }

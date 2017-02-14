@@ -14,15 +14,16 @@ export default class Navbar extends React.Component {
 
   componentDidMount() {
     if (!this.isLoggedIn()) return;
-    $('body').on('click', () => {
+    $('body').click(() => {
       $('.profile-menu-dropdown').removeClass('menu-visible');
       $('.profile-menu-link').removeClass('profile-dropdown-dropped');
     });
-  }
 
-  showDropDown() {
-    $('.profile-menu-dropdown').addClass('menu-visible');
-    $('.profile-menu-link').addClass('profile-dropdown-dropped');
+    $('.profile-menu-link').click(e => {
+      e.stopPropagation();
+      $('.profile-menu-dropdown').toggleClass('menu-visible');
+      $('.profile-menu-link').toggleClass('profile-dropdown-dropped');
+    });
   }
 
   render(){
@@ -127,8 +128,7 @@ export default class Navbar extends React.Component {
                 col-sm-2'>
                 <div
                   to='#'
-                  className={`profile-menu-link`}
-                  onClick={() => this.showDropDown()}>
+                  className={`profile-menu-link`}>
                   <span className='profile-menu-pic'></span>
                   <div className='profile-menu-name'>
                     <span>Sebastian Cruz</span>
