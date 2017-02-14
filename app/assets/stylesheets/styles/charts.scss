@@ -1,0 +1,82 @@
+.charts-page-container {
+  width: 70%;
+  padding: 30px 30px 0 0;
+  border-right: 1px solid $lightgray;
+  h3 {
+    color: #999;
+    font-weight: 400;
+    font-size: $font-sm;
+    margin-bottom: 50px;
+  }
+}
+
+.charts-page-outerbox {
+  position: relative;
+}
+
+.charts-header {
+  border-bottom: 1px solid $lightgray;
+  padding-bottom: 5px;
+  margin-bottom: 30px;
+  span {
+    font-size: $font-lg;
+    color: $orange;
+  }
+}
+
+.charts-extras {
+  position: absolute;
+  right: 10px;
+  top: 30px;
+  width: 25%;
+}
+
+// ------------------------ TOP TRACKS ------------------------
+.charts-table {
+  width: 100%;
+  min-height: 100vh;
+  float: left;
+}
+
+.charts-filter-wrapper {
+  color: $orange;
+  span {
+    margin-right: 25px;
+  }
+}
+
+.charts-filter {
+  @include button-transparent(4px, 10px, $orange);
+  width: 220px;
+  position: relative;
+  font-weight: 100;
+  text-align: left;
+  span:after {
+    content: ' ';
+    border-right: 1px solid $orange;
+    border-bottom: 1px solid $orange;
+    height: 5px;
+    width: 5px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+
+.charts-main-list-header {
+  display: flex;
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 10px;
+  letter-spacing: 1.5px;
+  color: #999;
+}
+
+.list-header-number {
+  width: 110px;
+}
+
+.list-header-track {
+  flex-grow: 1;
+}
