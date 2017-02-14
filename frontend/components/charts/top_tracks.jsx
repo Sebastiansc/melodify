@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class TopTracks extends React.Component {
   constructor(props) {
@@ -11,13 +12,15 @@ export default class TopTracks extends React.Component {
   }
 
   componentDidMount() {
-    this.unselector = $('body').click(() => (
-      $('.charts-genres-wrapper').removeClass('charts-genres-show')
-    ));
+    this.unselector = $('body').click(() => {
+      $('.charts-genres-wrapper').removeClass('charts-genres-show');
+      $('.charts-filter').removeClass('charts-filter-dropped');
+    });
 
     $('.charts-filter').click(e => {
       e.stopPropagation();
       $('.charts-genres-wrapper').toggleClass('charts-genres-show');
+      $('.charts-filter').toggleClass('charts-filter-dropped');
     });
   }
 
@@ -41,21 +44,48 @@ export default class TopTracks extends React.Component {
             <div className='charts-genres-wrapper'>
               <ul className='charts-genres-list'>
                 <li className='all'>All music genres</li>
-                <li>Classical</li>
-                <li>Country</li>
-                <li>Dance & EDM</li>
-                <li>Disco</li>
-                <li>Electronic</li>
-                <li>Folk</li>
-                <li>Hip-Hop & Rap</li>
-                <li>Indie</li>
-                <li>Latin</li>
-                <li>Pop</li>
-                <li>R&B & Soul</li>
-                <li>Reggae</li>
-                <li>Reggaeton</li>
-                <li>Reggaeton</li>
-                <li>Rock</li>
+                <li>
+                  <Link to='charts/top?genre=classical'>Classical</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=country'>Country</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=dance'>Dance</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=disco'>Disco</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=electronic'>Electronic</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=folk'>Folk</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=hiphoprap'>Hip-Hop & Rap</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=Indie'>Indie</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=latin'>Latin</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=pop'>Pop</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=rbsoul'>R&B & Soul</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=reggae'>Reggae</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=reggaeton'>Reggaeton</Link>
+                </li>
+                <li>
+                  <Link to='charts/top?genre=rock'>Rock</Link>
+                </li>
               </ul>
             </div>
           </div>

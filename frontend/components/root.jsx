@@ -47,7 +47,9 @@ const Root = ({ store }) => {
           onEnter={(n, r) => splashEnter(n, r)}/>
         <Route
           path='charts/top'
-          component={Chart}/>
+          component={Chart}
+          onEnter={n => fetchTracks(n)}
+          onChange={n => fetchTracks(n)}/>
 
           <Route path='upload' component={UploadContainer}/>
         </Route>

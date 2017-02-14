@@ -116,3 +116,11 @@
 .charts-genres-show {
   display: block;
 }
+
+.charts-filter-dropped {
+  background: $orange;
+  color: white;
+  span:after {
+    border-color: white;
+  }
+}
