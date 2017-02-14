@@ -136,6 +136,16 @@
 .chart-track:hover {
   background-color: #f2f2f2;
   cursor: pointer;
+  .chart-track-actions {
+    display: block;
+  }
+  .play-overlay {
+    display: block;
+    left: 20%;
+    top: 20%;
+    right: 20%;
+    bottom: 20%;
+  }
 }
 
 .chart-item {
@@ -169,13 +179,6 @@
   .track-actions {
     display: none;
   }
-  .play-overlay {
-    display: block;
-    left: 20%;
-    top: 20%;
-    right: 20%;
-    bottom: 20%;
-  }
 }
 
 .chart-track-position {
@@ -186,6 +189,7 @@
 
 .chart-track-actions {
   align-self: center;
+  display: none;
   button {
     border: 1px solid #e5e5e5;
     background-color: #fff;
