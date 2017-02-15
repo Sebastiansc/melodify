@@ -16,7 +16,8 @@ export default class Like extends React.Component {
     return  props.track.likes.includes(props.user.id);
   }
 
-  toggleLike() {
+  toggleLike(e) {
+    e.stopPropagation();
     if (this.props.loggedIn) {
       let action = this.state.liked ? this.props.unlike : this.props.like;
       action(this.props.track.id);
@@ -35,7 +36,7 @@ export default class Like extends React.Component {
     return(
       <button
         className={klass}
-        onClick={() => this.toggleLike()}>
+        onClick={e => this.toggleLike(e)}>
       </button>
     );
   }

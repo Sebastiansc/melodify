@@ -7,14 +7,29 @@ export default class TrackItem extends React.Component {
     super();
   }
 
+  play(trackId) {
+    $('.chart-track').removeClass('chart-track-playing');
+    $(this.wrapper).addClass('chart-track-playing');
+    this.props.play(trackId);
+  }
+
+  test() {
+    this.player.getWrappedInstance().togglePlay();
+  }
+
+
   render(){
     return(
-      <div className='chart-track'>
+      <div
+        className='chart-track'
+        ref={wrapper => this.wrapper = wrapper}
+        onClick={() => this.test()}>
         <div className='chart-track-position'>{this.props.position}</div>
         <TrackContainer
           track={this.props.track}
-          play={this.props.play}
-          klass='chart-item'/>
+          play={trackId => this.play(trackId)}
+          klass='chart-item'
+          ref={player => this.player = player}/>
         <div className='chart-track-actions'>
           <LikeContainer
             likedClass='chart-heart'

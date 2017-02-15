@@ -142,7 +142,7 @@
   }
 }
 
-.chart-track:hover {
+.chart-track:hover, .chart-track-playing {
   background-color: #f2f2f2;
   cursor: pointer;
   .chart-track-actions {

@@ -12,4 +12,8 @@ const mapDispatchToProps = dispatch => ({
   pause: () => dispatch(pause())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Track);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  null,
+  { withRef: true })(Track);
