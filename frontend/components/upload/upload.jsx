@@ -34,24 +34,6 @@ export default class Upload extends React.Component {
     return 'data:image/jpeg;base64,' + window.btoa( binary );
   }
 
-  // getImage(track, tags) {
-  //   const reader = new FileReader();
-  //   reader.onload = () => {
-  //     // do stuff with `data URI` of `image.data`
-  //     debugger;
-  //     this.setState({
-  //       title: tags.title,
-  //       audio_url: track[0].secure_url,
-  //       artist: tags.artist,
-  //       uploaded: true,
-  //       cover_photo: reader.result
-  //     });
-  //   };
-  //   const image = tags.v2.image;
-  //   reader.readAsDataURL(new Blob([image.data], {type:image.mime}));
-  // }
-
-
   openUploadModal() {
     cloudinary.openUploadWidget(window.cloudinaryOptions,
     (errors, track) => {
