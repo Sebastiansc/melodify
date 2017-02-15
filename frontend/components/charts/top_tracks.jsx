@@ -25,6 +25,10 @@ export default class TopTracks extends React.Component {
     });
   }
 
+  updateGenre(e) {
+    this.setState({ genre: e.target.text });
+  }
+
   componentWillUnmount() {
     $('body').off('click', this.unselector);
   }
@@ -47,7 +51,8 @@ export default class TopTracks extends React.Component {
               <span>{this.state.genre}</span>
             </button>
             <div className='charts-genres-wrapper'>
-              <ul className='charts-genres-list'>
+              <ul className='charts-genres-list'
+                  onClick={e => this.updateGenre(e)}>
                 <li className='all'>
                   <Link to='charts/top'>All music genres</Link>
                 </li>

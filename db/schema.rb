@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214182529) do
+ActiveRecord::Schema.define(version: 20170215202958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,17 +25,24 @@ ActiveRecord::Schema.define(version: 20170214182529) do
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
+  create_table "plays", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "song_id"], name: "index_plays_on_user_id_and_song_id", unique: true, using: :btree
+  end
+
   create_table "songs", force: :cascade do |t|
-    t.string   "audio_url",               null: false
+    t.string   "audio_url",   null: false
     t.string   "artist"
-    t.integer  "user_id",                 null: false
+    t.integer  "user_id",     null: false
     t.string   "cover_photo"
-    t.string   "title",                   null: false
-    t.integer  "plays",       default: 0
+    t.string   "title",       null: false
     t.string   "genre"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "thumbnail",               null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "thumbnail",   null: false
     t.string   "description"
     t.index ["artist"], name: "index_songs_on_artist", using: :btree
     t.index ["title"], name: "index_songs_on_title", using: :gin

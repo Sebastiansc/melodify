@@ -13,3 +13,10 @@ export const getSong = (username, title, success, error) => {
     error
   });
 };
+
+export const recordPlay = (songId, success) => {
+  $.ajax({
+    url: `api/songs/played/${songId}`,
+    type: 'post'
+  });
+};

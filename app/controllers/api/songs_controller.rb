@@ -28,6 +28,12 @@ class Api::SongsController < ApplicationController
 
   end
 
+  def record_play
+    @song = Song.find(params[:song_id])
+    @song.plays += 1
+    @song.save
+  end
+
   private
 
   def song_info

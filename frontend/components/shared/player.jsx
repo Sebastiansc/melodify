@@ -45,6 +45,7 @@ export default class Player extends React.Component {
   }
 
   nextSong(){
+    this.props.recordPlay(this.currentTrack().id);
     this.props.next(this._findTrackIdx());
   }
 
