@@ -3,24 +3,26 @@ import React from 'react';
 export default class Like extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { liked: false };
+    this.state = { liked: this.isLiked() };
   }
 
   componentWillReceiveProps(props) {
-    // debugger;
-    console.log(props.track.id);
-    if (props.track.likes.includes(props.user.id)) {
+    if (this.isLiked(props)) {
       this.setState({ liked: true });
     }
+  }
+
+  isLiked(props = this.props) {
+    return  props.track.likes.includes(props.user.id);
   }
 
   toggleLike() {
     if (this.props.loggedIn) {
       let action = this.state.liked ? this.props.unlike : this.props.like;
-      action(this.props.songId);
+      action(this.props.track.id);
       this.setState({ liked: !this.state.liked });
     } else {
-      this.props.cacheLike(this.props.songId);
+      this.props.cacheLike(this.props.track.id);
       this.props.toggleModal();
     }
   }
