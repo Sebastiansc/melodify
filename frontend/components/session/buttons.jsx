@@ -5,20 +5,20 @@ import { withRouter } from 'react-router';
 class SessionButtons extends React.Component {
   constructor(){
     super();
-    this.state = {open: false, action: ''};
+    this.state = {action: ''};
   }
 
-  
-
   toggleModal(action){
-    this.setState({ open: !this.state.open, action });
+    this.props.toggleModal();
+    this.setState({ action });
   }
 
   logout(){
     this.props.logout(() => {
       this.props.router.replace('/');
     });
-    this.setState({open: false, action: ''});
+    // this.props.toggleModal();
+    // this.setState({ action: '' });
   }
 
   render(){

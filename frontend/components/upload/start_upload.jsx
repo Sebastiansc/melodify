@@ -1,5 +1,5 @@
 import React from 'react';
-import SessionButtons from '../session/buttons';
+import SessionButtonsContainer from '../session/buttons_container';
 
 
 const StartUpload = ({user, openUploadModal}) => {
@@ -35,7 +35,7 @@ const StartUpload = ({user, openUploadModal}) => {
             <p>Have your content reach new people. Connect with fans via comments and messages</p>
           </div>
         </div>
-        <SessionButtons className='upload-session'/>
+        <SessionButtonsContainer className='upload-session'/>
       </div>
     );
   }

@@ -43,7 +43,7 @@ class SessionForm extends React.Component {
   render(){
     return (
       <Modal
-        isOpen={this.props.settings.open}
+        isOpen={this.props.open}
         onRequestClose={() => this.props.closeModal()}
         contentLabel="Modal"
         className={`react-modal center-block animated bounceInDown`}
