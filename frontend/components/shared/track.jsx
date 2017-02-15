@@ -2,6 +2,8 @@
 // should dispatch nowPlaying with the parents track collection.
 import React from 'react';
 import { Link } from 'react-router';
+import LikeContainer from './like_container';
+
 export default class Track extends React.Component {
   constructor(props){
     super(props);
@@ -37,7 +39,7 @@ export default class Track extends React.Component {
             </button>
           </div>
           <div className='track-actions'>
-            <button className='like'></button>
+            <LikeContainer likedClass='like' unlikedClass='like'/>
             <button className='more'></button>
           </div>
         </div>

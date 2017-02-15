@@ -6,3 +6,4 @@ json.extract! song,
               :genre,
               :id,
               :thumbnail
+json.likes song.likes.to_set

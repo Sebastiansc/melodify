@@ -32,5 +32,5 @@ export const receiveErrors = errors => ({
 });
 
 export const toggleModal = () => ({
-  type: "TOGGLE_MODAL"
+  type: "TOGGLE_MODAL",
 });

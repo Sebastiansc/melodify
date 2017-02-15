@@ -7,12 +7,15 @@ export default class Like extends React.Component {
   }
 
   toggleLike() {
-    let action = this.state.liked ?
-                 this.props.unlike :
-                 this.props.like;
-    action(this.props.songId);
-    this.setState({ liked: !this.state.liked });
+    if (this.props.loggedIn) {
+      let action = this.state.liked ? this.props.unlike : this.props.like;
+      action(this.props.songId);
+      this.setState({ liked: !this.state.liked });
+    } else {
+      this.props.toggleModal();
+    }
   }
+
 
   render() {
     const klass = this.state.liked ?
