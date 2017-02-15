@@ -35,6 +35,11 @@ const Root = ({ store }) => {
     store.dispatch(getTracks());
   };
 
+  const fetchNewTracks = nextState => {
+    if (isEmpty(nextState.location.query)) return;
+    fetchTracks();
+  };
+
 
   return(
     <Provider store={store}>
@@ -49,7 +54,7 @@ const Root = ({ store }) => {
           path='charts/top'
           component={Chart}
           onEnter={n => fetchTracks(n)}
-          onChange={n => fetchTracks(n)}/>
+          onChange={n => fetchNewTracks(n)}/>
 
           <Route path='upload' component={UploadContainer}/>
         </Route>

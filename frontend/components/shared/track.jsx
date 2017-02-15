@@ -31,17 +31,24 @@ export default class Track extends React.Component {
       <li className={`track ${this.props.klass}`}>
         <div
           className='track-artwork'
-          style={{backgroundImage: `url('${this.props.track.cover_photo}')`}}>
+          style={{backgroundImage: `url('${this.props.track.cover_photo}')`}}
+        >
+
           <div className='artwork-shade'></div>
           <div className={`play-overlay ${this.playState()}`}>
             <button className={`play-button `}
                     onClick={() => this.togglePlay()}>
             </button>
           </div>
+
           <div className='track-actions'>
-            <LikeContainer likedClass='like' unlikedClass='like'/>
+            <LikeContainer
+              songId={this.props.track.id}
+              likedClass='like'
+              unlikedClass='like'/>
             <button className='more'></button>
           </div>
+
         </div>
         <div className='track-text-info'>
           <Link className='track-title' to='#'>{this.props.track.title}</Link>

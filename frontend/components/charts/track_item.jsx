@@ -1,5 +1,6 @@
 import React from 'react';
 import TrackContainer from '../shared/track_container';
+import LikeContainer from '../shared/like_container';
 
 export default class TrackItem extends React.Component {
   constructor() {
@@ -15,7 +16,10 @@ export default class TrackItem extends React.Component {
           play={this.props.play}
           klass='chart-item'/>
         <div className='chart-track-actions'>
-          <button className='chart-heart'></button>
+          <LikeContainer
+            likedClass='chart-heart'
+            unlikedClass='chart-dead-heart'
+            track={this.props.track}/>
           <button className='chart-playlist'></button>
         </div>
       </div>

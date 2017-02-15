@@ -1,15 +1,13 @@
 export const like = songId => {
   $.ajax({
-    url: 'api/likes',
+    url: `api/likes/${songId}`,
     type: 'post',
-    data: {songId}
   });
 };
 
 export const unlike = songId => {
   $.ajax({
-    url: 'api/likes',
+    url:  `api/likes/${songId}`,
     type: 'delete',
-    data: {songId}
   });
 };
