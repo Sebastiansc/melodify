@@ -43,7 +43,7 @@ export default class Track extends React.Component {
 
           <div className='track-actions'>
             <LikeContainer
-              songId={this.props.track.id}
+              track={this.props.track}
               likedClass='like'
               unlikedClass='like'/>
             <button className='more'></button>

@@ -7,6 +7,7 @@ export default class Like extends React.Component {
   }
 
   componentWillReceiveProps(props) {
+    // debugger;
     console.log(props.track.id);
     if (props.track.likes.includes(props.user.id)) {
       this.setState({ liked: true });
