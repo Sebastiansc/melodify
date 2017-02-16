@@ -3,6 +3,7 @@ export const PAUSE = "PAUSE";
 export const PLAY = "PLAY";
 export const NEXT = "NEXT";
 export const RECORD_PLAY = "RECORD_PLAY";
+export const RECEIVE_PLAY = "RECEIVE_PLAY";
 
 export const nowPlaying = (songId, tracks) => ({
   type: NOW_PLAYING,
@@ -25,5 +26,11 @@ export const next = idx => ({
 
 export const recordPlay = songId => ({
   type: RECORD_PLAY,
+  songId
+});
+
+
+export const receivePlay = songId => ({
+  type: RECEIVE_PLAY,
   songId
 });

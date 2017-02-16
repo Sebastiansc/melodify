@@ -16,7 +16,8 @@ export const getSong = (username, title, success, error) => {
 
 export const recordPlay = (songId, success) => {
   $.ajax({
-    url: `api/songs/played/${songId}`,
-    type: 'post'
+    url: `api/plays/${songId}`,
+    type: 'post',
+    success
   });
 };

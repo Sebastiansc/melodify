@@ -10,5 +10,5 @@ Rails.application.routes.draw do
 
   post 'api/likes/:song_id', to: 'api/likes#create'
   delete 'api/likes/:song_id', to: 'api/likes#destroy'
-  post 'api/songs/played/:song_id', to: 'api/songs#record_play'
+  post 'api/plays/:song_id', to: 'api/plays#create'
 end

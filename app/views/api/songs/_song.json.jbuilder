@@ -9,3 +9,4 @@ json.extract! song,
 user_ids = []
 song.likes.each { |like| user_ids << like.user_id }
 json.likes user_ids
+json.timesPlayed song.plays.length

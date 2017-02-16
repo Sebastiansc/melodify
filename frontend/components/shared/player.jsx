@@ -45,7 +45,6 @@ export default class Player extends React.Component {
   }
 
   nextSong(){
-    this.props.recordPlay(this.currentTrack().id);
     this.props.next(this._findTrackIdx());
   }
 
@@ -92,8 +91,17 @@ export default class Player extends React.Component {
     }
   }
 
-  clearProgress() {
+  startSong() {
+    // Record play in database
+    if (this.props.loggedIn) this.props.recordPlay(this.currentTrack().id);
+
+    // Add bottom padding
     $('body').addClass('player-on');
+
+    this.clearProgress();
+  }
+
+  clearProgress() {
     this.timePassed = 0;
     $(this.timeElapsed).text('0:00');
     $(this.progressBar).css('width', 0);
@@ -148,7 +156,7 @@ export default class Player extends React.Component {
             onDuration={duration => this.songLength(duration)}
             width={"100%"}
             onPlay={() => this.resumePlaying()}
-            onStart={() => this.clearProgress()}
+            onStart={() => this.startSong()}
             onEnd={() => this.nextSong()}
             progressFrequency={500}
             onProgress={progress => this.recordProgress(progress)}/>

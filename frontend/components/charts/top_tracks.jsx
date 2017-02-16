@@ -26,7 +26,9 @@ export default class TopTracks extends React.Component {
   }
 
   updateGenre(e) {
-    this.setState({ genre: e.target.text });
+    if (e.target.tagName === "UL") return;
+    const genre = e.target.text || e.target.children[0].text;
+    this.setState({ genre });
   }
 
   componentWillUnmount() {

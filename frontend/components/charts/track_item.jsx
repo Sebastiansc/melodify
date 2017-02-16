@@ -30,6 +30,10 @@ export default class TrackItem extends React.Component {
           play={trackId => this.play(trackId)}
           klass='chart-item'
           ref={player => this.player = player}/>
+
+        <div className='chart-item-plays'>
+          <span>{this.props.track.timesPlayed}</span>
+        </div>
         <div className='chart-track-actions'>
           <LikeContainer
             likedClass='chart-heart'

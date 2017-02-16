@@ -72,3 +72,13 @@ $breakpoints: (
   text-overflow: ellipsis;
   word-break: normal;
 }
+
+@mixin before-image {
+  display: inline-block;
+  content: "";
+  width: 16px;
+  height: 16px;
+  vertical-align: top;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

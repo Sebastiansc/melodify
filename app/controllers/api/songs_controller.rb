@@ -1,6 +1,6 @@
 class Api::SongsController < ApplicationController
   def index
-    @songs = Song.all.includes(:likes)
+    @songs = Song.all.includes(:likes, :plays)
   end
 
   def show
@@ -26,12 +26,6 @@ class Api::SongsController < ApplicationController
 
   def update
 
-  end
-
-  def record_play
-    @song = Song.find(params[:song_id])
-    @song.plays += 1
-    @song.save
   end
 
   private
