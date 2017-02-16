@@ -49,7 +49,7 @@ export default class Navbar extends React.Component {
                 col-md-1
                 col-sm-1'
                 >
-                <li><Link>Charts</Link></li>
+                <li><Link to='charts/top'>Charts</Link></li>
               </ul>
               <SearchBarContainer
                 formClass='navbar-search'
@@ -100,7 +100,7 @@ export default class Navbar extends React.Component {
                 col-md-2
                 col-sm-2'
                 >
-                <li><Link to='charts'>Charts</Link></li>
+                <li><Link to='charts/top'>Charts</Link></li>
                 <li><Link to='collection'>Collection</Link></li>
               </ul>
 

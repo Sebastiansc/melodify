@@ -1,9 +1,10 @@
+// React components share internal state for complex objects through different instances when being rendered on the same page. This component needs a random number to be passed in to avoid duplicate key problems when the same track is rendered on both the like history and the listen history.
 import React from 'react';
 import HistoryItem from './history_item';
 import { Link } from 'react-router';
 import Loader from '../shared/loader';
 
-export default class LikeHistory extends React.Component {
+export default class History extends React.Component {
   componentWillMount() {
     this.props.getLikes();
   }
@@ -27,15 +28,16 @@ export default class LikeHistory extends React.Component {
           klass='history-loader'
           data={this.props.tracks}/>
         <div className='like-history-header'>
-          <span className={`history-before-image ${this.props.image}`}>
+          <span
+            className={`history-before-image ${this.props.image}`}>
             {this.headerText()}
           </span>
           <Link to='you/likes'>View all</Link>
         </div>
-        {this.props.tracks.slice(0, 5).map( track => (
+        {this.props.tracks.slice(0, 4).map( track => (
           <HistoryItem
             track={track}
-            key={track.id}
+            key={track.id * this.props.offset}
             play={trackId => this.play(trackId)}/>
         ))}
       </section>

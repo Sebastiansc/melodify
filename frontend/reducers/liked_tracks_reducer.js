@@ -17,10 +17,12 @@ const LikedTracksReducer = (state = [], action) => {
     case RECEIVE_RECENT_LIKES:
       return action.tracks;
     case RECEIVE_LIKE:
+      const trackIdx = findTrackIdx(newState, action.track);
+      if (trackIdx) newState.splice(trackIdx, 1);
       return [action.track].concat(newState);
     case REMOVE_LIKE:
-      let trackIdx = findTrackIdx(newState, action.track);
-      if (trackIdx !== -1) newState.splice(trackIdx, 1);
+      let idx = findTrackIdx(newState, action.track);
+      if (idx) newState.splice(trackIdx, 1);
       return newState;
     default:
       return state;

@@ -12,6 +12,8 @@ const ListenHistoryReducer = (state = [], action) => {
     case RECEIVE_PLAYS:
       return action.tracks;
     case RECEIVE_PLAY:
+      const trackIdx = findTrackIdx(newState, action.track);
+      if (trackIdx) newState.splice(trackIdx, 1);
       return [action.track].concat(newState);
     default:
       return state;

@@ -6,7 +6,7 @@ class Api::PlaysController < ApplicationController
     )
     if @play
       @play.touch
-      render json: {}
+      render :show
     else
       create_play
     end

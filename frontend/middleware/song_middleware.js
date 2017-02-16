@@ -4,9 +4,9 @@ import { createSong, recordPlay } from '../util/song_api_util';
 
 export default ({ getState, dispatch }) => next => action => {
   const errorCallback = error => console.log(error);
-  const playSuccess = play => {
-    if (play.success) {
-      dispatch(receivePlay(play.song_id));
+  const playSuccess = track => {
+    if (track.success) {
+      dispatch(receivePlay(track));
     }
   };
 

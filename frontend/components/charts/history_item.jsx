@@ -1,7 +1,7 @@
 import React from 'react';
 import TrackContainer from '../shared/track_container';
 
-export default class LikeHistoryItem extends React.Component {
+export default class HistoryItem extends React.Component {
   play() {
     this.player.getWrappedInstance().togglePlay();
   }

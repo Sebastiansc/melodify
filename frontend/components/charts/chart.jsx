@@ -18,12 +18,14 @@ export default class Charts extends React.Component {
           <div className='l-bar-fixed'>
             <HistoryContainer
               collection='likes'
-              image='gray-heart'/>
-            <div className='clearfix'></div>
+              image='gray-heart'
+              offset={Math.random() * 5}/>
             <HistoryContainer
               collection='plays'
-              image='calendar'/>
+              image='calendar'
+              offset={Math.random() * 10 + 5}/>
           </div>
+          <div className='clearfix'></div>
         </section>
         <div className='clearfix'></div>
       </div>

@@ -30,7 +30,7 @@ export const recordPlay = songId => ({
 });
 
 
-export const receivePlay = songId => ({
+export const receivePlay = track => ({
   type: RECEIVE_PLAY,
-  songId
+  track
 });

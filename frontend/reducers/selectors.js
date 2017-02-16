@@ -8,5 +8,5 @@ export const findTrackIdx = (array, track) => {
   for (let i = 0; i < array.length; i++) {
     if (array[i].id === track.id) return i;
   }
-  return -1;
+  return null;
 };
