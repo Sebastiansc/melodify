@@ -10,6 +10,7 @@ export const getPlays = () => ({
   type: GET_PLAYS
 });
 
-export const receivePlays = () => ({
-  type: RECEIVE_PLAYS
+export const receivePlays = tracks => ({
+  type: RECEIVE_PLAYS,
+  tracks
 });

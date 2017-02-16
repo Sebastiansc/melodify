@@ -1,2 +1,2 @@
 json.success true
-json.extract! @play, :song_id
+json.partial! 'api/songs/song', locals: { song: play.song }
