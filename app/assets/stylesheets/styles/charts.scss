@@ -1,6 +1,5 @@
-
 .charts-page-container {
-  width: 70%;
+  width: 62%;
   padding: 30px 30px 0 0;
   border-right: 1px solid $lightgray;
   h3 {
@@ -9,6 +8,16 @@
     font-size: $font-sm;
     margin-bottom: 50px;
   }
+}
+
+@include respond-to("large") {
+  .charts-page-container {
+    width: 70%
+  }
+}
+
+.like-track-actions-wrapper {
+  display: none;
 }
 
 .charts-page-outerbox {
@@ -27,9 +36,9 @@
 
 .charts-extras {
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 30px;
-  width: 25%;
+  width: 300px;
 }
 
 // ------------------------ TOP TRACKS ------------------------
@@ -148,10 +157,9 @@
   }
 }
 
-
-
 .chart-track {
   display: flex;
+  @include linear-trans;
   padding: 10px;
   margin: 0 -10px 0px -10px;
   border-radius: $round;

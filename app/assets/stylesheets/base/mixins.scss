@@ -82,3 +82,7 @@ $breakpoints: (
   background-repeat: no-repeat;
   background-position: center center;
 }
+
+@mixin linear-trans {
+  transition: all 200ms linear;
+}

@@ -1,5 +1,5 @@
 // Liked tracks are sent in an array to main query order from database.
-// Object would not ensure order
+// Object would not ensure order.
 import { RECEIVE_LIKES,
          RECEIVE_RECENT_LIKES, } from '../actions/liked_tracks_actions';
 import { RECEIVE_LIKE, REMOVE_LIKE } from '../actions/like_actions';

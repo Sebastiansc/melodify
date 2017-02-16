@@ -15,7 +15,10 @@ export default class Charts extends React.Component {
           <div className='clearfix'></div>
         </main>
         <section className='charts-extras'>
-          <LikeHistoryContainer/>
+          <div className='l-bar-fixed'>
+            <LikeHistoryContainer/>
+            <div className='clearfix'></div>
+          </div>
         </section>
         <div className='clearfix'></div>
       </div>

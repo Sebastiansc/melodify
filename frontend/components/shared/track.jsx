@@ -53,6 +53,19 @@ export default class Track extends React.Component {
         <div className='track-text-info'>
           <Link className='track-title' to='#'>{this.props.track.title}</Link>
           <Link className='artist-name' to='#'>{this.props.track.artist}</Link>
+          <div className='like-track-actions-wrapper'>
+            <ul className='like-track-actions'>
+              <li className='chart-item-plays'>
+                {this.props.track.timesPlayed}k
+              </li>
+              <li className='gray-heart mini-heart'>
+                <Link to="artist/track/likes">128k</Link>
+              </li>
+              <li className='comments-bubble'>
+                <Link to='artist/track'>907</Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </li>
     );
