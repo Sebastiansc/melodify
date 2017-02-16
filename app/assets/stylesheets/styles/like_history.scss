@@ -27,15 +27,26 @@
   margin-bottom: 8px;
 }
 
-.gray-heart:before {
+.history-before-image:before {
   @include before-image;
   vertical-align: -2.8px;
   opacity: 0.5;
   margin-right: 5px;
+}
+
+.gray-heart:before {
   background-image: url('https://res.cloudinary.com/flikr/image/upload/v1487144907/heart-dead_i3yygg.svg');
 }
 
+.calendar:before {
+  opacity: 1;
+  background-image: url('https://res.cloudinary.com/flikr/image/upload/v1487283572/history_jl6oiz.png');
+}
+
 .like-history-container {
+  margin-bottom: 30px;
+  position: relative;
+  min-height: 250px;
   a:hover {
     color: $gray;
   }
@@ -74,4 +85,11 @@
 .comments-bubble:before {
   @include before-image;
   background-image: url('https://res.cloudinary.com/flikr/image/upload/v1487273754/comments_on8bgs.svg');
+}
+
+.fa-spin {
+  position: absolute;
+  top: 34%;
+  left: 40%;
+  font-size: 35px;
 }

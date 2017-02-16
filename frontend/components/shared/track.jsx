@@ -18,7 +18,8 @@ export default class Track extends React.Component {
     if (this._isSelected() && isPlaying) return 'playing';
   }
 
-  togglePlay() {
+  togglePlay(e) {
+    e.stopPropagation();
     if (this.props.state && this._isSelected()) {
       this.props.pause();
     } else {
@@ -37,7 +38,7 @@ export default class Track extends React.Component {
           <div className='artwork-shade'></div>
           <div className={`play-overlay ${this.playState()}`}>
             <button className={`play-button `}
-                    onClick={() => this.togglePlay()}>
+                    onClick={(e) => this.togglePlay(e)}>
             </button>
           </div>
 
