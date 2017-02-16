@@ -15,10 +15,12 @@ export default class LikeHistory extends React.Component {
     return(
       <section className='like-history-container'>
         <div className='like-history-header'>
-          <span className='gray-heart'>{`${this.props.likes.length} likes`}</span>
+          <span className='gray-heart'>
+            {`${this.props.likes.length} likes`}
+          </span>
           <Link to='you/likes'>View all</Link>
         </div>
-        {this.props.likes.map( track => (
+        {this.props.likes.slice(0, 5).map( track => (
           <LikeHistoryItem
             track={track}
             key={track.id}
