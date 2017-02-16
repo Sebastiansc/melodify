@@ -14,5 +14,5 @@ export default combineReducers({
   song: SongReducer,
   cache: CacheReducer,
   likes: LikedTrackReducer,
-  history: ListenHistoryReducer
+  plays: ListenHistoryReducer
 });

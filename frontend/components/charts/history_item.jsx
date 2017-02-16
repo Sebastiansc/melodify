@@ -3,7 +3,6 @@ import TrackContainer from '../shared/track_container';
 
 export default class LikeHistoryItem extends React.Component {
   play() {
-    console.log("like item #play");
     this.player.getWrappedInstance().togglePlay();
   }
 

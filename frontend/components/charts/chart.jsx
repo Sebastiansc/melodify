@@ -1,6 +1,6 @@
 import React from 'react';
 import TopTracksContainer from './top_tracks_container';
-import LikeHistoryContainer from './like_history_container';
+import HistoryContainer from './history_container';
 
 export default class Charts extends React.Component {
   constructor() {
@@ -16,8 +16,9 @@ export default class Charts extends React.Component {
         </main>
         <section className='charts-extras'>
           <div className='l-bar-fixed'>
-            <LikeHistoryContainer/>
+            <HistoryContainer collection='likes'/>
             <div className='clearfix'></div>
+            <HistoryContainer collection='plays'/>
           </div>
         </section>
         <div className='clearfix'></div>
