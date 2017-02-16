@@ -6,10 +6,12 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :index, :show]
     resource :session, only: [:create, :destroy]
     resources :songs
+    resources :plays, only: [:index]
   end
 
   post 'api/likes/:song_id', to: 'api/likes#create'
   delete 'api/likes/:song_id', to: 'api/likes#destroy'
   post 'api/plays/:song_id', to: 'api/plays#create'
   get 'api/likes/recent', to: 'api/likes#recent_likes'
+  get 'api/plays/recent', to: 'api/plays#recent_plays'
 end
