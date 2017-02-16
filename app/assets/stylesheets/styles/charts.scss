@@ -4,7 +4,7 @@
   padding: 30px 30px 0 0;
   border-right: 1px solid $lightgray;
   h3 {
-    color: #999;
+    color: $gray9;
     font-weight: 400;
     font-size: $font-sm;
     margin-bottom: 50px;
@@ -44,7 +44,7 @@
   align-self: center;
   line-height: 17px;
   display: block;
-  color: #999;
+  color: $gray9;
   span {
     margin-left: 3px;
   }
@@ -89,7 +89,7 @@
   border-bottom: 1px solid #f2f2f2;
   padding-bottom: 10px;
   letter-spacing: 1.5px;
-  color: #999;
+  color: $gray9;
   margin-bottom: 20px;
 }
 
@@ -148,32 +148,20 @@
   }
 }
 
+
+
 .chart-track {
   display: flex;
   padding: 10px;
   margin: 0 -10px 0px -10px;
   border-radius: $round;
-  .playing.play-overlay {
-    display: block;
-    left: 20%;
-    top: 20%;
-    right: 20%;
-    bottom: 20%;
-  }
 }
 
 .chart-track:hover, .chart-track-playing {
   background-color: #f2f2f2;
   cursor: pointer;
-  .chart-track-actions {
+  .chart-track-actions, .play-overlay {
     display: block;
-  }
-  .play-overlay {
-    display: block;
-    left: 20%;
-    top: 20%;
-    right: 20%;
-    bottom: 20%;
   }
   .chart-item-plays {
     display: none;
@@ -199,14 +187,20 @@
   .track-text-info {
     line-height: 22px;
     display: flex;
+    width: 66%;
     flex-direction: column;
   }
   .artist-name {
     order: -1;
-    color: #999;
+    color: $gray9;
     font-size: 13px;
   }
-
+  .play-overlay {
+    left: 20%;
+    top: 20%;
+    right: 20%;
+    bottom: 20%;
+  }
 }
 
 .chart-item:hover {

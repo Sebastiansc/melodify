@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   post 'api/likes/:song_id', to: 'api/likes#create'
   delete 'api/likes/:song_id', to: 'api/likes#destroy'
   post 'api/plays/:song_id', to: 'api/plays#create'
+  get 'api/likes/recent', to: 'api/likes#recent_likes'
 end

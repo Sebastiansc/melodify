@@ -14,4 +14,9 @@ class Api::LikesController < ApplicationController
     ).destroy
     render :show
   end
+
+  def recent_likes
+    @likes = Like.recent_likes
+    render :index
+  end
 end

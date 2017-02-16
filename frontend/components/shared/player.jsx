@@ -15,7 +15,6 @@ export default class Player extends React.Component {
     this.state = { volume: 1};
   }
 
-
   _isPlaying(){
     return this.props.state;
   }

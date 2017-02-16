@@ -1,10 +1,29 @@
 import React from 'react';
+import LikeHistoryItem from './like_history_item';
+import { Link } from 'react-router';
 
 export default class LikeHistory extends React.Component {
+  componentWillMount() {
+    this.props.getLikes();
+  }
+
+  play(trackId) {
+    this.props.nowPlaying(trackId, this.props.likes);
+  }
+
   render() {
     return(
       <section className='like-history-container'>
-        <span>Likes go here</span>
+        <div className='like-history-header'>
+          <span>{`${this.props.likes.length} likes`}</span>
+          <Link to='you/likes'>View all</Link>
+        </div>
+        {this.props.likes.map( track => (
+          <LikeHistoryItem
+            track={track}
+            key={track.id}
+            play={trackId => this.play(trackId)}/>
+        ))}
       </section>
     );
   }

@@ -1,0 +1,30 @@
+.charts-like-track {
+  display: flex;
+  padding: 5px;
+  .track-artwork {
+    margin-right: 15px;
+  }
+}
+
+.charts-like-track:hover {
+  .play-overlay {
+    display: block;
+  }
+}
+
+
+.like-history-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 3px;
+  color: $gray9;
+  border-bottom: 1px solid #f2f2f2;
+  margin-bottom: 8px;
+  span:before {
+    @include before-image;
+    vertical-align: -2.8px;
+    opacity: 0.6;
+    margin-right: 5px;
+    background-image: url('https://res.cloudinary.com/flikr/image/upload/v1487144907/heart-dead_i3yygg.svg');
+  }
+}

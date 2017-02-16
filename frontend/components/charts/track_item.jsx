@@ -13,7 +13,7 @@ export default class TrackItem extends React.Component {
     this.props.play(trackId);
   }
 
-  test() {
+  play() {
     this.player.getWrappedInstance().togglePlay();
   }
 
@@ -23,7 +23,7 @@ export default class TrackItem extends React.Component {
       <div
         className='chart-track'
         ref={wrapper => this.wrapper = wrapper}
-        onClick={() => this.test()}>
+        onClick={() => this.play()}>
         <div className='chart-track-position'>{this.props.position}</div>
         <TrackContainer
           track={this.props.track}
@@ -34,6 +34,7 @@ export default class TrackItem extends React.Component {
         <div className='chart-item-plays'>
           <span>{this.props.track.timesPlayed}</span>
         </div>
+
         <div className='chart-track-actions'>
           <LikeContainer
             likedClass='chart-heart'

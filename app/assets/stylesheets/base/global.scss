@@ -1,4 +1,5 @@
 $round: 4px;
+$gray9: #999;
 $orange: #f50;
 $dark-orange: #f30;
 $bordergray: #ccc;
@@ -50,7 +51,11 @@ ul {
 }
 
 a {
-  color: #000;
+  color: inherit;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: normal;
 }
 
 a:visited {
