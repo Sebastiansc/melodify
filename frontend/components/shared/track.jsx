@@ -1,5 +1,6 @@
-// Needs a play method to be passed from its parent component. Play method
-// should dispatch nowPlaying with the parents track collection.
+// Needs a play method to be passed from its parent component.
+// Play method should dispatch nowPlaying with the parents track collection and this tracks trackId.
+
 import React from 'react';
 import { Link } from 'react-router';
 import LikeContainer from './like_container';
@@ -19,6 +20,9 @@ export default class Track extends React.Component {
   }
 
   togglePlay(e) {
+    // Avoid click event being passed on to the current
+    // element rendering Track and causing play to be called
+    // twice
     e.stopPropagation();
     if (this.props.state && this._isSelected()) {
       this.props.pause();
