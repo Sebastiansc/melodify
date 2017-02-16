@@ -4,13 +4,8 @@ import { RECEIVE_LIKES,
          RECEIVE_RECENT_LIKES, } from '../actions/liked_tracks_actions';
 import { RECEIVE_LIKE, REMOVE_LIKE } from '../actions/like_actions';
 import merge from 'lodash/merge';
+import { findTrackIdx } from './selectors';
 
-const findTrackIdx = (array, track) => {
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].id === track.id) return i;
-  }
-  return -1;
-};
 
 const LikedTracksReducer = (state = [], action) => {
   let newState = [].concat(state);
