@@ -39,6 +39,10 @@ export default class Track extends React.Component {
     }
   }
 
+  redirect(e) {
+    e.stopPropagation(e);
+  }
+
   render(){
     return(
       <li className={`track ${this.props.klass}`}>
@@ -64,12 +68,20 @@ export default class Track extends React.Component {
 
         </div>
         <div className='track-text-info'>
-          <Link
-            className='track-title' to='#'
-            to={`${this.props.track.artist}/${this.props.track.title}`}>
-            {this.props.track.title}
-          </Link>
-          <Link className='artist-name' to='#'>{this.props.track.artist}</Link>
+          <div className='track-title'>
+            <Link
+              to={`${this.props.track.owner}/${this.props.track.id}`}
+              onClick={e => this.redirect( e)}>
+              {this.props.track.title}
+            </Link>
+          </div>
+          <div className='artist-name'>
+            <Link
+              to={`${this.props.track.owner}`}
+              onClick={e => this.redirect(e)}>
+              {this.props.track.artist}
+            </Link>
+          </div>
           <div className='like-track-actions-wrapper'>
             <ul className='like-track-actions'>
               <li className='chart-item-plays'>

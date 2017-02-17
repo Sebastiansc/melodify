@@ -102,6 +102,9 @@
 .splash-explore {
   @include orange-button($font-sm);
   padding: 10px 20px;
+  &:visited {
+    color: white;
+  }
 }
 
 .trending {
@@ -112,7 +115,7 @@
 }
 
 .trending-item {
-  width: 33%;
+  width: 24%;
   height: 240px;
   cursor: pointer;
   background-size: cover;
@@ -125,7 +128,7 @@
 
 @include respond-to('medium') {
   .trending-item {
-    width: 25%;
+    width: 20%;
     height: 250px;
     background-position: 50% 20%;
   }

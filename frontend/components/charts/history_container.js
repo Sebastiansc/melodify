@@ -6,7 +6,8 @@ import { toArray } from '../../reducers/selectors';
 import { nowPlaying } from '../../actions/playing_actions';
 
 const mapStateToProps = (store, {collection}) => ({
-  tracks: store[collection]
+  tracks: store[collection],
+  loggedIn: Boolean(store["session"].currentUser.id)
 });
 
 const mapDispatchToProps = (dispatch, {collection}) => {

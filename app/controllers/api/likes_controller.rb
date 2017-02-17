@@ -1,4 +1,6 @@
 class Api::LikesController < ApplicationController
+  before_action :ensure_login, only: [:recent_likes]
+
   def create
     @like = Like.create!(
       user_id: current_user.id,
@@ -16,7 +18,7 @@ class Api::LikesController < ApplicationController
   end
 
   def recent_likes
-    @likes = Like.recent_likes
+    @likes = Like.recent_likes.where(user_id: current_user.id)
     render :index
   end
 end

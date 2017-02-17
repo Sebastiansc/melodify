@@ -23,6 +23,33 @@ export default class History extends React.Component {
   }
 
   render() {
+    if (!this.props.loggedIn && this.props.collection === 'likes') {
+      return(
+        <section className='history-pitch'>
+          <Link className='pitch-wrapper' to='/'>
+            <div className='heyhey'>
+              <img
+                 src="https://res.cloudinary.com/flikr/image/upload/v1487371094/heyhey_o97zwx.png">
+              </img>
+            </div>
+
+            <div className='history-pitch-text'>
+              <span className='history-mainpitch'>
+                Join Melodify to enjoy full features
+              </span>
+              <span>
+                Like your favorite songs. Build playlists. Find new music
+              </span>
+            </div>
+
+          </Link>
+          <Link to='/' className='history-pitch-button'>
+            <span>Sign in or Create an account</span>
+          </Link>
+        </section>
+      );
+    } else if (!this.props.loggedIn) return null;
+
     return(
       <section className='like-history-container'>
         <Loader

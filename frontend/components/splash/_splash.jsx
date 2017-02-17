@@ -32,9 +32,11 @@ class Splash extends React.Component {
             <h2>Hear what's trending today</h2>
             <TrendingContainer/>
             <div className='top-50'>
-              <button className='splash-explore'>
+              <Link
+                className='splash-explore'
+                to='charts/top'>
                 Explore our top 50
-              </button>
+              </Link>
             </div>
           </div>
         </div>

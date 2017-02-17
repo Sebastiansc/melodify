@@ -113,13 +113,13 @@ def thumburl(url)
 end
 
 def normalize(string)
-  string.downcase.gsub(/[^a-z0-9\s]/i, '').tr(' ', '-')
+  string.downcase
 end
 
 data.each do |info|
   puts "Created #{info[:title]}"
   song = Song.new({
-    title: normalize("#{info[:artist]} #{info[:title]}"),
+    title: info[:title],
     user_id: 5,
     audio_url: info[:audio_url],
     cover_photo: info[:cover_photo],
