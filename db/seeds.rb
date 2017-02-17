@@ -112,10 +112,14 @@ def thumburl(url)
   "#{rootUrl}c_scale,h_120/#{tailUrl}"
 end
 
+def normalize(string)
+  string.downcase.gsub(/[^a-z0-9\s]/i, '').tr(' ', '-')
+end
+
 data.each do |info|
   puts "Created #{info[:title]}"
-  Song.create({
-    title: info[:title],
+  song = Song.new({
+    title: normalize("#{info[:artist]} #{info[:title]}"),
     user_id: 5,
     audio_url: info[:audio_url],
     cover_photo: info[:cover_photo],
@@ -123,6 +127,7 @@ data.each do |info|
     thumbnail: thumburl(info[:cover_photo]),
     artist: info[:artist]
   })
+  song.save
 end
 
   Song.create({

@@ -9,13 +9,19 @@ export default class LikePopup extends React.Component {
 
   componentWillReceiveProps(props) {
     if (props.track.id) {
-      setTimeout(() => {
+      clearTimeout(this.counter);
+      this.counter = setTimeout(() => {
         this.setState({ klass: ''});
       }, 15000);
       this.setState({ klass: 'like-popup-up'});
     } else {
       this.setState({ klass: 'like-popup-bye'});
     }
+  }
+
+  close() {
+    clearTimeout(this.counter);
+    this.setState({ klass: 'like-popup-bye'});
   }
 
   render() {
@@ -29,10 +35,13 @@ export default class LikePopup extends React.Component {
         </div>
         <div className='like-popup-text-info'>
           <span className='like-popup-artist'>
-            {this.props.track.artist}, {this.props.track.title}
+            {this.props.track.title}
           </span>
           <span>was saved to <Link to='you/likes'>your Collection</Link></span>
         </div>
+        <button className='like-popup-close' onClick={() => this.close()}>
+          <span>x</span>
+        </button>
       </div>
     );
   }

@@ -5,6 +5,7 @@ import SongMiddleware from './song_middleware';
 import LikeMiddleware from './like_middleware';
 import LikedTracksMiddleware from './liked_tracks_middleware';
 import ListenHistoryMiddleware from './listen_history_middleware';
+import CommentsMiddleware from './comments_middleware';
 import createLogger from 'redux-logger';
 
 const logger = createLogger();
@@ -16,6 +17,7 @@ const RootMiddleware = applyMiddleware(
   LikeMiddleware,
   LikedTracksMiddleware,
   ListenHistoryMiddleware,
+  CommentsMiddleware,
   logger
 );
 

@@ -9,7 +9,7 @@ class Play < ApplicationRecord
   end
 
   def self.all_plays
-    Play.desc
+    Play.desc.includes(:song, :user)
   end
 
   def self.desc

@@ -6,6 +6,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :likes
+  has_many :songs, dependent: :destroy
   has_many :plays
 
   def self.find_by_credentials(email, password)

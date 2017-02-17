@@ -14,6 +14,7 @@ export default class History extends React.Component {
   }
 
   headerText() {
+    if (!this.props.tracks.length) return '';
     if (this.props.collection === 'likes') {
       return `${this.props.tracks.length} likes`;
     } else {

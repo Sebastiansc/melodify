@@ -31,18 +31,26 @@ export default class Track extends React.Component {
     }
   }
 
+  getBackground() {
+    if (this.props.track.id) {
+      return `url('${this.props.track.cover_photo}')`;
+    } else {
+      return 'linear-gradient(135deg,#e6846e,#846170)';
+    }
+  }
+
   render(){
     return(
       <li className={`track ${this.props.klass}`}>
         <div
           className='track-artwork'
-          style={{backgroundImage: `url('${this.props.track.cover_photo}')`}}
+          style={{backgroundImage: this.getBackground()}}
         >
 
           <div className='artwork-shade'></div>
           <div className={`play-overlay ${this.playState()}`}>
             <button className={`play-button `}
-                    onClick={(e) => this.togglePlay(e)}>
+                    onClick={e => this.togglePlay(e)}>
             </button>
           </div>
 
@@ -56,7 +64,11 @@ export default class Track extends React.Component {
 
         </div>
         <div className='track-text-info'>
-          <Link className='track-title' to='#'>{this.props.track.title}</Link>
+          <Link
+            className='track-title' to='#'
+            to={`${this.props.track.artist}/${this.props.track.title}`}>
+            {this.props.track.title}
+          </Link>
           <Link className='artist-name' to='#'>{this.props.track.artist}</Link>
           <div className='like-track-actions-wrapper'>
             <ul className='like-track-actions'>

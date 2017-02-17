@@ -13,7 +13,9 @@ const PlayerSoundbadge = ({track}) => (
       <Link className='player-tracks-source' to='#'>
         Playing from top 50 tracks
       </Link>
-      <Link className='player-artist' to='#'>
+      <Link
+        className='player-artist'
+        to={`${track.artist}/${track.title}`}>
         {track.artist}
       </Link>
     </div>

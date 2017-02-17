@@ -1,6 +1,6 @@
 class Api::SongsController < ApplicationController
   def index
-    @songs = Song.all.includes(:likes, :plays)
+    @songs = Song.all.includes(:likes, :plays, :user)
   end
 
   def show
@@ -29,10 +29,6 @@ class Api::SongsController < ApplicationController
   end
 
   private
-
-  def song_info
-    @song
-  end
 
   def song_params
     params.require(:song).permit(:title,

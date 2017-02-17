@@ -5,9 +5,13 @@ Rails.application.routes.draw do
   namespace :api, defaults: { formats: :json } do
     resources :users, only: [:create, :index, :show]
     resource :session, only: [:create, :destroy]
-    resources :songs
+    resources :songs do
+      resources :comments, only: [:index]
+    end
     resources :plays, only: [:index]
   end
+
+  resources :comments, only: [:create, :destroy, :update]
 
   post 'api/likes/:song_id', to: 'api/likes#create'
   delete 'api/likes/:song_id', to: 'api/likes#destroy'

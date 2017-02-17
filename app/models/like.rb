@@ -5,6 +5,6 @@ class Like < ApplicationRecord
   belongs_to :song
 
   def self.recent_likes
-    Like.order('created_at DESC').limit(5)
+    Like.order('created_at DESC').limit(5).includes(:song, :user)
   end
 end

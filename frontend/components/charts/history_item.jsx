@@ -2,13 +2,13 @@ import React from 'react';
 import TrackContainer from '../shared/track_container';
 
 export default class HistoryItem extends React.Component {
-  play() {
-    this.player.getWrappedInstance().togglePlay();
+  play(e) {
+    this.player.getWrappedInstance().togglePlay(e);
   }
 
   render() {
     return(
-      <div className='charts-like-track' onClick={() => this.play()}>
+      <div className='charts-like-track' onClick={e => this.play(e)}>
         <TrackContainer
           klass="like-history-item chart-item"
           track={this.props.track}
