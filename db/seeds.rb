@@ -99,7 +99,7 @@ data = [
   },
   {
     title: "Nicky Jam – El Amante",
-    audio_url: "https://res.cloudinary.com/flikr/video/upload/v1486506547/Nicky_Jam_El_Amante_301974664_soundcloud_jjljrs.mp3",
+    audio_url: "https://res.cloudinary.com/flikr/video/upload/v1487373447/Nicky_Jam_El_Amante_301974664_soundcloud_peayao.mp3",
     cover_photo: "https://res.cloudinary.com/flikr/image/upload/v1486506451/artworks-000202264768-778yr7-t500x500_onf9iu.jpg",
     genre: "Reggaeton",
     artist: "Reggaeton de la gente"
