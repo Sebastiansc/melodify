@@ -7,9 +7,9 @@ import Grade from 'grade-js';
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  window.addEventListener('load', function(){
-    Grade(document.querySelectorAll('.gradient-wrap'));
-  });
+  // window.addEventListener('load', function(){
+  //   Grade(document.querySelectorAll('.gradient-wrap'));
+  // });
 
   let store;
   if (window.currentUser) {
