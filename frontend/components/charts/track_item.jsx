@@ -7,9 +7,14 @@ export default class TrackItem extends React.Component {
     super();
   }
 
-  play(trackId) {
+  playLook() {
     $('.chart-track').removeClass('chart-track-playing');
     $(this.wrapper).addClass('chart-track-playing');
+
+  }
+
+  play(trackId) {
+    this.playLook();
     this.props.play(trackId);
   }
 
@@ -23,6 +28,7 @@ export default class TrackItem extends React.Component {
     return(
       <div
         className='chart-track'
+        id={this.props.track.id}
         ref={wrapper => this.wrapper = wrapper}
         onClick={e => this.togglePlay(e)}>
         <div className='chart-track-position'>{this.props.position}</div>
