@@ -5,8 +5,23 @@ import { Link } from 'react-router';
 import Loader from '../shared/loader';
 
 export default class History extends React.Component {
+  constructor(props) {
+    super(props);
+    this.fetched = false;
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.loggedIn && !this.fetched) {
+      this.fetched = true;
+      props.getTracks();
+    }
+  }
+
   componentWillMount() {
-    this.props.getLikes();
+    if (this.props.loggedIn) {
+      this.props.getTracks();
+      this.fetched = true;
+    }
   }
 
   play(trackId) {

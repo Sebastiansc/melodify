@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch, {collection}) => {
     getTracks = getRecentPlays;
   }
   return {
-  getLikes: () => dispatch(getTracks()),
+  getTracks: () => dispatch(getTracks()),
   nowPlaying: (songId, tracks) => dispatch(nowPlaying(songId, tracks))
   };
 };
