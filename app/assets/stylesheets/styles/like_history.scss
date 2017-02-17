@@ -12,6 +12,50 @@
   }
 }
 
+.like-popup {
+  position: fixed;
+  right: 10px;
+  top: 60px;
+  opacity: 0;
+  background: white;
+  box-shadow: 0 0 4px rgba(0,0,0,.2), inset 0 0 2px rgba(255,255,255,1);
+  border: 1px solid #ccc;
+  transition: opacity 2s;
+  display: flex;
+  z-index: 300;
+  width: 300px;
+}
+
+.like-popup-up {
+  opacity: 1;
+}
+
+.like-popup-bye {
+  opacity: 0;
+}
+
+.like-popup-text-info {
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+  flex-direction: column;
+  a {
+    color: #38d;
+  }
+}
+
+.like-popup-artist {
+  font-weight: 700;
+}
+
+.like-popup-cover {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: center center;
+}
+
 .charts-like-track:hover {
   .play-overlay {
     display: block;

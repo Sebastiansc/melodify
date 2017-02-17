@@ -6,6 +6,7 @@ import SongReducer from './song_reducer';
 import LikedTrackReducer from './liked_tracks_reducer';
 import ListenHistoryReducer from './listen_history_reducer';
 import CacheReducer from './cache_reducer';
+import PopupReducer from './popup_reducer';
 
 export default combineReducers({
   session: SessionReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   song: SongReducer,
   cache: CacheReducer,
   likes: LikedTrackReducer,
-  plays: ListenHistoryReducer
+  plays: ListenHistoryReducer,
+  popup: PopupReducer,
 });
