@@ -7,11 +7,15 @@ export default class PlayerVolume extends React.Component {
     this.muted = false;
   }
 
+  volumeBar(i) {
+    return $(`.volume-slider-wrapper div[data-v='${i}']`);
+  }
   componentDidMount() {
     let width = 20;
     for (let i = 10; i > 0 ; i--) {
-      $(`#${i}`).css('width', `${width}px`);
-      $(`#${i}`).addClass('volume');
+      let $volume = this.volumeBar(i);
+      $volume.css('width', `${width}px`);
+      $volume.addClass('volume');
       width -= 2;
     }
   }
@@ -20,10 +24,11 @@ export default class PlayerVolume extends React.Component {
     let ids = [];
     for (let i = 1; i <= volume * 10; i++) ids.push(i);
     for (let id = 1; id <= 10; id++) {
+      let $volume = this.volumeBar(id);
       if (!ids.includes(id)) {
-        $(`#${id}`).addClass('volume-off');
+        $volume.addClass('volume-off');
       } else {
-        $(`#${id}`).removeClass('volume-off');
+        $volume.removeClass('volume-off');
       }
     }
     if (volume > 0) this.currentVolume = volume;
@@ -50,16 +55,16 @@ export default class PlayerVolume extends React.Component {
         </button>
         <div className='volume-slider' >
           <div className='volume-slider-wrapper'>
-            <div id='10' onClick={() => this.volume(1)}></div>
-            <div id='9' onClick={() => this.volume(0.9)}></div>
-            <div id='8' onClick={() => this.volume(0.8)}></div>
-            <div id='7' onClick={() => this.volume(0.7)}></div>
-            <div id='6' onClick={() => this.volume(0.6)}></div>
-            <div id='5' onClick={() => this.volume(0.5)}></div>
-            <div id='4' onClick={() => this.volume(0.4)}></div>
-            <div id='3' onClick={() => this.volume(0.3)}></div>
-            <div id='2' onClick={() => this.volume(0.2)}></div>
-            <div id='1' onClick={() => this.volume(0.1)}></div>
+            <div data-v='10' onClick={() => this.volume(1)}></div>
+            <div data-v='9' onClick={() => this.volume(0.9)}></div>
+            <div data-v='8' onClick={() => this.volume(0.8)}></div>
+            <div data-v='7' onClick={() => this.volume(0.7)}></div>
+            <div data-v='6' onClick={() => this.volume(0.6)}></div>
+            <div data-v='5' onClick={() => this.volume(0.5)}></div>
+            <div data-v='4' onClick={() => this.volume(0.4)}></div>
+            <div data-v='3' onClick={() => this.volume(0.3)}></div>
+            <div data-v='2' onClick={() => this.volume(0.2)}></div>
+            <div data-v='1' onClick={() => this.volume(0.1)}></div>
           </div>
         </div>
       </div>

@@ -28,7 +28,7 @@ export default class TrackItem extends React.Component {
     return(
       <div
         className='chart-track'
-        id={this.props.track.id}
+        id={this.props.track.title}
         ref={wrapper => this.wrapper = wrapper}
         onClick={e => this.togglePlay(e)}>
         <div className='chart-track-position'>{this.props.position}</div>
