@@ -4,4 +4,8 @@ class Song < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :plays, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+  def self.preload
+    { song: [:likes, :plays, :user] }
+  end
 end

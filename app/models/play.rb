@@ -5,11 +5,11 @@ class Play < ApplicationRecord
   belongs_to :song
 
   def self.recent_plays
-    Play.desc.limit(5)
+    all_plays.limit(5)
   end
 
   def self.all_plays
-    Play.desc.includes(:song, :user)
+    Play.desc.includes(Song.preload)
   end
 
   def self.desc

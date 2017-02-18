@@ -14,10 +14,8 @@ class Api::UsersController < ApplicationController
       @user.username = user_params[:email].split('@')[0]
     end
     if @user.valid?
-      unless user_params[:username]
-        @user.username = user_params[:email].split('@')[0]
-      end
-      @user.save!
+      @user.save
+      @user.update(url: "user-#{@user.id}")
       login(@user)
       render 'api/sessions/show'
     else

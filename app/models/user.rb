@@ -15,6 +15,7 @@ class User < ApplicationRecord
     user.password?(password) ? user : nil
   end
 
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -33,4 +34,5 @@ class User < ApplicationRecord
     self.save!
     self.session_token
   end
+
 end

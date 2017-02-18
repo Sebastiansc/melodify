@@ -15,7 +15,7 @@ class Api::PlaysController < ApplicationController
   end
 
   def recent_plays
-    @plays = Play.recent_plays
+    @plays = Play.recent_plays.where(user_id: current_user.id)
     render :index
   end
 

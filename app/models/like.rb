@@ -7,6 +7,6 @@ class Like < ApplicationRecord
   def self.recent_likes
     Like.order('created_at DESC')
         .limit(5)
-        .includes(:song, :user)
+        .includes(Song.preload)
   end
 end
