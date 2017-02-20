@@ -63,8 +63,8 @@ export default class History extends React.Component {
           </Link>
         </section>
       );
-    } else if (!this.props.loggedIn) return null;
-
+    } else if (!this.props.loggedIn || this.props.disabled) return null;
+    
     return(
       <section className='like-history-container'>
         <Loader

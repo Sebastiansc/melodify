@@ -16,7 +16,11 @@ class Api::PlaysController < ApplicationController
 
   def recent_plays
     @plays = Play.recent_plays.where(user_id: current_user.id)
-    render :index
+    if @plays.empty?
+      render json: ["empty"]
+    else
+      render :index
+    end
   end
 
   def index

@@ -19,6 +19,10 @@ class Api::LikesController < ApplicationController
 
   def recent_likes
     @likes = Like.recent_likes.where(user_id: current_user.id)
-    render :index
+    if @likes.empty?
+      render json: ['empty']
+    else
+      render :index
+    end
   end
 end
