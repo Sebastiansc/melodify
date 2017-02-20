@@ -8,8 +8,12 @@ export const createSong = song => ({
   song
 });
 
-export const getSong = (username, title) => ({
-  type: CREATE_SONG,
-  username,
-  title
+export const getSong = songId => ({
+  type: GET_SONG,
+  songId,
+});
+
+export const receiveSong = song => ({
+  type: RECEIVE_SONG,
+  song
 });

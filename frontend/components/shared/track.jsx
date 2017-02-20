@@ -74,7 +74,7 @@ export default class Track extends React.Component {
         <div className='track-text-info'>
           <div className='track-title'>
             <Link
-              to={`${this.props.track.owner}/${this.props.track.id}`}
+              to={`${this.props.track.ownerUrl}/${this.props.track.id}`}
               onClick={e => this.redirect( e)}>
               {this.props.track.title}
             </Link>

@@ -5,7 +5,7 @@ import {FETCH_COMMENTS,
         receiveComments,
         removeComment,
         renewComment,
-        receiveComment} from '../actions/comments_actions';
+        receiveComment} from '../actions/comment_actions';
 
 import {postComment,
         patchComment,

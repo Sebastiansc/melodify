@@ -1,7 +1,7 @@
 import {RECEIVE_COMMENTS,
         REMOVE_COMMENT,
         RENEW_COMMENT,
-        RECEIVE_COMMENT} from '../actions/comments_actions';
+        RECEIVE_COMMENT} from '../actions/comment_actions';
 import merge from 'lodash/merge';
 
 const CommentsReducer = (state = {}, action) => {

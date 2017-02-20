@@ -6,9 +6,11 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import AppContainer from './app_container';
 import Chart from './charts/chart';
 import Splash from './splash/splash';
+import TrackDetail from './track/track_detail';
 import UploadContainer from './upload/upload_container';
 // UTIL AND METHODS
 import { getTracks } from '../actions/tracks_actions';
+import { getSong } from '../actions/song_actions';
 
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
@@ -40,24 +42,32 @@ const Root = ({ store }) => {
     fetchTracks();
   };
 
+  const fetchSong = nextState => {
+    store.dispatch(getSong(nextState.params.songId));
+  };
 
   return(
     <Provider store={store}>
 
       <Router history={hashHistory}>
         <Route
-          path='/' component={AppContainer} >
-        <IndexRoute
-          component={Splash}
-          onEnter={(n, r) => splashEnter(n, r)}/>
-        <Route
-          path='charts/top'
-          component={Chart}
-          onEnter={n => fetchTracks(n)}
-          onChange={n => fetchNewTracks(n)}/>
+          path='/' component={AppContainer}
+        >
+          <IndexRoute
+            component={Splash}
+            onEnter={(n, r) => splashEnter(n, r)}/>
+          <Route
+            path='charts/top'
+            component={Chart}
+            onEnter={fetchTracks}
+            onChange={fetchNewTracks}/>
 
-          <Route path='upload' component={UploadContainer}/>
-        </Route>
+            <Route path='upload' component={UploadContainer}/>
+            <Route
+              path=':userUrl/:songId'
+              component={TrackDetail}
+              onEnter={fetchSong}/>
+          </Route>
       </Router>
 
     </Provider>

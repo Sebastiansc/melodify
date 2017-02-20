@@ -4,8 +4,8 @@ class Api::SongsController < ApplicationController
   end
 
   def show
-    @user = User.find(username: params[:username])
-    @song = Song.find(title: params[:title], user_id: @user.id)
+    @song = Song.find(params[:id])
+    
     render :show
   end
 
