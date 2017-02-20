@@ -6,7 +6,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import AppContainer from './app_container';
 import Chart from './charts/chart';
 import Splash from './splash/splash';
-import TrackDetail from './track/track_detail';
+import TrackDetailContainer from './track/track_detail_container';
 import UploadContainer from './upload/upload_container';
 // UTIL AND METHODS
 import { getTracks } from '../actions/tracks_actions';
@@ -65,7 +65,7 @@ const Root = ({ store }) => {
             <Route path='upload' component={UploadContainer}/>
             <Route
               path=':userUrl/:songId'
-              component={TrackDetail}
+              component={TrackDetailContainer}
               onEnter={fetchSong}/>
           </Route>
       </Router>

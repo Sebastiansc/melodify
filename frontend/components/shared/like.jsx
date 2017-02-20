@@ -13,8 +13,9 @@ export default class Like extends React.Component {
   }
 
   isLiked(props = this.props) {
-    if(!props.track.likes) debugger;
-    return  props.track.likes.includes(props.user.id);
+    if (props.track.likes) {
+      return props.track.likes.includes(props.user.id);
+    }
   }
 
   toggleLike(e) {

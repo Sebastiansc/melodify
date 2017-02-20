@@ -86,3 +86,7 @@ $breakpoints: (
 @mixin linear-trans {
   transition: all 200ms linear;
 }
+
+@mixin full-width {
+  margin: 0 -30px;
+}

@@ -1,0 +1,23 @@
+.gradient-wrap {
+  // background: linear-gradient(135deg, rgb(45, 118, 117) 0%, rgb(47, 53, 98) 100%);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  img {
+    position: absolute;
+    height: 89%;
+    top: 20px;
+    min-width: 200px;
+    min-height: 200px;
+    right: 20px;
+  }
+}
+
+.track-banner-wrapper {
+  @include full-width;
+  position: relative;
+  width: inherit;
+  height: 380px;
+}
