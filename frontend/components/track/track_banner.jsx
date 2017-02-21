@@ -68,6 +68,7 @@ export default class TrackBanner extends React.Component {
         </div>
 
         <WavePlayerContainer
+          nowPlaying={trackId => this.play(trackId)}
           track={this.props.track}/>
       </div>
     );

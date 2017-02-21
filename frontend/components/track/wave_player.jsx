@@ -13,6 +13,7 @@ export default class WavePlayer extends React.Component {
       container: '#waveform',
       waveColor: '#f2f2f2',
       progressColor: '#f50',
+      backend: 'MediaElement',
       barWidth: 2.5,
       height: 100,
       cursorColor: '#f78b56',
@@ -22,8 +23,23 @@ export default class WavePlayer extends React.Component {
     this.wavesurfer.on('seek', pos => this.positionChange(pos));
   }
 
+  silentPlay(start, end) {
+    // When using MediaElement backend play causes volume to reset to 1.
+    if (start !== null && end !== null) {
+      this.wavesurfer.play(start, end);
+    } else {
+      this.wavesurfer.play();
+    }
+    this.wavesurfer.setVolume(0);
+  }
+
   positionChange(pos) {
-    if (!this._isCurrentTrack()) return;
+    if (!this._isCurrentTrack()) {
+      this.props.nowPlaying(this.props.track.id);
+      this.silentPlay(0, this.wavesurfer.getDuration());
+      return;
+    }
+
     if (this.ignoreNextSeek) {
       this.ignoreNextSeek = false;
       return;
@@ -32,7 +48,8 @@ export default class WavePlayer extends React.Component {
   }
 
   loadAudio(props) {
-    if (!this.props.track.id) {
+    // Only load audio if it has not been loaded before and track is ready.
+    if (!this.props.track.id && props.track.id) {
       this.wavesurfer.load(props.track.audio_url);
       this.wavesurfer.on('ready', () => this.sync());
     }
@@ -44,6 +61,7 @@ export default class WavePlayer extends React.Component {
     this.loaded = true;
     // No need to sync if the song wasn't previously playing.
     if (!this.position) return;
+
     window.clearInterval(this.syncDelay);
     const duration = this.wavesurfer.getDuration();
     this.wavesurfer.seekTo(this.position + (this.delay / duration));
@@ -79,7 +97,7 @@ export default class WavePlayer extends React.Component {
   }
 
   togglePlay(props = this.props) {
-    if (props.state) this.wavesurfer.play();
+    if (props.state) this.silentPlay();
     if (!props.state) this.wavesurfer.pause();
   }
 
