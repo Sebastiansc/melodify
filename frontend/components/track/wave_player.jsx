@@ -2,6 +2,7 @@ import React from 'react';
 import WavePlayerContainer from './wave_player_container';
 
 export default class WavePlayer extends React.Component {
+
   componentDidMount() {
     this.wavesurfer = WaveSurfer.create({
       container: '#waveform',
@@ -22,17 +23,36 @@ export default class WavePlayer extends React.Component {
   loadAudio(props) {
     if (!this.props.track.id) {
       this.wavesurfer.load(props.track.audio_url);
+      this.wavesurfer.on('ready', () => this.sync());
     }
+  }
+
+  sync() {
+    window.clearInterval(this.syncDelay);
+    const duration = this.wavesurfer.getDuration();
+    this.wavesurfer.seekTo(this.position + (this.delay / duration));
+    this.togglePlay();
   }
 
   componentWillReceiveProps(props) {
     this.loadAudio(props);
-    
+
     // Sync with Player component through application state
     if (this._isPlaying(props)) {
-      if (props.state) this.wavesurfer.play();
-      if (!props.state) this.wavesurfer.pause();
+      this.togglePlay(props);
+
+      // Cache position for when the waves finish rendering.
+      if (props.position && !this.seeked) {
+        this.delay = 0;
+        this.syncDelay = window.setInterval(() => this.delay += 1, 1000);
+        this.position = props.position;
+      }
     }
+  }
+
+  togglePlay(props = this.props) {
+    if (props.state) this.wavesurfer.play();
+    if (!props.state) this.wavesurfer.pause();
   }
 
   render() {

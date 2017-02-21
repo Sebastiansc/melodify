@@ -75,11 +75,19 @@ export default class Player extends React.Component {
   }
 
   recordProgress(progress){
+    this.progress = progress;
     if (!this.seeking){
       const percentagePlayed = progress.played * 100;
       const timePassed = (percentagePlayed * this.duration) / 100;
       $(this.timeElapsed).text(this.formatTime(parseInt(timePassed)));
       this._updateProgressTrackers(percentagePlayed);
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    // Wave player is requesting current position in track.
+    if (props.fetchProgress) {
+      this.props.recordProgress(this.progress.played);
     }
   }
 
@@ -130,12 +138,10 @@ export default class Player extends React.Component {
     // dragEnd nativeEvent element adds a leading 100 to the clientX coordinate
     this.seeking = false;
     let media = this._fractionSeeked(e.nativeEvent.offsetX % 1000);
-    console.log(this.player.progress());
     this.player.seekTo(media);
   }
 
   volumeTo(volume) {
-    // debugger;
     this.setState({volume: volume});
   }
 

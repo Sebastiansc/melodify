@@ -4,6 +4,8 @@ export const PLAY = "PLAY";
 export const NEXT = "NEXT";
 export const RECORD_PLAY = "RECORD_PLAY";
 export const RECEIVE_PLAY = "RECEIVE_PLAY";
+export const RECORD_PROGRESS = "RECORD_PROGRESS";
+export const GET_PROGRESS = "GET_PROGRESS";
 
 export const nowPlaying = (songId, tracks) => ({
   type: NOW_PLAYING,
@@ -33,4 +35,13 @@ export const recordPlay = songId => ({
 export const receivePlay = track => ({
   type: RECEIVE_PLAY,
   track
+});
+
+export const recordProgress = position => ({
+  type: RECORD_PROGRESS,
+  position
+});
+
+export const getProgress = () => ({
+  type: GET_PROGRESS,
 });
