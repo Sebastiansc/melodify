@@ -1,5 +1,4 @@
 import React from 'react';
-import Grade from 'grade-js';
 import TrackContainer from '../shared/track_container';
 
 export default class TrackBanner extends React.Component {
@@ -10,7 +9,7 @@ export default class TrackBanner extends React.Component {
     //Returns an array with 3 colors in rgb format
     const paletteArray = colorThief.getPalette(sourceImage,2);
     const container = $('.gradient-wrap');
-    
+
     container.css(
       "backgroundImage",
       'linear-gradient( 135deg, rgb(' + paletteArray[0].join(',') + ') 0%, rgb(' + paletteArray[1].join(',') + ') 100%)'
