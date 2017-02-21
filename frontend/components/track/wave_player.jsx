@@ -51,17 +51,25 @@ export default class WavePlayer extends React.Component {
     // Only load audio if it has not been loaded before and track is ready.
     if (!this.props.track.id && props.track.id) {
       this.wavesurfer.load(props.track.audio_url);
-      this.wavesurfer.on('ready', () => this.sync());
+      this.wavesurfer.on('waveform-ready', () => this.ready());
     }
   }
 
-  sync() {
+  ready() {
     // Check if this.loaded to avoid calling this function more than once.
     if (this.loaded) return;
     this.loaded = true;
+
+    // Show player.
+    $('#waveform').addClass('loaded');
+
     // No need to sync if the song wasn't previously playing.
     if (!this.position) return;
 
+    this.sync();
+  }
+
+  sync() {
     window.clearInterval(this.syncDelay);
     const duration = this.wavesurfer.getDuration();
     this.wavesurfer.seekTo(this.position + (this.delay / duration));
@@ -108,7 +116,7 @@ export default class WavePlayer extends React.Component {
   render() {
     return(
       <div className='wave-player-wrapper'>
-        <div id="waveform"></div>
+        <div id="waveform" className='smooth-show'></div>
       </div>
     );
   }
