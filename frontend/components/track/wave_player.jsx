@@ -23,12 +23,10 @@ export default class WavePlayer extends React.Component {
   }
 
   positionChange(pos) {
-    this.selfSeek = true;
-    this.props.recordProgress(pos);
-  }
-
-  _isPlaying(props) {
-    return props.track.id === props.songId;
+    if (!this.isSeekLocal) {
+      this.isSeekLocal = true;
+      this.props.recordProgress(pos);
+    }
   }
 
   loadAudio(props) {
@@ -43,6 +41,7 @@ export default class WavePlayer extends React.Component {
     if (!this.position) return;
     window.clearInterval(this.syncDelay);
     const duration = this.wavesurfer.getDuration();
+    this.isSeekLocal = true;
     this.wavesurfer.seekTo(this.position + (this.delay / duration));
     this.togglePlay();
   }
@@ -51,14 +50,14 @@ export default class WavePlayer extends React.Component {
     this.loadAudio(props);
 
     // Sync with Player component through application state
-    if (this._isPlaying(props)) {
+    if (this._isCurrentTrack(props)) {
       this.togglePlay(props);
-      // Cache position for when the waves finish rendering.
-      if (props.position && !this.selfSeek) {
+      // New position being seeked was requested by this component.
+      if (props.position && !this.isSeekLocal) {
         this.seek(props);
       } else if (props.position) {
-        // New position being seeked was requested by this component.
-        this.selfSeek = false;
+        // Update isSeekLocal to prepare for next recordProgress
+        this.isSeekLocal = false;
       }
     }
   }
@@ -70,14 +69,19 @@ export default class WavePlayer extends React.Component {
     } else {
       // Wavesurfer is rendering slowly. Set counter to account for delay.
       this.syncDelay = window.setInterval(() => this.delay += 1, 1000);
+      // Cache position for when the waves finish rendering.
       this.position = props.position;
-      this.props.clearProgress();
     }
+    this.props.clearProgress();
   }
 
   togglePlay(props = this.props) {
     if (props.state) this.wavesurfer.play();
     if (!props.state) this.wavesurfer.pause();
+  }
+
+  _isCurrentTrack(props) {
+    return props.track.id === props.songId;
   }
 
   render() {

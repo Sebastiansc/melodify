@@ -76,6 +76,7 @@ export default class Player extends React.Component {
 
   recordProgress(progress){
     this.progress = progress;
+    // Only update progress trackers if user is not currently seeking.
     if (!this.seeking){
       const percentagePlayed = progress.played * 100;
       const timePassed = (percentagePlayed * this.duration) / 100;
@@ -84,14 +85,20 @@ export default class Player extends React.Component {
     }
   }
 
+  sendProgressUpdate(position) {
+    this.isSeekLocal = true;
+    this.props.recordProgress(position);
+  }
+
   componentWillReceiveProps(props) {
     // Wave player is requesting current position in track.
     if (props.fetchProgress) {
-      this.props.recordProgress(this.progress.played);
+      this.sendProgressUpdate(this.progress.played);
     }
-
-    if (props.position) {
+    if (props.position && !this.isSeekLocal) {
       this.player.seekTo(props.position);
+    } else if (props.position) {
+      this.isSeekLocal = false;
     }
   }
 
@@ -119,6 +126,7 @@ export default class Player extends React.Component {
   }
 
   startDrag(e){
+    // Remove data transfer default shadow image.
     e.dataTransfer.setDragImage(this.handle, -99999, -99999);
     this.seeking = true;
   }
@@ -136,7 +144,7 @@ export default class Player extends React.Component {
 
   jumpTo(e) {
     const position = this._fractionSeeked(e.nativeEvent.offsetX);
-    this.props.recordProgress(position);
+    this.sendProgressUpdate(position);
     this.player.seekTo(position);
   }
 
@@ -144,7 +152,7 @@ export default class Player extends React.Component {
     // dragEnd nativeEvent element adds a leading 100 to the clientX coordinate
     this.seeking = false;
     let media = this._fractionSeeked(e.nativeEvent.offsetX % 1000);
-    this.props.recordProgress(media);
+    this.sendProgressUpdate(media);
     this.player.seekTo(media);
   }
 
