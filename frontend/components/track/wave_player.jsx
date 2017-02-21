@@ -42,8 +42,9 @@ export default class WavePlayer extends React.Component {
       this.togglePlay(props);
 
       // Cache position for when the waves finish rendering.
-      if (props.position && !this.seeked) {
+      if (props.position) {
         this.delay = 0;
+        // Wavesurfer is rendering slowly. Set counter to account for delay.
         this.syncDelay = window.setInterval(() => this.delay += 1, 1000);
         this.position = props.position;
       }
