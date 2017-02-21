@@ -66,7 +66,9 @@ export default class Navbar extends React.Component {
                 col-sm-4'
                 />
               <div
-                className='upload-wrapper
+                className='
+                upload-wrapper
+                small-upload
                 col-lg-1
                 col-md-1
                 col-sm-1'>
