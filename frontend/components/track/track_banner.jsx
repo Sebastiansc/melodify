@@ -1,5 +1,6 @@
 import React from 'react';
 import TrackContainer from '../shared/track_container';
+import WavePlayerContainer from './wave_player_container';
 
 // Canvas not longer being added to document so this line is not necessary.
 // However, it is uknown why this behavior changed so keep it under observation.
@@ -35,7 +36,6 @@ export default class TrackBanner extends React.Component {
   togglePlay(e) {
     // Avoid playing song when clicking on a child element.
     if (this.wrapper !== e.target) return;
-
     this.player.getWrappedInstance().togglePlay(e);
   }
 
@@ -44,6 +44,7 @@ export default class TrackBanner extends React.Component {
       <div
         className='track-banner-wrapper'
         onClick={ e => this.togglePlay(e)} >
+
         <div
           className='gradient-wrap smooth-show'
           ref={wrapper => this.wrapper = wrapper}>
@@ -66,6 +67,8 @@ export default class TrackBanner extends React.Component {
           </div>
         </div>
 
+        <WavePlayerContainer
+          track={this.props.track}/>
       </div>
     );
   }

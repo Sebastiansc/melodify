@@ -89,3 +89,14 @@
 .loaded {
   opacity: 1;
 }
+
+.wave-player-wrapper {
+  position: absolute;
+  left: 30px;
+  right: 390px;
+  bottom: 0;
+}
+
+#waveform {
+  margin-bottom: 30px;
+}
