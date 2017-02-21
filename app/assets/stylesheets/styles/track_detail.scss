@@ -1,5 +1,4 @@
 .gradient-wrap {
-  // background: linear-gradient(135deg, rgb(45, 118, 117) 0%, rgb(47, 53, 98) 100%);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -43,11 +42,14 @@
     height: 100%;
     background: transparent !important;
   }
+  .track-artwork-cover {
+    background: transparent !important;
+  }
   .track-text-info {
     position: absolute;
-    top: 49px;
+    top: 22px;
     display: flex;
-    left: 120px;
+    left: 95px;
     flex-direction: column;
     font-weight: 100;
     .track-title {

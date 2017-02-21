@@ -111,3 +111,12 @@ li {
 .hide {
   opacity: 0;
 }
+
+.smooth-show {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+.show {
+  opacity: 1;
+}

@@ -8,7 +8,11 @@ import LikeContainer from './like_container';
 export default class Track extends React.Component {
   constructor(props){
     super(props);
-    this.state = { background: ''};
+    this.state = {
+      background:
+       'linear-gradient(135deg, rgb(45, 118, 117) 0%, rgb(47, 53, 98) 100%)'
+    };
+    this.componentWillReceiveProps = this.componentWillMount = this.attachImage;
   }
 
   _isSelected() {
@@ -36,14 +40,6 @@ export default class Track extends React.Component {
     }
   }
 
-  getBackground() {
-    if (this.props.track.id) {
-      return `url('${this.props.track.cover_photo}')`;
-    } else {
-      return '';
-    }
-  }
-
   redirect(e) {
     e.stopPropagation(e);
   }
@@ -53,10 +49,13 @@ export default class Track extends React.Component {
     $('.bg').addClass('loaded');
   }
 
-  componentWillMount() {
-    const image = new Image();
-    image.src = this.props.track.cover_photo;
-    image.onload = (e) => this.setBackground(e);
+  attachImage(props = this.props) {
+    // Avoid request to /undefined.
+    if (props.track.id) {
+      const image = new Image();
+      image.src = props.track.cover_photo;
+      image.onload = (e) => this.setBackground(e);
+    }
   }
 
   render(){
@@ -64,7 +63,7 @@ export default class Track extends React.Component {
       <li className={`track ${this.props.klass}`}>
         <div className='track-artwork default-bg'>
           <span
-            className='track-artwork-cover bg'
+            className='track-artwork-cover bg smooth-show'
             style={{backgroundImage: this.state.background}}>
           </span>
           <div className='artwork-shade'></div>

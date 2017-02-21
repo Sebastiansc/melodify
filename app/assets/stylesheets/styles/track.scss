@@ -16,9 +16,7 @@
 }
 
 .track-artwork-cover {
-  opacity: 0;
   @include overlay;
-  transition: opacity 500ms;
   background-size: cover;
   background-position: 50% 50%;
 }
@@ -71,25 +69,8 @@
   border-color: $dark-orange;
 }
 
-@mixin play-action($url) {
-  background-image: url($url);
-  content: '';
-  content: '';
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background-size: 40% 60%;
-  background-position: 60% center;
-  background-repeat: no-repeat;
-  transition: opacity .3s;
-  opacity: 1;
-}
-
 .play-button:before {
-  @include play-action("https://res.cloudinary.com/flikr/image/upload/v1486414416/play-arrow_khem0o.svg")
+  @include play-action("https://res.cloudinary.com/flikr/image/upload/v1486414416/play-arrow_khem0o.svg");
 }
 
 .playing {
