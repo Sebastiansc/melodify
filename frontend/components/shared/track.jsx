@@ -10,7 +10,7 @@ export default class Track extends React.Component {
     super(props);
     this.state = {
       background:
-       'linear-gradient(135deg, rgb(45, 118, 117) 0%, rgb(47, 53, 98) 100%)'
+       ''
     };
     this.componentWillReceiveProps = this.componentWillMount = this.attachImage;
   }
@@ -45,6 +45,7 @@ export default class Track extends React.Component {
   }
 
   _setBackground(e) {
+    if (!this.artwork) return;
     this.setState({ background: `url('${e.target.src}')` });
     $('.bg').addClass('loaded');
   }
@@ -64,7 +65,8 @@ export default class Track extends React.Component {
         <div className='track-artwork default-bg'>
           <span
             className='track-artwork-cover bg smooth-show'
-            style={{backgroundImage: this.state.background}}>
+            style={{backgroundImage: this.state.background}}
+            ref={artwork => this.artwork = artwork}>
           </span>
           <div className='artwork-shade'></div>
           <div className={`play-overlay ${this.playState()}`}>
