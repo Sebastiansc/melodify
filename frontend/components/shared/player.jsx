@@ -164,7 +164,7 @@ export default class Player extends React.Component {
     // A song has been selected
     if (this.props.songId) {
       return(
-        <div className='player'>
+        <div className='player animated fadeInUp'>
           <ReactPlayer
             ref={player => { this.player = player;}}
             url={this.audioUrl()}
