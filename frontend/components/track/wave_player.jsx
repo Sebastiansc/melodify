@@ -23,10 +23,12 @@ export default class WavePlayer extends React.Component {
   }
 
   positionChange(pos) {
-    if (!this.isSeekLocal) {
-      this.isSeekLocal = true;
-      this.props.recordProgress(pos);
+    if (!this._isCurrentTrack()) return;
+    if (this.ignoreNextSeek) {
+      this.ignoreNextSeek = false;
+      return;
     }
+    this.props.recordProgress(pos, 'wave');
   }
 
   loadAudio(props) {
@@ -37,11 +39,13 @@ export default class WavePlayer extends React.Component {
   }
 
   sync() {
+    // Check if this.loaded to avoid calling this function more than once.
+    if (this.loaded) return;
     this.loaded = true;
+    // No need to sync if the song wasn't previously playing.
     if (!this.position) return;
     window.clearInterval(this.syncDelay);
     const duration = this.wavesurfer.getDuration();
-    this.isSeekLocal = true;
     this.wavesurfer.seekTo(this.position + (this.delay / duration));
     this.togglePlay();
   }
@@ -52,12 +56,10 @@ export default class WavePlayer extends React.Component {
     // Sync with Player component through application state
     if (this._isCurrentTrack(props)) {
       this.togglePlay(props);
-      // New position being seeked was requested by this component.
-      if (props.position && !this.isSeekLocal) {
+      // New position was sent by Player component.
+      if (props.position && props.updater === 'player') {
+        this.ignoreNextSeek = true;
         this.seek(props);
-      } else if (props.position) {
-        // Update isSeekLocal to prepare for next recordProgress
-        this.isSeekLocal = false;
       }
     }
   }
@@ -72,6 +74,7 @@ export default class WavePlayer extends React.Component {
       // Cache position for when the waves finish rendering.
       this.position = props.position;
     }
+    // Clear playing.progress in case component receives other new props.
     this.props.clearProgress();
   }
 
@@ -80,7 +83,7 @@ export default class WavePlayer extends React.Component {
     if (!props.state) this.wavesurfer.pause();
   }
 
-  _isCurrentTrack(props) {
+  _isCurrentTrack(props = this.props) {
     return props.track.id === props.songId;
   }
 

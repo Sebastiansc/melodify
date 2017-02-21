@@ -12,7 +12,8 @@ const mapStateToProps = ({playing, session}) => ({
   state: playing.state,
   tracks: playing.tracks,
   songId: playing.songId,
-  position: playing.position
+  position: playing.position,
+  updater: playing.updater
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -20,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
   pause: () => dispatch(pause()),
   next: idx => dispatch(next(idx)),
   recordPlay: songId => dispatch(recordPlay(songId)),
-  recordProgress: position => dispatch(recordProgress(position)),
+  recordProgress: (position, comp) => dispatch(recordProgress(position, comp)),
   clearProgress: () => dispatch(clearProgress())
 });
 

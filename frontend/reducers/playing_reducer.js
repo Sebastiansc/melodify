@@ -16,6 +16,7 @@ const _null = {
   state: false,
   tracks: [],
   position: 0,
+  updater: '',
   fetchProgress: false
 };
 
@@ -45,12 +46,14 @@ const PlayingReducer = (state = _null, action) => {
     case RECORD_PROGRESS:
       return merge(
         newState,
-        { position: action.position, fetchProgress: false }
+        { position: action.position,
+          fetchProgress: false,
+          updater: action.updater }
       );
     case GET_PROGRESS:
       return merge(newState, { fetchProgress: true });
     case CLEAR_PROGRESS:
-      return merge(newState, { position: 0 });
+      return merge(newState, { position: 0, updater: ''});
     default:
       return state;
   }

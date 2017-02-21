@@ -38,9 +38,10 @@ export const receivePlay = track => ({
   track
 });
 
-export const recordProgress = position => ({
+export const recordProgress = (position, updater) => ({
   type: RECORD_PROGRESS,
-  position
+  position,
+  updater
 });
 
 export const getProgress = () => ({

@@ -86,8 +86,7 @@ export default class Player extends React.Component {
   }
 
   sendProgressUpdate(position) {
-    this.isSeekLocal = true;
-    this.props.recordProgress(position);
+    this.props.recordProgress(position, 'player');
   }
 
   componentWillReceiveProps(props) {
@@ -95,10 +94,10 @@ export default class Player extends React.Component {
     if (props.fetchProgress) {
       this.sendProgressUpdate(this.progress.played);
     }
-    if (props.position && !this.isSeekLocal) {
+    if (props.position && props.updater === 'wave') {
       this.player.seekTo(props.position);
-    } else if (props.position) {
-      this.isSeekLocal = false;
+      // Clear playing.progress in case component receives other new props.
+      this.props.clearProgress();
     }
   }
 
