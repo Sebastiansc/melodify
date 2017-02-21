@@ -2,6 +2,11 @@ import React from 'react';
 import WavePlayerContainer from './wave_player_container';
 
 export default class WavePlayer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.loaded = false;
+    this.delay = 0;
+  }
 
   componentDidMount() {
     this.wavesurfer = WaveSurfer.create({
@@ -28,6 +33,7 @@ export default class WavePlayer extends React.Component {
   }
 
   sync() {
+    this.loaded = true;
     if (!this.position) return;
     window.clearInterval(this.syncDelay);
     const duration = this.wavesurfer.getDuration();
@@ -41,14 +47,22 @@ export default class WavePlayer extends React.Component {
     // Sync with Player component through application state
     if (this._isPlaying(props)) {
       this.togglePlay(props);
-
       // Cache position for when the waves finish rendering.
       if (props.position) {
-        this.delay = 0;
-        // Wavesurfer is rendering slowly. Set counter to account for delay.
-        this.syncDelay = window.setInterval(() => this.delay += 1, 1000);
-        this.position = props.position;
+        this.seek(props);
       }
+    }
+  }
+
+  seek(props) {
+    // Waves have already loaded.
+    if (this.loaded) {
+      this.wavesurfer.seekTo(props.position);
+    } else {
+      // Wavesurfer is rendering slowly. Set counter to account for delay.
+      this.syncDelay = window.setInterval(() => this.delay += 1, 1000);
+      this.position = props.position;
+      this.props.clearProgress();
     }
   }
 

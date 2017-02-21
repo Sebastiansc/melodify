@@ -4,7 +4,8 @@ import { play,
          pause,
          next,
          recordPlay,
-         recordProgress} from '../../actions/playing_actions';
+         recordProgress,
+         clearProgress} from '../../actions/playing_actions';
 
 const mapStateToProps = ({playing, session}) => ({
   loggedIn: Boolean(session.currentUser.id),
@@ -20,7 +21,8 @@ const mapDispatchToProps = dispatch => ({
   pause: () => dispatch(pause()),
   next: idx => dispatch(next(idx)),
   recordPlay: songId => dispatch(recordPlay(songId)),
-  recordProgress: position => dispatch(recordProgress(position))
+  recordProgress: position => dispatch(recordProgress(position)),
+  clearProgress: () => dispatch(clearProgress())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

@@ -1,6 +1,11 @@
 import { connect } from 'react-redux';
 import WavePlayer from './wave_player';
-import { play, pause, next, recordPlay } from '../../actions/playing_actions';
+import { play,
+         pause,
+         next,
+         recordPlay,
+         recordProgress,
+         clearProgress} from '../../actions/playing_actions';
 
 const mapStateToProps = ({playing, session}) => ({
   loggedIn: Boolean(session.currentUser.id),
@@ -14,7 +19,9 @@ const mapDispatchToProps = dispatch => ({
   play: () => dispatch(play()),
   pause: () => dispatch(pause()),
   next: idx => dispatch(next(idx)),
-  recordPlay: songId => dispatch(recordPlay(songId))
+  recordPlay: songId => dispatch(recordPlay(songId)),
+  recordProgress: position => dispatch(recordProgress(position)),
+  clearProgress: () => dispatch(clearProgress())
 });
 
 export default connect(

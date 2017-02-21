@@ -131,13 +131,16 @@ export default class Player extends React.Component {
   }
 
   jumpTo(e) {
-    this.player.seekTo(this._fractionSeeked(e.nativeEvent.offsetX));
+    const position = this._fractionSeeked(e.nativeEvent.offsetX);
+    this.props.recordProgress(position);
+    this.player.seekTo(position);
   }
 
   endDrag(e) {
     // dragEnd nativeEvent element adds a leading 100 to the clientX coordinate
     this.seeking = false;
     let media = this._fractionSeeked(e.nativeEvent.offsetX % 1000);
+    this.props.recordProgress(media);
     this.player.seekTo(media);
   }
 
