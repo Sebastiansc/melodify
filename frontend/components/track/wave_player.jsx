@@ -28,6 +28,7 @@ export default class WavePlayer extends React.Component {
   }
 
   sync() {
+    if (!this.position) return;
     window.clearInterval(this.syncDelay);
     const duration = this.wavesurfer.getDuration();
     this.wavesurfer.seekTo(this.position + (this.delay / duration));

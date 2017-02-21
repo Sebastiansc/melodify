@@ -4,7 +4,8 @@ import { NOW_PLAYING,
          PLAY,
          NEXT,
          RECORD_PROGRESS,
-         GET_PROGRESS} from '../actions/playing_actions';
+         GET_PROGRESS,
+         CLEAR_PROGRESS} from '../actions/playing_actions';
 import merge from 'lodash/merge';
 
 // state - boolean. Playing or paused.
@@ -48,6 +49,8 @@ const PlayingReducer = (state = _null, action) => {
       );
     case GET_PROGRESS:
       return merge(newState, { fetchProgress: true });
+    case CLEAR_PROGRESS:
+      return merge(newState, { position: 0 });
     default:
       return state;
   }
