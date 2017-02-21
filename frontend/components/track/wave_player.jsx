@@ -19,6 +19,12 @@ export default class WavePlayer extends React.Component {
       hideScrollbar: true,
     });
     this.wavesurfer.setVolume(0);
+    this.wavesurfer.on('seek', pos => this.positionChange(pos));
+  }
+
+  positionChange(pos) {
+    this.selfSeek = true;
+    this.props.recordProgress(pos);
   }
 
   _isPlaying(props) {
@@ -48,8 +54,11 @@ export default class WavePlayer extends React.Component {
     if (this._isPlaying(props)) {
       this.togglePlay(props);
       // Cache position for when the waves finish rendering.
-      if (props.position) {
+      if (props.position && !this.selfSeek) {
         this.seek(props);
+      } else if (props.position) {
+        // New position being seeked was requested by this component.
+        this.selfSeek = false;
       }
     }
   }

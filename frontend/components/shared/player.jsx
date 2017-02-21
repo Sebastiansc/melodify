@@ -89,6 +89,10 @@ export default class Player extends React.Component {
     if (props.fetchProgress) {
       this.props.recordProgress(this.progress.played);
     }
+
+    if (props.position) {
+      this.player.seekTo(props.position);
+    }
   }
 
   _updateProgressTrackers(percentagePlayed) {
