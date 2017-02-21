@@ -90,3 +90,8 @@ $breakpoints: (
 @mixin full-width {
   margin: 0 -30px;
 }
+
+@mixin not-active {
+  pointer-events: none;
+  cursor: default;
+}

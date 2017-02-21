@@ -18,6 +18,72 @@
 .track-banner-wrapper {
   @include full-width;
   position: relative;
+  padding: 30px 560px 20px 30px;
   width: inherit;
   height: 380px;
+  background: #e5e5e5;
+}
+
+.track-detail-actions {
+  display: flex;
+}
+
+.track-detail-player {
+  z-index: 100;
+  width: 100px;
+  height: 100px;
+  .play-overlay {
+    display: block;
+    top: 20%;
+    bottom: 20%;
+    right: 20%;
+    left: 20%;
+  }
+  .track-artwork {
+    height: 100%;
+    background: transparent !important;
+  }
+  .track-text-info {
+    position: absolute;
+    top: 49px;
+    display: flex;
+    left: 120px;
+    flex-direction: column;
+    font-weight: 100;
+    .track-title {
+      color: white;
+      background-color: rgba(0,0,0,.8);
+      padding: 0px 7px;
+      order: 2;
+      font-size: $font-lg;
+      @include not-active;
+    }
+    .artist-name {
+      margin-bottom: 5px;
+    }
+    .artist-name a {
+      color: $bordergray;
+      padding: 3px 7px;
+      background-color: rgba(0,0,0,.8);
+      font-size: $font-sm;
+    }
+  }
+}
+
+.track-detail-player .track-artwork:hover {
+  .artwork-shade {
+    display: none;
+  }
+  .track-actions {
+    display: none;
+  }
+}
+
+.track-detail-cover {
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+
+.loaded {
+  opacity: 1;
 }

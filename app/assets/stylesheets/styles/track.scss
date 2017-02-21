@@ -1,8 +1,24 @@
+.track {
+  position: relative;
+}
+
 .track-artwork {
   position: relative;
   width: 100%;
   display: block;
   height: 70%;
+  opacity: 0;
+}
+
+.default-bg {
+  opacity: 1;
+  background: linear-gradient(135deg,#e6846e,#846170);
+}
+
+.track-artwork-cover {
+  opacity: 0;
+  @include overlay;
+  transition: opacity 500ms;
   background-size: cover;
   background-position: 50% 50%;
 }

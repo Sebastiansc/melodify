@@ -8,6 +8,7 @@ import LikeContainer from './like_container';
 export default class Track extends React.Component {
   constructor(props){
     super(props);
+    this.state = { background: ''};
   }
 
   _isSelected() {
@@ -39,7 +40,7 @@ export default class Track extends React.Component {
     if (this.props.track.id) {
       return `url('${this.props.track.cover_photo}')`;
     } else {
-      return 'linear-gradient(135deg,#e6846e,#846170)';
+      return '';
     }
   }
 
@@ -47,14 +48,25 @@ export default class Track extends React.Component {
     e.stopPropagation(e);
   }
 
+  setBackground(e) {
+    this.setState({ background: `url('${e.target.src}')` });
+    $('.bg').addClass('loaded');
+  }
+
+  componentWillMount() {
+    const image = new Image();
+    image.src = this.props.track.cover_photo;
+    image.onload = (e) => this.setBackground(e);
+  }
+
   render(){
     return(
       <li className={`track ${this.props.klass}`}>
-        <div
-          className='track-artwork'
-          style={{backgroundImage: this.getBackground()}}
-        >
-
+        <div className='track-artwork default-bg'>
+          <span
+            className='track-artwork-cover bg'
+            style={{backgroundImage: this.state.background}}>
+          </span>
           <div className='artwork-shade'></div>
           <div className={`play-overlay ${this.playState()}`}>
             <button className={`play-button `}
