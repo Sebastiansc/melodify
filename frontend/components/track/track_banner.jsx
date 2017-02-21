@@ -1,7 +1,15 @@
 import React from 'react';
 import TrackContainer from '../shared/track_container';
 
+// Canvas not longer being added to document so this line is not necessary.
+// However, it is uknown why this behavior changed so keep it under observation.
+// this.componentWillUnmount = this.componentDidMount = this.dropCanvas;
+
 export default class TrackBanner extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   getGradient() {
     // Add opacity transition class.
     $('.track-detail-cover').addClass('loaded');
@@ -29,11 +37,6 @@ export default class TrackBanner extends React.Component {
     if (this.wrapper !== e.target) return;
 
     this.player.getWrappedInstance().togglePlay(e);
-  }
-
-  componentWillUnmount() {
-    // ColorThief library appends a canvas to the DOM to read colors.
-    $('canvas').remove();
   }
 
   render() {

@@ -44,7 +44,7 @@ export default class Track extends React.Component {
     e.stopPropagation(e);
   }
 
-  setBackground(e) {
+  _setBackground(e) {
     this.setState({ background: `url('${e.target.src}')` });
     $('.bg').addClass('loaded');
   }
@@ -54,7 +54,7 @@ export default class Track extends React.Component {
     if (props.track.id) {
       const image = new Image();
       image.src = props.track.cover_photo;
-      image.onload = (e) => this.setBackground(e);
+      image.onload = (e) => this._setBackground(e);
     }
   }
 

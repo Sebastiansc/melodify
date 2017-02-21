@@ -10,7 +10,7 @@ import TrackDetailContainer from './track/track_detail_container';
 import UploadContainer from './upload/upload_container';
 // UTIL AND METHODS
 import { getTracks } from '../actions/tracks_actions';
-import { getSong } from '../actions/song_actions';
+import { getSong, clearSong } from '../actions/song_actions';
 
 const Root = ({ store }) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
@@ -35,6 +35,7 @@ const Root = ({ store }) => {
 
   const fetchTracks = nextState => {
     store.dispatch(getTracks());
+    toTop();
   };
 
   const fetchNewTracks = nextState => {
@@ -44,6 +45,15 @@ const Root = ({ store }) => {
 
   const fetchSong = nextState => {
     store.dispatch(getSong(nextState.params.songId));
+    toTop();
+  };
+
+  const dropSongFromState = nextState => {
+    store.dispatch(clearSong());
+  };
+
+  const toTop = () => {
+    window.scroll(0, 0);
   };
 
   return(
@@ -55,18 +65,18 @@ const Root = ({ store }) => {
         >
           <IndexRoute
             component={Splash}
-            onEnter={(n, r) => splashEnter(n, r)}/>
+            onEnter={splashEnter}/>
           <Route
             path='charts/top'
             component={Chart}
             onEnter={fetchTracks}
             onChange={fetchNewTracks}/>
-
             <Route path='upload' component={UploadContainer}/>
             <Route
               path=':userUrl/:songId'
               component={TrackDetailContainer}
-              onEnter={fetchSong}/>
+              onEnter={fetchSong}
+              onLeave={dropSongFromState}/>
           </Route>
       </Router>
 
