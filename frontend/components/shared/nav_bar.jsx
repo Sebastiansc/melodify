@@ -131,7 +131,8 @@ export default class Navbar extends React.Component {
                   className={`profile-menu-link`}>
                   <span className='profile-menu-pic'></span>
                   <div className='profile-menu-name'>
-                    <span>{this.props.user.username}</span>
+                    <span>sebastian crux</span>
+                    <span className='menu-arrow'></span>
                   </div>
                   <div className={ `profile-menu-dropdown`}>
                     <ul className='dropdown-list'>

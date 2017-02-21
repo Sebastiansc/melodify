@@ -45,6 +45,7 @@ export default class Track extends React.Component {
   }
 
   _setBackground(e) {
+    // Check artwork to avoid setting state before the component has mounted.
     if (!this.artwork) return;
     this.setState({ background: `url('${e.target.src}')` });
     $('.bg').addClass('loaded');
