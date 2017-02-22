@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const PlayerSoundbadge = ({track}) => (
   <div className='player-soundbadge'>
-    <Link to='#'>
+    <Link to={`${track.ownerUrl}/${track.id}`}>
       <span
         className='player-soundbadge-cover'
         style={{backgroundImage: `url('${track.thumbnail}')`}}>
@@ -15,8 +15,8 @@ const PlayerSoundbadge = ({track}) => (
       </Link>
       <Link
         className='player-artist'
-        to={`${track.artist}/${track.title}`}>
-        {track.artist}
+        to={`${track.ownerUrl}/${track.id}`}>
+        {track.title}
       </Link>
     </div>
   </div>

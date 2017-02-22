@@ -32,12 +32,14 @@ export default class WavePlayer extends React.Component {
     });
 
     this.wavesurfer.on('play',  () => {
+      if (!this.loaded) return;
       $('#waveform').css('opacity', 1);
     });
 
     this.wavesurfer.on('finish', () => {
       this.wavesurfer.pause();
-      this.wavesurfer.stop();
+      this.ignoreNextSeek = true;
+      this.wavesurfer.seekTo(0);
     });
   }
 
