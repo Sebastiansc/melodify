@@ -19,7 +19,6 @@ export default class TrackItem extends React.Component {
   }
 
   togglePlay(e) {
-    // console.log("track item #play");
     this.player.getWrappedInstance().togglePlay(e);
   }
 

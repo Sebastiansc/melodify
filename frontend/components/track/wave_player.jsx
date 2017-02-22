@@ -12,10 +12,10 @@ export default class WavePlayer extends React.Component {
     this.wavesurfer = WaveSurfer.create({
       container: '#waveform',
       waveColor: '#f2f2f2',
-      progressColor: '#f50',
+      progressColor: '#f30',
       backend: 'MediaElement',
       barWidth: 2.5,
-      height: 100,
+      height: 120,
       cursorColor: '#f78b56',
       hideScrollbar: true,
     });
@@ -28,7 +28,7 @@ export default class WavePlayer extends React.Component {
     this.wavesurfer.on('seek', pos => this.positionChange(pos));
 
     this.wavesurfer.on('pause',  () => {
-      $('#waveform').css('opacity', 0.7);
+      $('#waveform').css('opacity', 0.8);
     });
 
     this.wavesurfer.on('play',  () => {

@@ -37,8 +37,9 @@ export default class Like extends React.Component {
                     this.props.unlikedClass;
     return(
       <button
-        className={klass}
+        className={`${klass} heart`}
         onClick={e => this.toggleLike(e)}>
+        Like
       </button>
     );
   }

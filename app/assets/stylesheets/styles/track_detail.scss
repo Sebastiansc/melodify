@@ -20,6 +20,7 @@
   padding: 30px 560px 20px 30px;
   width: inherit;
   height: 380px;
+  margin-bottom: 25px;
   background: #e5e5e5;
 }
 
@@ -122,4 +123,75 @@
   background: $gray9;
   border-radius: 30px;
   padding: 1px 13px;
+}
+
+// ---------------------- COMMENTS --------------------------
+
+.comment-form {
+  display: flex;
+  height: 40px;
+  a {
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.author-pic {
+  width: 40px;
+  height: 40px;
+}
+
+.text-wrapper {
+  flex-grow: 7;
+  padding: 5px;
+  background: $lightgray;
+  border: 1px solid $dustwhite;
+}
+
+
+.comment-box {
+  @include placeholder($gray9);
+  width: 100%;
+  cursor: pointer;
+  color: #333;
+  height: 100%;
+  background: white;
+  padding-left: 9px;
+  border: 1px solid $dustwhite;
+  border-radius: $round;
+}
+
+.comment-box:focus {
+  cursor: text;
+  border-color: #999;
+}
+
+.comment-container {
+  padding-top: 0;
+}
+
+.track-share-interaction {
+  display: flex;
+  button:before {
+    top: 4px;
+    left: 7.5px;
+  }
+  button {
+    font-weight: 100;
+    width: 70px;
+    text-align: right;
+    padding-right: 10px;
+    height: 26px;
+  }
+  .chart-heart {
+    color: $orange;
+  }
+}
+
+.comment-container-transition-layer {
+  margin-bottom: 10px;
 }

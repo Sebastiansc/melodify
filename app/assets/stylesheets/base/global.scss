@@ -120,3 +120,11 @@ li {
 .show {
   opacity: 1;
 }
+
+textarea {
+  resize: none;
+}
+
+.orange-bg {
+  background: linear-gradient(135deg,#e6846e,#846170);
+}

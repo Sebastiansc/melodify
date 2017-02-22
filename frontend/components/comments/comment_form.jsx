@@ -2,7 +2,9 @@ import React from 'react';
 import CommentItem from './comment_item';
 import {Link} from 'react-router';
 
-class CommentForm extends React.Component{
+const photoUrl = "https://res.cloudinary.com/flikr/image/upload/v1486934639/avatars-000292048508-r656e6-t120x120_eotdip.jpg";
+
+export default class CommentForm extends React.Component{
   constructor(props){
     super(props);
     this.state = {body: ''};
@@ -21,45 +23,34 @@ class CommentForm extends React.Component{
     this.setState({body: ''});
   }
 
-  render(){
-    const klass = this.state.body ?
-      'submit-comment' :
-      'submit-comment disable-comments';
-    return(
-      <div className='comments'>
-        <ul className='comments-stream'>
-          {this.props.comments.map(comment => (
-            <CommentItem
-              key={comment.id}
-              comment={comment}
-              user={this.props.user}
-              updateComment={this.props.updateComment}
-              deleteComment={this.props.deleteComment}/>)
-          )}
+  authorPhoto() {
+    return this.props.user.cover_photo || photoUrl;
+  }
 
-          <div className='comment-form'>
+  render(){
+    return(
+      <div className='comment-container-transition-layer animated fadeIn'>
+        <div className='comment-form'>
+
+          <div className='author-pic'>
             <Link
-              className='author-pic'
-              to={`home/profile/${this.props.user.id}`}>
-              <img src={this.props.user.image_url}></img>
+              to={`home/profile/${this.props.user.id}`}
+              style={{backgroundImage: `url('${this.authorPhoto()}')`}}>
             </Link>
-            <textarea
-              onChange={e => this.update(e)}
-              value={this.state.body}
-              placeholder='Comment...'>
-            </textarea>
           </div>
 
-          <button
-            className={klass}
-            onClick={() => this.sendComment()}>
-            Comment
-          </button>
-        </ul>
+          <div className='text-wrapper'>
+            <input
+              className='comment-box'
+              onSubmit={this.sendComment}
+              onChange={e => this.update(e)}
+              value={this.state.body}
+              placeholder='Write a comment'>
+            </input>
+          </div>
 
+        </div>
       </div>
     );
   }
 }
-
-export default CommentForm;
