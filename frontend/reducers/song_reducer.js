@@ -13,7 +13,7 @@ const SongsReducer = (state = _null, action) => {
     case RECEIVE_SONG:
       return action.song;
     case CLEAR_SONG:
-      return {};
+      return _null;
     default:
       return state;
   }

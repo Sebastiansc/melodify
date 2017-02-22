@@ -29,9 +29,6 @@ export default class Track extends React.Component {
     // element rendering Track and causing play to be called
     // twice
     e.stopPropagation();
-    // Add playing backgroung to chart item
-    $('.chart-track').removeClass('chart-track-playing');
-    $(`#${this.props.track.id}`).addClass('chart-track-playing');
 
     if (this.props.state && this._isSelected()) {
       this.props.pause();

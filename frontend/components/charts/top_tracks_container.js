@@ -4,8 +4,9 @@ import { getTracks } from '../../actions/tracks_actions';
 import { toArray } from '../../reducers/selectors';
 import { nowPlaying } from '../../actions/playing_actions';
 
-const mapStateToProps = ({tracks}) => ({
-  tracks: toArray(tracks)
+const mapStateToProps = ({tracks, playing}) => ({
+  tracks: toArray(tracks),
+  playing
 });
 
 const mapDispatchToProps = dispatch => ({

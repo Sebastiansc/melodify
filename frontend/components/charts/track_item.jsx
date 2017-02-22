@@ -22,6 +22,12 @@ export default class TrackItem extends React.Component {
     this.player.getWrappedInstance().togglePlay(e);
   }
 
+  componentWillReceiveProps(props) {
+    if (props.playing.songId === props.track.id) {
+      this.playLook();
+    }
+  }
+
 
   render(){
     return(

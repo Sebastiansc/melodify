@@ -20,7 +20,7 @@ const TrackDetail = ({track, nowPlaying}) => (
         <div className='track-detail-main-content'>
 
           <div className='about-left'>
-            <div className='artist-cover orange-bg'>
+            <div className='artist-cover'>
               <Link to='#'></Link>
             </div>
             <div className='td-artist-name'>

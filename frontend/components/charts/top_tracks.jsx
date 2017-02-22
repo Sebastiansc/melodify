@@ -116,6 +116,7 @@ export default class TopTracks extends React.Component {
         </div>
         {this.props.tracks.map((track, idx) => (
           <TrackItem
+            playing={this.props.playing}
             position={idx + 1}
             play={songId => this.play(songId)}
             key={track.id}
