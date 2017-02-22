@@ -150,6 +150,9 @@
   padding: 5px;
   background: $lightgray;
   border: 1px solid $dustwhite;
+  form {
+    height: 100%;
+  }
 }
 
 
@@ -172,6 +175,7 @@
 
 .comment-container {
   padding-top: 0;
+  min-height: 70vh;
 }
 
 .track-share-interaction {
@@ -272,3 +276,90 @@
   color: #999;
 }
 // ----------
+// COMMENTS STREAM
+
+.comments-stream-header {
+  margin-bottom: 0 !important;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $dustwhite;
+  &:before {
+    @include before-image;
+    margin-right: 5px;
+    background-image: url('https://res.cloudinary.com/flikr/image/upload/v1487273754/comments_on8bgs.svg');
+    width: 22px;
+    height: 22px;
+    background-size: cover;
+    vertical-align: -7px;
+  }
+}
+// ----------
+
+.author-default-bg {
+  border-radius: 50%;
+  float: left;
+  width: 40px;
+  height: 40px;
+}
+
+
+.comment-info {
+  height: 100%;
+}
+
+.comment-actions-wrapper {
+  padding-left: 50px;
+  height: 100%;
+  position: relative;
+}
+
+.comment-author-pic {
+  height: 100%;
+  display: block;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.comment-author {
+  display: flex;
+  color: $gray9;
+  justify-content: space-between;
+  span {
+    font-size: 13px;
+  }
+}
+
+.comment-tools {
+  position: absolute;
+  right: 0px;
+  opacity: 0;
+  transition: opacity 200ms;
+  &>.fa:first-child {
+    margin-right: 5px;
+    vertical-align: -1.3px;
+  }
+}
+
+.fa {
+  cursor: pointer;
+}
+
+.comment:hover .comment-tools{
+  opacity: 1;
+}
+
+.comment-disable-tools {
+  display: none;
+}
+
+.comment {
+  height: 40px;
+  margin: 15px 0;
+}
+
+.comment-edit-input {
+  font-weight: 100;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding-left: 5px;
+  width: 80%;
+}

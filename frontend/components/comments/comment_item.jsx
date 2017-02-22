@@ -23,9 +23,21 @@ export default class CommentItem extends React.Component{
     this.toggleEditMode();
   }
 
-  componentWillReceiveProps(newProps){
-    if(this.props.comment.body !== newProps.comment.body) {
+  componentDidMount() {
+    this.load();
+  }
+
+  componentWillReceiveProps(props){
+    if(this.props.comment.body !== props.comment.body) {
       this.setState({editing: false});
+    }
+
+    this.load(props);
+  }
+
+  load(props = this.props) {
+    if (props.comment.id !== null) {
+      $('.comment-author-pic').addClass('loaded');
     }
   }
 
@@ -33,37 +45,46 @@ export default class CommentItem extends React.Component{
     const disabled = this.notOwner() ? 'comment-disable-tools' : '';
     return (
       <li className='comment'>
+
         <div className='comment-info'>
-          <Link
-            className='author-pic'
-            to={`home/profile/${this.props.comment.author.id}`}>
-            <img src={this.props.comment.author.image_url}></img>
-          </Link>
 
-          <p className='comment-author'>
-            <Link to={`home/profile/${this.props.comment.author.id}`}>
-              {this.props.comment.author.username}
+          <div className='author-default-bg orange-bg'>
+            <Link
+              className='comment-author-pic smooth-show'
+              style={{backgroundImage: `url('${photoUrl}')`}}
+              to='#'>
+              <img src={this.props.comment.author.image_url}></img>
             </Link>
-            <span>{this.props.comment.posted}</span>
-          </p>
-
-          <div className='comment-tools'>
-            <i
-              className={`fa fa-pencil-square-o ${disabled}`}
-              aria-hidden="true"
-              onClick={() => this.toggleEditMode()}>
-            </i>
-            <i aria-hidden="true"
-               className={`fa fa-trash-o ${disabled}`}
-               onClick={() => this.delete()}>
-            </i>
           </div>
 
+          <div className='comment-actions-wrapper'>
+            <div className='comment-author'>
+              <Link to='#'>
+                {this.props.comment.author.username}
+              </Link>
+              <span>{this.props.comment.posted}</span>
+            </div>
+
+            <div className='comment-tools'>
+              <i
+                className={`fa fa-pencil-square-o ${disabled}`}
+                aria-hidden="true"
+                onClick={() => this.toggleEditMode()}>
+              </i>
+              <i aria-hidden="true"
+                className={`fa fa-trash-o ${disabled}`}
+                onClick={() => this.delete()}>
+              </i>
+            </div>
+            <CommentBodyField
+              editing={this.state.editing}
+              comment={this.props.comment}
+              updateComment={this.props.updateComment}/>
+          </div>
+
+
         </div>
-        <CommentBodyField
-          editing={this.state.editing}
-          comment={this.props.comment}
-          updateComment={this.props.updateComment}/>
+
       </li>
     );
   }

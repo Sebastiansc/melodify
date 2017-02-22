@@ -20,6 +20,13 @@ export default class CommentBodyField extends React.Component{
     this.setState({editing});
   }
 
+  componentDidUpdate() {
+    // debugger;
+    if (this.input) {
+      $('.comment-edit-input').focus();
+    }
+  }
+
   updateComment(){
     const newAttr = {
       body: this.state.body,
@@ -37,13 +44,15 @@ export default class CommentBodyField extends React.Component{
     if(this.state.editing){
       return(
         <div className='comment-edit'>
-          <textarea defaultValue={this.props.comment.body}
-            onChange={e => this.update(e)}>
-          </textarea>
-          <button className={klass}
-            onClick={() => this.updateComment()}>
-            Done
-          </button>
+          <form onSubmit={() => this.updateComment()}>
+            <input
+              type='text'
+              ref={input => this.input = input}
+              defaultValue={this.props.comment.body}
+              className='comment-edit-input'
+              onChange={e => this.update(e)}>
+            </input>
+          </form>
         </div>
       );
     } else {

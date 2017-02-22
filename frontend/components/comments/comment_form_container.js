@@ -3,9 +3,9 @@ import CommentForm from './comment_form';
 import {createComment } from '../../actions/comment_actions';
 import { toArray } from '../../reducers/selectors';
 
-const mapStateToProps = ({session}, {songId}) => ({
+const mapStateToProps = ({session, song}) => ({
   user: session.currentUser,
-  songId
+  songId: song.id
 });
 
 const mapDispatchToProps = dispatch => ({

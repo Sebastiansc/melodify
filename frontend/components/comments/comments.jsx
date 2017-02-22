@@ -2,16 +2,24 @@ import React from 'react';
 import CommentItem from './comment_item';
 
 export default class Comments extends React.Component {
-  componentWillReceiveProps(props) {
+  constructor(props) {
+    super(props);
+    this.componentDidMount = this.componentWillReceiveProps = this.load;
+  }
+
+  load(props = this.props) {
     if (props.comments.length) {
-      $('comments-list-wrapper').addClass('loaded');
+      $('.cm-show').addClass('loaded');
     }
   }
 
   render() {
     return(
-      <div className='comments-list-wrapper smooth-show'>
-        <ul className='comments-stream'>
+      <div className='comments-list-wrapper'>
+        <h3 className='comments-stream-header cm-show smooth-show'>
+          {`${this.props.comments.length} comments`}
+        </h3>
+        <ul className='comments-stream cm-show smooth-show'>
           {this.props.comments.map(comment => (
             <CommentItem
               key={comment.id}

@@ -9,6 +9,7 @@ import WavePlayerContainer from './wave_player_container';
 export default class TrackBanner extends React.Component {
   constructor(props) {
     super(props);
+    this.componentDidMount = this.componentWillReceiveProps = this.load;
   }
 
   getGradient() {
@@ -39,6 +40,13 @@ export default class TrackBanner extends React.Component {
     this.player.getWrappedInstance().togglePlay(e);
   }
 
+  load(props = this.props) {
+    if (props.track.id) {
+      $('.td-show').addClass('loaded');
+    }
+  }
+
+
   render() {
     return(
       <div
@@ -67,7 +75,7 @@ export default class TrackBanner extends React.Component {
           </div>
         </div>
 
-        <div className='track-detail-info-wrapper'>
+        <div className='track-detail-info-wrapper td-show smooth-show'>
           <span className='posted-at'>{this.props.track.posted}</span>
           <span className='track-detail-genre'># {this.props.track.genre}</span>
         </div>

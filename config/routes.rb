@@ -9,9 +9,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:index]
     end
     resources :plays, only: [:index]
+    resources :comments, only: [:create, :destroy, :update]
   end
 
-  resources :comments, only: [:create, :destroy, :update]
 
   post 'api/likes/:song_id', to: 'api/likes#create'
   delete 'api/likes/:song_id', to: 'api/likes#destroy'

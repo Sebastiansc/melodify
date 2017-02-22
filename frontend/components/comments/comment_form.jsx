@@ -2,7 +2,6 @@ import React from 'react';
 import CommentItem from './comment_item';
 import {Link} from 'react-router';
 
-const photoUrl = "https://res.cloudinary.com/flikr/image/upload/v1486934639/avatars-000292048508-r656e6-t120x120_eotdip.jpg";
 
 export default class CommentForm extends React.Component{
   constructor(props){
@@ -14,10 +13,10 @@ export default class CommentForm extends React.Component{
     this.setState({body: e.target.value});
   }
 
-  sendComment(){
+  sendComment() {
     const comment = {
       body: this.state.body,
-      photo_id: this.props.songId
+      song_id: this.props.songId
     };
     this.props.createComment(comment);
     this.setState({body: ''});
@@ -40,13 +39,15 @@ export default class CommentForm extends React.Component{
           </div>
 
           <div className='text-wrapper'>
-            <input
-              className='comment-box'
-              onSubmit={this.sendComment}
-              onChange={e => this.update(e)}
-              value={this.state.body}
-              placeholder='Write a comment'>
-            </input>
+            <form onSubmit={() => this.sendComment()}>
+              <input
+                className='comment-box'
+                onSubmit={this.sendComment}
+                onChange={e => this.update(e)}
+                value={this.state.body}
+                placeholder='Write a comment'>
+              </input>
+            </form>
           </div>
 
         </div>

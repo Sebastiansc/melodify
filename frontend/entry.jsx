@@ -6,6 +6,8 @@ import Modal from 'react-modal';
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  window.photoUrl = "https://res.cloudinary.com/flikr/image/upload/v1486934639/avatars-000292048508-r656e6-t120x120_eotdip.jpg";
+
   let store;
   if (window.currentUser) {
     store = configureStore(

@@ -5,7 +5,7 @@ import { updateComment,
 import { toArray } from '../../reducers/selectors';
 
 const mapStateToProps = ({comments, session}, {songId}) => ({
-  comments: toArray(comments),
+  comments: toArray(comments).reverse(),
   user: session.currentUser,
   songId
 });
