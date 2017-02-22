@@ -168,8 +168,11 @@
 .chart-track:hover, .chart-track-playing {
   background-color: #f2f2f2;
   cursor: pointer;
-  .chart-track-actions, .play-overlay {
+  .play-overlay {
     display: block;
+  }
+  .chart-track-actions {
+    display: flex;
   }
   .chart-item-plays {
     display: none;
@@ -239,6 +242,7 @@
     margin-right: 5px;
     width: 25px;
     padding: 0;
+    text-indent: 90000px;
     height: 22px;
     border-radius: 3px;
     position: relative;

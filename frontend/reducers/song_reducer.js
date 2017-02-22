@@ -2,7 +2,11 @@
 import { RECEIVE_SONG, CLEAR_SONG } from '../actions/song_actions';
 import merge from 'lodash/merge';
 
-const SongsReducer = (state = {}, action) => {
+const _null = {
+  likes: []
+};
+
+const SongsReducer = (state = _null, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_SONG:

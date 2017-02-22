@@ -10,8 +10,15 @@ const TrackDetailActions = ({track}) => (
         track={track}/>
       <button className='chart-playlist'>Add</button>
     </div>
-    <div className='track-share-info'>
-
+    <div>
+      <ul className='track-share-info'>
+        <li className='track-detail-likes'>
+          <span>{track.likes.length}</span>
+        </li>
+        <li className='track-detail-plays'>
+          <span>{track.timesPlayed}</span>
+        </li>
+      </ul>
     </div>
   </div>
 );

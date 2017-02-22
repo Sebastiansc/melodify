@@ -182,6 +182,7 @@
   }
   button {
     font-weight: 100;
+    text-indent: 0;
     width: 70px;
     text-align: right;
     padding-right: 10px;
@@ -194,4 +195,34 @@
 
 .comment-container-transition-layer {
   margin-bottom: 10px;
+}
+
+.track-share-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.track-share-info {
+  display: flex;
+  color: $gray9;
+  li:before {
+    @include before-image;
+    vertical-align: -4px;
+  }
+  span {
+    margin-left: 5px;
+  }
+}
+
+.track-detail-likes {
+  margin-right: 15px;
+}
+
+.track-detail-likes:before {
+  opacity: 0.48;
+  background-image: url('https://res.cloudinary.com/flikr/image/upload/v1487144907/heart-dead_i3yygg.svg');
+}
+
+.track-detail-plays:before {
+  background-image: url('https://res.cloudinary.com/flikr/image/upload/v1487206641/right-arrow_y4n13p.svg');
 }
