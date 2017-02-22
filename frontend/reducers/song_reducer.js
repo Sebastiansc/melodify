@@ -3,7 +3,8 @@ import { RECEIVE_SONG, CLEAR_SONG } from '../actions/song_actions';
 import merge from 'lodash/merge';
 
 const _null = {
-  likes: []
+  likes: [],
+  author: {}
 };
 
 const SongsReducer = (state = _null, action) => {

@@ -9,6 +9,7 @@ import Splash from './splash/splash';
 import TrackDetailContainer from './track/track_detail_container';
 import UploadContainer from './upload/upload_container';
 // UTIL AND METHODS
+import { fetchComments } from '../actions/comment_actions';
 import { getProgress } from '../actions/playing_actions';
 import { getSong, clearSong } from '../actions/song_actions';
 import { getTracks } from '../actions/tracks_actions';
@@ -53,6 +54,7 @@ const Root = ({ store }) => {
   const fetchSong = nextState => {
     sync(nextState);
     store.dispatch(getSong(nextState.params.songId));
+    store.dispatch(fetchComments(nextState.params.songId));
     toTop();
   };
 

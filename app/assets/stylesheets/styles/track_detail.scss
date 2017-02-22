@@ -199,7 +199,14 @@
 
 .track-share-actions {
   display: flex;
+  padding-bottom: 10px;
+  align-items: center;
+  border-bottom: 1px solid $dustwhite;
   justify-content: space-between;
+}
+
+.top-level-content {
+  margin-bottom: 20px;
 }
 
 .track-share-info {
@@ -226,3 +233,42 @@
 .track-detail-plays:before {
   background-image: url('https://res.cloudinary.com/flikr/image/upload/v1487206641/right-arrow_y4n13p.svg');
 }
+
+// ABOUT LEFT
+.about-left {
+  float: left;
+}
+
+.artist-cover {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  margin-bottom: 5px;
+  a, span {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+
+.td-artist-name {
+  text-align: center;
+}
+// ----------
+
+// ABOUT LEFT
+.about-right {
+  padding-left: 150px;
+}
+
+.track-description {
+  min-height: 120px;
+}
+
+.undescribed {
+  padding-top: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #999;
+}
+// ----------

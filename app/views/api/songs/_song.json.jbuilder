@@ -5,6 +5,7 @@ json.extract! song,
               :cover_photo,
               :genre,
               :id,
+              :description,
               :thumbnail
 json.ownerUrl song.user.url
 user_ids = []
