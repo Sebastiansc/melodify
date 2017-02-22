@@ -90,7 +90,7 @@ export default class UploadData extends React.Component {
         </div>
         <div
           className='track-cover-wrapper'
-          style={{backgroundImage: `url('${this.state.cover_photo}')`}}>
+          style={{backgroundImage: this.state.cover_photo}}>
           <span className='track-cover'></span>
           <button
             className='track-image-upload'
