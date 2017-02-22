@@ -35,7 +35,8 @@ export default class CommentItem extends React.Component{
     this.load(props);
   }
 
-  load(props = this.props) {
+  load(props) {
+    props = props || this.props;
     if (props.comment.id !== null) {
       $('.comment-author-pic').addClass('loaded');
     }

@@ -40,9 +40,9 @@ export default class TrackBanner extends React.Component {
     this.player.getWrappedInstance().togglePlay(e);
   }
 
-  load(props = this.props) {
+  load(props) {
     // QUESTION: Heroku error: props undefined?
-    if (!props) return;
+    props = props || this.props;
     if (props.track.id) {
       $('.td-show').addClass('loaded');
     }

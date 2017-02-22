@@ -7,7 +7,8 @@ export default class Comments extends React.Component {
     this.componentDidMount = this.componentWillReceiveProps = this.load;
   }
 
-  load(props = this.props) {
+  load(props) {
+    props = props || this.props
     if (props.comments.length) {
       $('.cm-show').addClass('loaded');
     }
