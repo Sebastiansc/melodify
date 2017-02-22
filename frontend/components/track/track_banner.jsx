@@ -67,6 +67,11 @@ export default class TrackBanner extends React.Component {
           </div>
         </div>
 
+        <div className='track-detail-info-wrapper'>
+          <span className='posted-at'>{this.props.track.posted}</span>
+          <span className='track-detail-genre'># {this.props.track.genre}</span>
+        </div>
+
         <WavePlayerContainer
           nowPlaying={trackId => this.play(trackId)}
           track={this.props.track}/>

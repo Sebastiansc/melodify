@@ -19,8 +19,26 @@ export default class WavePlayer extends React.Component {
       cursorColor: '#f78b56',
       hideScrollbar: true,
     });
+    this.attachHandlers();
+  }
+
+  attachHandlers() {
     this.wavesurfer.setVolume(0);
+
     this.wavesurfer.on('seek', pos => this.positionChange(pos));
+
+    this.wavesurfer.on('pause',  () => {
+      $('#waveform').css('opacity', 0.7);
+    });
+
+    this.wavesurfer.on('play',  () => {
+      $('#waveform').css('opacity', 1);
+    });
+
+    this.wavesurfer.on('finish', () => {
+      this.wavesurfer.pause();
+      this.wavesurfer.stop();
+    });
   }
 
   silentPlay(start, end) {
@@ -61,7 +79,7 @@ export default class WavePlayer extends React.Component {
     this.loaded = true;
 
     // Show player.
-    $('#waveform').addClass('loaded');
+    $('#waveform').addClass('waves-ready');
 
     // No need to sync if the song wasn't previously playing.
     if (!this.position) return;

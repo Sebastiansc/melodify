@@ -29,14 +29,14 @@
 
 .track-detail-player {
   z-index: 100;
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   .play-overlay {
     display: block;
-    top: 20%;
-    bottom: 20%;
-    right: 20%;
-    left: 20%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
   }
   .track-artwork {
     height: 100%;
@@ -47,9 +47,9 @@
   }
   .track-text-info {
     position: absolute;
-    top: 22px;
+    top: 2px;
     display: flex;
-    left: 95px;
+    left: 76px;
     flex-direction: column;
     font-weight: 100;
     .track-title {
@@ -99,4 +99,27 @@
 
 #waveform {
   margin-bottom: 30px;
+}
+
+.track-detail-info-wrapper {
+  position: absolute;
+  top: 27px;
+  right: 390px;
+  text-align: right;
+  font-weight: 100;
+  color: #fff;
+  font-size: $font-md;
+  span {
+    display: block;
+  }
+}
+
+.posted-at {
+  margin-bottom: 15px;
+}
+
+.track-detail-genre {
+  background: $gray9;
+  border-radius: 30px;
+  padding: 1px 13px;
 }
