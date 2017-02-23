@@ -23,30 +23,48 @@ export default class Upload extends React.Component {
       uploaded: false
     };
   }
+  //
+  // getImage(image) {
+  //   var binary = '';
+  //   var bytes = new Uint8Array(image.data);
+  //   var len = bytes.byteLength;
+  //   for (var i = 0; i < len; i++) {
+  //       binary += String.fromCharCode( bytes[ i ] );
+  //   }
+  //   return 'data:image/jpeg;base64,' + window.btoa( binary );
+  // }
 
   getImage(image) {
-    var binary = '';
-    var bytes = new Uint8Array(image.data);
-    var len = bytes.byteLength;
-    for (var i = 0; i < len; i++) {
-        binary += String.fromCharCode( bytes[ i ] );
+    const e = image.data;
+    for (var t = e.length, n = new Array(t), i = 0; t > i; i++) {
+      n[i] = String.fromCharCode(e[i]);
     }
-    return 'data:image/jpeg;base64,' + window.btoa( binary );
+    return "data:" + image.format + ";base64," + window.btoa(n.join(""));
   }
 
   openUploadModal() {
     cloudinary.openUploadWidget(window.cloudinaryOptions,
     (errors, track) => {
       if(!values(errors).length) {
-        id3(track[0].secure_url, (errs, tags) => {
-          this.setState({
-            title: tags.title,
-            audio_url: track[0].secure_url,
-            artist: tags.artist,
-            uploaded: true,
-            cover_photo: this.getImage(tags.v2.image)
-          });
+
+        jsmediatags.read(track[0].secure_url, {
+          onSuccess: function(tag) {
+            console.log(tag);
+          },
+          onError: function(error) {
+            console.log(':(', error.type, error.info);
+          }
         });
+
+        // id3(track[0].secure_url, (errs, tags) => {
+        //   this.setState({
+        //     title: tags.title,
+        //     audio_url: track[0].secure_url,
+        //     artist: tags.artist,
+        //     uploaded: true,
+        //     cover_photo: tags.v2.image
+        //   });
+        // });
 
       }
     });

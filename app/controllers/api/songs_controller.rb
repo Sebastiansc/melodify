@@ -5,7 +5,7 @@ class Api::SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
-    
+
     render :show
   end
 
@@ -23,6 +23,7 @@ class Api::SongsController < ApplicationController
       render json: @song.errors.full_messages, status: 422
     end
   end
+
 
   def update
 
