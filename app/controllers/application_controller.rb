@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
+  def thumburl(url)
+    root_url = url[0...46]
+    tail_url = url[46..-1]
+    "#{root_url}c_scale,h_120/#{tail_url}"
+  end
+
   def logout!
     current_user.reset_session_token!
     session[:session_token] = nil

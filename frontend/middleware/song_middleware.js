@@ -1,4 +1,4 @@
-import { CREATE_SONG } from '../actions/tracks_actions';
+import { CREATE_SONG } from '../actions/song_actions';
 import { RECORD_PLAY, receivePlay } from '../actions/playing_actions';
 import { GET_SONG, receiveSong } from '../actions/song_actions';
 import { createSong,
@@ -12,7 +12,7 @@ export default ({ getState, dispatch }) => next => action => {
       dispatch(receivePlay(track));
     }
   };
-  
+
   switch(action.type) {
     case CREATE_SONG:
       createSong(action.song);

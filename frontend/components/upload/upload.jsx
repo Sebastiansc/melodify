@@ -24,46 +24,37 @@ export default class Upload extends React.Component {
     };
   }
   //
-  // getImage(image) {
-  //   var binary = '';
-  //   var bytes = new Uint8Array(image.data);
-  //   var len = bytes.byteLength;
-  //   for (var i = 0; i < len; i++) {
-  //       binary += String.fromCharCode( bytes[ i ] );
-  //   }
-  //   return 'data:image/jpeg;base64,' + window.btoa( binary );
-  // }
-
   getImage(image) {
-    const e = image.data;
-    for (var t = e.length, n = new Array(t), i = 0; t > i; i++) {
-      n[i] = String.fromCharCode(e[i]);
+    // ID3 image is represented as a blob in an array
+    var binary = '';
+    var bytes = new Uint8Array(image.data);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode( bytes[ i ] );
     }
-    return "data:" + image.format + ";base64," + window.btoa(n.join(""));
+    return "data:" + image.format + ";base64," + window.btoa(binary);
   }
 
   openUploadModal() {
     cloudinary.openUploadWidget(window.cloudinaryOptions,
     (errors, track) => {
       if(!values(errors).length) {
-
+        // NOTE: Remember that it was necessary to remove some source code from
+        // jsmediatags to get it to work.
         jsmediatags.read(track[0].secure_url, {
-          onSuccess: function(tag) {
+          onSuccess: (tag) => {
             this.setState({
               title: tag.tags.title,
               audio_url: track[0].secure_url,
               artist: tag.tags.artist,
               uploaded: true,
-              cover_photo: tag.tags.picture
+              cover_photo: this.getImage(tag.tags.picture)
             });
           },
           onError: function(error) {
-            console.log(':(', error.type, error.info);
+            alert("Sorry, something went wrong with the file upload. Please refresh your browser");
           }
         });
-        // id3(track[0].secure_url, (errs, tags) => {
-
-        // });
 
       }
     });

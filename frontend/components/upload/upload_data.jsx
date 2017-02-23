@@ -14,26 +14,7 @@ export default class UploadData extends React.Component {
     };
   }
 
-  getImage(image) {
-    const fileReader = new FileReader();
-    // Create a blob from the response
-    const blob = new Blob([image.data], {type: "image/png"});
-
-    //onload needed since Chrome doesn't support addEventListener for FileReader
-    fileReader.onload = (evt) => {
-      // Read out file contents as a Data URL
-      const result = evt.target.result;
-      // Set image src to Data URL
-      $('.track-cover-wrapper').css('background-image', `url(${result})`);
-      // this.setState({cover_photo: result});
-      // Store Data URL in localStorage
-    };
-    // Load blob as Data URL
-    fileReader.readAsDataURL(blob);
-  }
-
   componentDidMount() {
-    this.getImage(this.state.cover_photo);
     this.unselector = $('body').on('click', () => (
       $('.genres').removeClass('genres-selecting')
     ));
@@ -48,6 +29,7 @@ export default class UploadData extends React.Component {
   }
 
   uncodedText(text) {
+    // Remove non unicode characters
     while (text.includes('amp')) {
       text = text.replace('amp;', '');
     }
@@ -108,7 +90,8 @@ export default class UploadData extends React.Component {
           <span>Track Details</span>
         </div>
         <div
-          className='track-cover-wrapper'>
+          className='track-cover-wrapper'
+          style={{backgroundImage: `url(${this.state.cover_photo})`}}>
           <span className='track-cover'></span>
           <button
             className='track-image-upload'
