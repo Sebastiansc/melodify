@@ -2160,7 +2160,7 @@ var XhrFileReader = function (_MediaFileReader) {
       if (range) {
         this._setRequestHeader(xhr, "Range", "bytes=" + range[0] + "-" + range[1]);
       }
-      this._setRequestHeader(xhr, "If-Modified-Since", "Sat, 01 Jan 1970 00:00:00 GMT");
+      // this._setRequestHeader(xhr, "If-Modified-Since", "Sat, 01 Jan 1970 00:00:00 GMT");
       xhr.send(null);
     }
   }, {

@@ -49,20 +49,20 @@ export default class Upload extends React.Component {
 
         jsmediatags.read(track[0].secure_url, {
           onSuccess: function(tag) {
-            console.log(tag);
+            this.setState({
+              title: tag.tags.title,
+              audio_url: track[0].secure_url,
+              artist: tag.tags.artist,
+              uploaded: true,
+              cover_photo: tag.tags.picture
+            });
           },
           onError: function(error) {
             console.log(':(', error.type, error.info);
           }
         });
         // id3(track[0].secure_url, (errs, tags) => {
-        //   this.setState({
-        //     title: tags.title,
-        //     audio_url: track[0].secure_url,
-        //     artist: tags.artist,
-        //     uploaded: true,
-        //     cover_photo: tags.v2.image
-        //   });
+
         // });
 
       }
