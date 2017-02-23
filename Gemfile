@@ -8,6 +8,7 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 gem 'figaro'
+gem 'cloudinary'
 # gem 'omniauth'
 # gem 'omniauth-facebook', '1.4.0'
 # Use SCSS for stylesheets

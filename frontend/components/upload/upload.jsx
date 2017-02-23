@@ -33,53 +33,39 @@ export default class Upload extends React.Component {
     });
   }
 
-  // getImage(image) {
-  //   var binary = '';
-  //   var bytes = new Uint8Array(image.data);
-  //   debugger;
-  //   var len = bytes.byteLength;
-  //   for (var i = 0; i < len; i++) {
-  //       binary += String.fromCharCode( bytes[ i ] );
-  //   }
-  //   return 'data:' + image.mime + ';base64,' + window.btoa( binary );
-  // }
-
   getImage(image) {
-    var arrayBufferView = new Uint8Array(image.data);
-    image.mime = image.mime || 'image/jpeg';
-    var blob = new Blob([arrayBufferView], {type: image.mime});
-    var urlCreator = window.URL || window.webkitURL;
-    var imageUrl = urlCreator.createObjectURL(blob);
-    return imageUrl;
+    // ID3 image is represented as a blob in an array
+    let binary = '';
+    const bytes = new Uint8Array(image.data);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode( bytes[ i ] );
+    }
+    return "data:" + image.format + ";base64," + window.btoa(binary);
   }
 
-  // getBlobFromDataURI(e) {
-  //   e = this.getImage(e);
-  //   var t, n, i, r, o = [], s = e.split(",");
-  //   for (
-  //     t = s[0].indexOf("base64") > -1 ? window.atob(s[1]) : decodeURI(s[1]),
-  //     n = /^.*?:(.*?);/.exec(e)[1],
-  //     i = 0,
-  //     r = t.length; r > i; i++) o[i] = t.charCodeAt(i);
-  //   return new window.Blob([new Uint8Array(o)],{
-  //       type: n
-  //   });
-  // }
 
   openUploadModal() {
-    cloudinary.openUploadWidget(window.cloudinaryOptions,
+    window.cloudinary.openUploadWidget(window.cloudinaryOptions,
     (errors, track) => {
       $('.upload-overlay').removeClass('upload-loading');
       if(!values(errors).length) {
-
-        id3(track[0].secure_url, (errs, tags) => {
-          this.setState({
-            title: tags.title,
-            audio_url: track[0].secure_url,
-            artist: tags.artist,
-            uploaded: true,
-            cover_photo: this.getImage(tags.v2.image)
-          });
+        // NOTE: Remember that it was necessary to remove some source code from
+        // jsmediatags to get it to work.
+        jsmediatags.read(track[0].secure_url, {
+          onSuccess: (tag) => {
+            this.setState({
+              title: tag.tags.title,
+              audio_url: track[0].secure_url,
+              artist: tag.tags.artist,
+              uploaded: true,
+              cover_photo: this.getImage(tag.tags.picture)
+            });
+          },
+          onError: function(error) {
+            alert("Sorry, something went wrong with the file upload. Please" +
+                  "refresh your browser");
+          }
         });
 
       }

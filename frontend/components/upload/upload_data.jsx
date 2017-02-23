@@ -29,6 +29,7 @@ export default class UploadData extends React.Component {
   }
 
   uncodedText(text) {
+    // Remove non unicode characters
     while (text.includes('amp')) {
       text = text.replace('amp;', '');
     }
@@ -90,7 +91,7 @@ export default class UploadData extends React.Component {
         </div>
         <div
           className='track-cover-wrapper'
-          style={{backgroundImage: this.state.cover_photo}}>
+          style={{backgroundImage: `url(${this.state.cover_photo})`}}>
           <span className='track-cover'></span>
           <button
             className='track-image-upload'
