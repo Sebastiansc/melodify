@@ -55,7 +55,6 @@ export default class Upload extends React.Component {
             console.log(':(', error.type, error.info);
           }
         });
-
         // id3(track[0].secure_url, (errs, tags) => {
         //   this.setState({
         //     title: tags.title,
