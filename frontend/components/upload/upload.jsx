@@ -38,7 +38,6 @@ export default class Upload extends React.Component {
     cloudinary.openUploadWidget(window.cloudinaryOptions,
     (errors, track) => {
       if(!values(errors).length) {
-
         id3(track[0].secure_url, (errs, tags) => {
           this.setState({
             title: tags.title,
