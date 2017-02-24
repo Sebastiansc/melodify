@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currentUser: {
           username: window.currentUser.username,
           id: window.currentUser.id,
+          url: window.currentUser.url,
           image_url: window.currentUser.image_url
         }
       }

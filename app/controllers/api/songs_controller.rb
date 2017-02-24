@@ -13,16 +13,20 @@ class Api::SongsController < ApplicationController
   end
 
   def create
-    response = Cloudinary::Uploader.upload(song_params[:cover_photo])
     @song = Song.new(song_params)
-    @song.cover_photo = response['secure_url']
-    @song.thumbnail = thumburl(response['secure_url'])
+    base64_image if song_params[:cover_photo][0..3] == 'data'
     @song.user_id = current_user.id
     if @song.save
       render :show
     else
       render json: @song.errors.full_messages, status: 422
     end
+  end
+
+  def base64_image
+    response = Cloudinary::Uploader.upload(song_params[:cover_photo])
+    @song.cover_photo = response['secure_url']
+    @song.thumbnail = thumburl(response['secure_url'])
   end
 
   def update
@@ -35,6 +39,7 @@ class Api::SongsController < ApplicationController
                                  :audio_url,
                                  :artist,
                                  :genre,
+                                 :url,
                                  :cover_photo)
   end
 end

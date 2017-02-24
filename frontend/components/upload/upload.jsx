@@ -24,11 +24,13 @@ export default class Upload extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     $(document).on('cloudinarywidgetclosed', function(e, data) {
+      debugger;
       $('.upload-overlay').addClass('upload-loading');
     });
     $(document).on('cloudinarywidgetsuccess', function(e, data) {
+      debugger;
       $('.upload-overlay').addClass('upload-loading');
     });
   }
@@ -52,21 +54,23 @@ export default class Upload extends React.Component {
       if(!values(errors).length) {
         // NOTE: Remember that it was necessary to remove some source code from
         // jsmediatags to get it to work.
-        jsmediatags.read(track[0].secure_url, {
-          onSuccess: (tag) => {
-            this.setState({
-              title: tag.tags.title,
-              audio_url: track[0].secure_url,
-              artist: tag.tags.artist,
-              uploaded: true,
-              cover_photo: this.getImage(tag.tags.picture)
-            });
-          },
-          onError: function(error) {
-            alert("Sorry, something went wrong with the file upload. Please" +
-                  "refresh your browser");
-          }
-        });
+        new jsmediatags.Reader(track[0].secure_url)
+          .setTagsToRead(["title", "artist", "picture"])
+          .read({
+            onSuccess: (tag) => {
+              this.setState({
+                title: tag.tags.title,
+                audio_url: track[0].secure_url,
+                artist: tag.tags.artist,
+                uploaded: true,
+                cover_photo: this.getImage(tag.tags.picture)
+              });
+            },
+            onError: function(error) {
+              alert("Sorry, something went wrong with the file upload. Please" +
+                    "refresh your browser");
+            }
+          });
 
       }
     });
@@ -82,6 +86,7 @@ export default class Upload extends React.Component {
     if (this.state.uploaded) {
       component = <UploadData
                     data={this.state}
+                    user={this.props.user}
                     createSong={this.props.createSong}
                     restart={() => this.restart()}/>;
       klass = 'animated slideInDown';

@@ -8,24 +8,44 @@ export default class UploadData extends React.Component {
       genre: 'None',
       tags: '',
       description: '',
+      url: '',
       title: this.props.data.title,
       artist: this.props.data.artist,
-      cover_photo: this.props.data.cover_photo
+      cover_photo: this.props.data.cover_photo,
     };
   }
 
   componentDidMount() {
-    this.unselector = $('body').on('click', () => (
-      $('.genres').removeClass('genres-selecting')
-    ));
+    this.unselector = $('body').click(() => {
+      $('.genres').removeClass('genres-selecting');
+    });
+
+    $('.genre').click(e => {
+      e.stopPropagation();
+      this.openGenres();
+    });
+
+    $('.url-input').width(
+      $('.custom-url-wrapper').width() - ($('.custom-url').width() + 36)
+    );
+
+    this.setState({ url: this.customUrl()});
+  }
+
+  customUrl() {
+    return this.props.data.title
+            .toLowerCase()
+            .replace(/[^a-z0-9 ]/g, '')
+            .replace(/ +/g, ' ')
+            .replace(/\s/g, '-');
   }
 
   componentWillUnmount() {
     $('body').off('click', this.unselector);
   }
 
-  openGenres() {
-    $('.genres').addClass('genres-selecting');
+  openGenres(e) {
+    $('.genres').toggleClass('genres-selecting');
   }
 
   uncodedText(text) {
@@ -77,9 +97,13 @@ export default class UploadData extends React.Component {
     });
   }
 
+  focusUrlInput() {
+    $('.url-input').focus();
+    $('.url-input-toggle').addClass('hide');
+  }
+
 
   render() {
-    window.that = this;
     return(
       <div className=''>
         <div className='upload-data-details'>
@@ -111,6 +135,24 @@ export default class UploadData extends React.Component {
             </input>
           </div>
 
+          <div className='custom-url-wrapper'>
+            <span
+              className='custom-url'>{`melodify.com/${this.props.user.url}/`}
+            </span>
+            <input
+              className='url-input'
+              id='url-input'
+              onBlur={() => $('.url-input-toggle').removeClass('hide')}
+              onFocus={() => $('.url-input-toggle').addClass('hide')}
+              onChange={e => this.update('url', e)}
+              value={this.state.url}>
+            </input>
+            <button
+              className='url-input-toggle'
+              onClick={() => this.focusUrlInput()}>
+            </button>
+          </div>
+
           <label>Artist</label>
           <div className='track-upload-artist-field'>
             <input
@@ -123,7 +165,7 @@ export default class UploadData extends React.Component {
 
           <label>Genre</label>
           <div className='track-upload-genre-field'>
-            <button className='genre' onClick={() => this.openGenres()}>
+            <button className='genre'>
               {this.state.genre}
             </button>
             <ul className={`genres`}

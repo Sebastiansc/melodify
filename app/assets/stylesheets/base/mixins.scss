@@ -128,3 +128,15 @@ $breakpoints: (
   background-position: 60% center;
   background-repeat: no-repeat;
 }
+
+@mixin gray-button {
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  margin-right: 5px;
+  width: 25px;
+  padding: 0;
+  text-indent: -100000px;
+  height: 22px;
+  border-radius: 3px;
+  position: relative;
+}

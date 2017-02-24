@@ -237,15 +237,7 @@
   align-self: center;
   display: none;
   button {
-    border: 1px solid #e5e5e5;
-    background-color: #fff;
-    margin-right: 5px;
-    width: 25px;
-    padding: 0;
-    text-indent: -100000px;
-    height: 22px;
-    border-radius: 3px;
-    position: relative;
+    @include gray-button;
   }
   button:before {
     content: '';
@@ -258,9 +250,6 @@
     top: 2px;
     left: 2.5px;
   }
-}
-
-.chart-heart {
 }
 
 .chart-heart:before {

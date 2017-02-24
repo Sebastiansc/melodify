@@ -23,7 +23,7 @@ export default class TrackItem extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.playing.songId === props.track.id) {
+    if (props.playing.songUrl === props.track.url) {
       this.playLook();
     }
   }
