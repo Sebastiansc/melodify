@@ -13,14 +13,23 @@ export default class CommentForm extends React.Component{
     this.setState({body: e.target.value});
   }
 
+  isLoggedIn() {
+    return this.props.user.id;
+  }
+
   sendComment(e) {
     e.preventDefault();
     const comment = {
       body: this.state.body,
       song_id: this.props.songId
     };
-    this.props.createComment(comment);
-    this.setState({body: ''});
+    if (this.isLoggedIn()) {
+      this.props.createComment(comment);
+      this.setState({body: ''});
+    } else {
+      this.props.cacheComment(comment);
+      this.props.toggleModal();
+    }
   }
 
   authorPhoto() {

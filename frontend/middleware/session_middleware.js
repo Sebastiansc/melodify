@@ -7,13 +7,13 @@ import { receiveCurrentUser,
 
 import { login, signup, logout } from '../util/session_api_util';
 import { like } from '../actions/like_actions';
+import { createComment } from '../actions/comment_actions';
 
 export default ({ getState, dispatch }) => next => action => {
   const successCallback = user =>{
     const state = getState();
-    if (state.cache.like) {
-      dispatch(like(state.cache.like));
-    }
+    if (state.cache.like) dispatch(like(state.cache.like));
+    if (state.cache.comment) dispatch(createComment(state.cache.comment));
     dispatch(receiveCurrentUser(user));
 
   };
