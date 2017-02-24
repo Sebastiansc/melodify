@@ -13,7 +13,8 @@ export default class CommentForm extends React.Component{
     this.setState({body: e.target.value});
   }
 
-  sendComment() {
+  sendComment(e) {
+    e.preventDefault();
     const comment = {
       body: this.state.body,
       song_id: this.props.songId
@@ -39,7 +40,7 @@ export default class CommentForm extends React.Component{
           </div>
 
           <div className='text-wrapper'>
-            <form onSubmit={() => this.sendComment()}>
+            <form onSubmit={e => this.sendComment(e)}>
               <input
                 className='comment-box'
                 onSubmit={this.sendComment}

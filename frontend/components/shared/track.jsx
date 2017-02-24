@@ -16,7 +16,7 @@ export default class Track extends React.Component {
   }
 
   _isSelected() {
-    return this.props.track.id === this.props.songId;
+    return this.props.track.url === this.props.songUrl;
   }
 
   playState() {
@@ -33,7 +33,7 @@ export default class Track extends React.Component {
     if (this.props.state && this._isSelected()) {
       this.props.pause();
     } else {
-      this.props.play(this.props.track.id);
+      this.props.play(this.props.track.url);
     }
   }
 
@@ -84,11 +84,13 @@ export default class Track extends React.Component {
         </div>
         <div className='track-text-info'>
           <div className='track-title'>
-            <Link
-              to={`${this.props.track.ownerUrl}/${this.props.track.id}`}
-              onClick={e => this.redirect( e)}>
-              {this.props.track.title}
-            </Link>
+            <span className='track-title-wrap'>
+              <Link
+                to={`${this.props.track.ownerUrl}/${this.props.track.url}`}
+                onClick={e => this.redirect( e)}>
+                {this.props.track.title}
+              </Link>
+            </span>
           </div>
           <div className='artist-name'>
             <Link

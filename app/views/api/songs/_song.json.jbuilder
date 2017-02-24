@@ -6,7 +6,8 @@ json.extract! song,
               :genre,
               :id,
               :description,
-              :thumbnail
+              :thumbnail,
+              :url
 json.ownerUrl song.user.url
 user_ids = []
 song.likes.each { |like| user_ids << like.user_id }

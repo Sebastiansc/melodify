@@ -21,7 +21,11 @@ export default ({ getState, dispatch }) => next => action => {
       recordPlay(action.songId, playSuccess);
       return next(action);
     case GET_SONG:
-      getSong(action.songId, song => dispatch(receiveSong(song)));
+      getSong(
+        action.ownerUrl,
+        action.songUrl,
+        song => dispatch(receiveSong(song))
+      );
       return next(action);
     default:
       return next(action);

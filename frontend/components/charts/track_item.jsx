@@ -39,7 +39,7 @@ export default class TrackItem extends React.Component {
         <div className='chart-track-position'>{this.props.position}</div>
         <TrackContainer
           track={this.props.track}
-          play={trackId => this.play(trackId)}
+          play={trackUrl => this.play(trackUrl)}
           klass='chart-item'
           ref={player => this.player = player}/>
 

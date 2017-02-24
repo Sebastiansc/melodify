@@ -6,9 +6,9 @@ export const createSong = (song) => {
   });
 };
 
-export const getSong = (songId, success, error) => {
+export const getSong = (ownerUrl, songUrl, success, error) => {
   $.ajax({
-    url: `api/songs/${songId}`,
+    url: `api/songs/${ownerUrl}/${songUrl}`,
     success,
     error
   });

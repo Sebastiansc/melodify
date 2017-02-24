@@ -27,7 +27,7 @@ const PlayingReducer = (state = _null, action) => {
     case NOW_PLAYING:
       return merge(
         newState,
-        {tracks: action.tracks, songId: action.songId, state: true }
+        {tracks: action.tracks, songUrl: action.songUrl, state: true }
       );
     case PAUSE:
       newState.state = false;

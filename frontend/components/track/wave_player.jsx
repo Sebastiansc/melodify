@@ -55,7 +55,7 @@ export default class WavePlayer extends React.Component {
 
   positionChange(pos) {
     if (!this._isCurrentTrack()) {
-      this.props.nowPlaying(this.props.track.id);
+      this.props.nowPlaying(this.props.track.url);
       this.silentPlay(0, this.wavesurfer.getDuration());
       return;
     }
@@ -130,7 +130,7 @@ export default class WavePlayer extends React.Component {
   }
 
   _isCurrentTrack(props = this.props) {
-    return props.track.id === props.songId;
+    return props.track.url === props.songUrl;
   }
 
   render() {

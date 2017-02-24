@@ -1,5 +1,5 @@
 class Song < ApplicationRecord
-  validates :audio_url, :title, :user, presence: true
+  validates :audio_url, :title, :user, :url, presence: true
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :plays, dependent: :destroy

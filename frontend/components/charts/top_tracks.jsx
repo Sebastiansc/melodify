@@ -35,8 +35,8 @@ export default class TopTracks extends React.Component {
     $('body').off('click', this.unselector);
   }
 
-  play(songId) {
-    this.props.nowPlaying(songId, this.props.tracks);
+  play(trackUrl) {
+    this.props.nowPlaying(trackUrl, this.props.tracks);
   }
 
   render() {

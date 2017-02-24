@@ -11,7 +11,7 @@ const mapStateToProps = ({playing, session}) => ({
   loggedIn: Boolean(session.currentUser.id),
   state: playing.state,
   tracks: playing.tracks,
-  songId: playing.songId,
+  songUrl: playing.songUrl,
   position: playing.position,
   fetchProgress: playing.fetchProgress,
   updater: playing.updater

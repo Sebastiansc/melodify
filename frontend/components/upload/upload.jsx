@@ -72,13 +72,18 @@ export default class Upload extends React.Component {
     });
   }
 
+  restart() {
+    this.setState({ uploaded: false });
+  }
+
   render(){
     let component;
     let klass;
     if (this.state.uploaded) {
       component = <UploadData
                     data={this.state}
-                    createSong={this.props.createSong}/>;
+                    createSong={this.props.createSong}
+                    restart={() => this.restart()}/>;
       klass = 'animated slideInDown';
     } else {
       component = <StartUpload

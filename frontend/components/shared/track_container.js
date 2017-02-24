@@ -4,7 +4,7 @@ import { pause } from '../../actions/playing_actions';
 
 const mapStateToProps = ({session, playing}) => ({
   user: session.currentUser,
-  songId: playing.songId,
+  songUrl: playing.songUrl,
   state: playing.state
 });
 

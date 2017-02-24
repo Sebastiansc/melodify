@@ -46,14 +46,18 @@ const Root = ({ store }) => {
   };
 
   const sync = nextState => {
-    if (store.getState().playing.songId == nextState.params.songId) {
+
+    if (store.getState().playing.songUrl == nextState.params.songUrl) {
       store.dispatch(getProgress());
     }
   };
 
   const fetchSong = nextState => {
     sync(nextState);
-    store.dispatch(getSong(nextState.params.songId));
+    store.dispatch(getSong(
+      nextState.params.ownerUrl,
+      nextState.params.songUrl)
+    );
     store.dispatch(fetchComments(nextState.params.songId));
     toTop();
   };
@@ -83,7 +87,7 @@ const Root = ({ store }) => {
             onChange={fetchNewTracks}/>
             <Route path='upload' component={UploadContainer}/>
             <Route
-              path=':userUrl/:songId'
+              path=':ownerUrl/:songUrl'
               component={TrackDetailContainer}
               onEnter={fetchSong}
               onLeave={dropSongFromState}/>

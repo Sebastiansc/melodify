@@ -30,8 +30,8 @@ export default class TrackBanner extends React.Component {
     container.addClass('show');
   }
 
-  play(trackId) {
-    this.props.nowPlaying(trackId, [this.props.track]);
+  play(trackUrl) {
+    this.props.nowPlaying(trackUrl, [this.props.track]);
   }
 
   togglePlay(e) {
@@ -71,7 +71,7 @@ export default class TrackBanner extends React.Component {
           <div className='track-detail-actions'>
             <TrackContainer
               ref={player => this.player = player}
-              play={trackId => this.play(trackId)}
+              play={trackUrl => this.play(trackUrl)}
               klass='track-detail-player'
               track={this.props.track}/>
           </div>
@@ -83,7 +83,7 @@ export default class TrackBanner extends React.Component {
         </div>
 
         <WavePlayerContainer
-          nowPlaying={trackId => this.play(trackId)}
+          nowPlaying={trackUrl => this.play(trackUrl)}
           track={this.props.track}/>
       </div>
     );

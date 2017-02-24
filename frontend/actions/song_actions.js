@@ -8,9 +8,10 @@ export const createSong = song => ({
   song
 });
 
-export const getSong = songId => ({
+export const getSong = (ownerUrl, songUrl) => ({
   type: GET_SONG,
-  songId,
+  ownerUrl,
+  songUrl
 });
 
 export const clearSong = () => ({

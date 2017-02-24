@@ -24,8 +24,8 @@ export default class History extends React.Component {
     }
   }
 
-  play(trackId) {
-    this.props.nowPlaying(trackId, this.props.tracks);
+  play(trackUrl) {
+    this.props.nowPlaying(trackUrl, this.props.tracks);
   }
 
   headerText() {
@@ -81,7 +81,7 @@ export default class History extends React.Component {
           <HistoryItem
             track={track}
             key={track.id * this.props.offset}
-            play={trackId => this.play(trackId)}/>
+            play={trackUrl => this.play(trackUrl)}/>
         ))}
       </section>
     );

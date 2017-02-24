@@ -64,8 +64,8 @@ export default class UploadData extends React.Component {
       genre: this.state.genre,
       thumbnail: this.formatUrl(this.state.cover_photo)
     };
-    debugger;
     this.props.createSong(song);
+    this.props.restart();
   }
 
   openImageWidget() {

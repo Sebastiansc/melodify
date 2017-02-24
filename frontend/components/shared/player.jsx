@@ -21,7 +21,7 @@ export default class Player extends React.Component {
 
   _findTrackIdx(){
     for (let i = 0; i < this.props.tracks.length; i++) {
-      if (this.props.tracks[i].id === this.props.songId){
+      if (this.props.tracks[i].url === this.props.songUrl){
         return i;
       }
     }
@@ -162,7 +162,7 @@ export default class Player extends React.Component {
 
   render(){
     // A song has been selected
-    if (this.props.songId) {
+    if (this.props.songUrl) {
       return(
         <div className='player animated fadeInUp'>
           <ReactPlayer

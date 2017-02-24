@@ -7,8 +7,8 @@ export default class Trending extends React.Component {
     super(props);
   }
 
-  play(songId) {
-    this.props.nowPlaying(songId, this.props.tracks);
+  play(trackUrl) {
+    this.props.nowPlaying(trackUrl, this.props.tracks);
   }
 
   render(){
@@ -17,7 +17,7 @@ export default class Trending extends React.Component {
         {this.props.tracks.slice(0, 12).map((track, idx) => (
             <TrackContainer track={track} key={track.id}
                             klass='trending-item'
-                            play={songId => this.play(songId)}/>)
+                            play={trackUrl => this.play(trackUrl)}/>)
           )}
       </ul>
     );

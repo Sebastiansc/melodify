@@ -8,9 +8,9 @@ export const RECORD_PROGRESS = "RECORD_PROGRESS";
 export const GET_PROGRESS = "GET_PROGRESS";
 export const CLEAR_PROGRESS = "CLEAR_PROGRESS";
 
-export const nowPlaying = (songId, tracks) => ({
+export const nowPlaying = (songUrl, tracks) => ({
   type: NOW_PLAYING,
-  songId,
+  songUrl,
   tracks,
 });
 

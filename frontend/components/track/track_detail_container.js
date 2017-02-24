@@ -7,7 +7,7 @@ const mapStateToProps = ({song}) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  nowPlaying: (songId, tracks) => dispatch(nowPlaying(songId, tracks))
+  nowPlaying: (songUrl, tracks) => dispatch(nowPlaying(songUrl, tracks))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackDetail);
