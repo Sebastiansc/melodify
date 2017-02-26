@@ -5,8 +5,15 @@ class Like < ApplicationRecord
   belongs_to :song
 
   def self.recent_likes
-    Like.order('created_at DESC')
-        .limit(5)
-        .includes(Song.preload)
+    all_plays.limit(5)
   end
+
+  def self.all_likes
+    desc.includes(Song.preload)
+  end
+
+  def self.desc
+    order('created_at DESC')
+  end
+
 end

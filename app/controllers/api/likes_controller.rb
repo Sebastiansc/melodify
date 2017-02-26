@@ -1,6 +1,10 @@
 class Api::LikesController < ApplicationController
   before_action :ensure_login, only: [:recent_likes]
 
+  def index
+    @likes = Like.all_likes
+  end
+
   def create
     @like = Like.create!(
       user_id: current_user.id,

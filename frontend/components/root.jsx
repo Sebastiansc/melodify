@@ -13,6 +13,8 @@ import UploadContainer from './upload/upload_container';
 // UTIL AND METHODS
 import { fetchComments } from '../actions/comment_actions';
 import { getProgress } from '../actions/playing_actions';
+import { getPlays } from '../actions/listen_history_actions';
+import { getLikes } from '../actions/liked_track_actions';
 import { getSong, clearSong } from '../actions/song_actions';
 import { getTracks } from '../actions/tracks_actions';
 
@@ -75,6 +77,11 @@ const Root = ({ store }) => {
     window.scroll(0, 0);
   };
 
+  const getCollections = nextState => {
+    store.dispatch(getLikes());
+    store.dispatch(getPlays());
+  };
+
   return(
     <Provider store={store}>
       <Router history={hashHistory}>
@@ -102,7 +109,11 @@ const Root = ({ store }) => {
           />
 
           <Route path='you' component={Collections}>
-            <Route path='collections' component={Overview}/>
+            <Route
+              path='collections'
+              component={Overview}
+              onEnter={getCollections}
+            />
           </Route>
         </Route>
       </Router>

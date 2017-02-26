@@ -1,5 +1,5 @@
 class Api::PlaysController < ApplicationController
-  before_action :ensure_login, only: [:recent_plays, :all_plays]
+  before_action :ensure_login, only: [:recent_plays, :index]
 
   def create
     @play = Play.find_by(
