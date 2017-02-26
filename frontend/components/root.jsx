@@ -5,6 +5,8 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 // LOCAL COMPONENTS
 import AppContainer from './app_container';
 import Chart from './charts/chart';
+import Collections from './collection/collections';
+import Overview from './collection/overview';
 import Splash from './splash/splash';
 import TrackDetailContainer from './track/track_detail_container';
 import UploadContainer from './upload/upload_container';
@@ -75,28 +77,35 @@ const Root = ({ store }) => {
 
   return(
     <Provider store={store}>
-
       <Router history={hashHistory}>
         <Route
           path='/' component={AppContainer}
         >
           <IndexRoute
             component={Splash}
-            onEnter={splashEnter}/>
+            onEnter={splashEnter}
+          />
+
           <Route
             path='charts/top'
             component={Chart}
             onEnter={fetchTracks}
-            onChange={fetchNewTracks}/>
-            <Route path='upload' component={UploadContainer}/>
-            <Route
-              path=':ownerUrl/:songUrl'
-              component={TrackDetailContainer}
-              onEnter={fetchSong}
-              onLeave={dropSongFromState}/>
-          </Route>
-      </Router>
+            onChange={fetchNewTracks}
+          />
 
+          <Route path='upload' component={UploadContainer}/>
+          <Route
+            path=':ownerUrl/:songUrl'
+            component={TrackDetailContainer}
+            onEnter={fetchSong}
+            onLeave={dropSongFromState}
+          />
+
+          <Route path='you' component={Collections}>
+            <Route path='collections' component={Overview}/>
+          </Route>
+        </Route>
+      </Router>
     </Provider>
   );
 };
