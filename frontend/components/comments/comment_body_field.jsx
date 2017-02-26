@@ -27,7 +27,8 @@ export default class CommentBodyField extends React.Component{
     }
   }
 
-  updateComment(){
+  updateComment(e){
+    e.preventDefault();
     const newAttr = {
       body: this.state.body,
       id: this.props.comment.id
@@ -44,7 +45,7 @@ export default class CommentBodyField extends React.Component{
     if(this.state.editing){
       return(
         <div className='comment-edit'>
-          <form onSubmit={() => this.updateComment()}>
+          <form onSubmit={e => this.updateComment(e)}>
             <input
               type='text'
               ref={input => this.input = input}
