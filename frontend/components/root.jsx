@@ -14,7 +14,7 @@ import UploadContainer from './upload/upload_container';
 import { fetchComments } from '../actions/comment_actions';
 import { getProgress } from '../actions/playing_actions';
 import { getPlays } from '../actions/listen_history_actions';
-import { getLikes } from '../actions/liked_track_actions';
+import { getLikes } from '../actions/liked_tracks_actions';
 import { getSong, clearSong } from '../actions/song_actions';
 import { getTracks } from '../actions/tracks_actions';
 
@@ -99,6 +99,14 @@ const Root = ({ store }) => {
             onEnter={fetchTracks}
             onChange={fetchNewTracks}
           />
+        
+        <Route path='you' component={Collections}>
+          <Route
+            path='collection'
+            component={Overview}
+            onEnter={getCollections}
+            />
+        </Route>
 
           <Route path='upload' component={UploadContainer}/>
           <Route
@@ -108,13 +116,6 @@ const Root = ({ store }) => {
             onLeave={dropSongFromState}
           />
 
-          <Route path='you' component={Collections}>
-            <Route
-              path='collections'
-              component={Overview}
-              onEnter={getCollections}
-            />
-          </Route>
         </Route>
       </Router>
     </Provider>

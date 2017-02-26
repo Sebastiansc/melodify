@@ -4,7 +4,7 @@ import TrackContainer from '../shared/track_container';
 
 // idx might not work as key. request random key from parent;
 // size: amount of items to show
-const Collection = ({ tracks, nowPlaying, size, extras}) => {
+const Collection = ({ tracks, nowPlaying, size, extras, headerText}) => {
 
   const play = trackUrl => {
     nowPlaying(trackUrl, tracks);
@@ -12,6 +12,9 @@ const Collection = ({ tracks, nowPlaying, size, extras}) => {
 
   return(
     <div className='collection-wraper'>
+      <div className='collection-header'>
+        <span>{headerText}</span>
+      </div>
       <ul className='trending'>
         {tracks.slice(0, size).map( (track, idx) => (
           <TrackContainer

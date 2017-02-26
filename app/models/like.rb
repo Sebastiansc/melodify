@@ -5,7 +5,7 @@ class Like < ApplicationRecord
   belongs_to :song
 
   def self.recent_likes
-    all_plays.limit(5)
+    all_likes.limit(5)
   end
 
   def self.all_likes

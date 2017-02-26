@@ -19,6 +19,10 @@ export default class Track extends React.Component {
     return this.props.track.url === this.props.songUrl;
   }
 
+  shouldComponentUpdate() {
+    return Boolean(this.props.track);
+  }
+
   playState() {
     const isPlaying = this.props.state;
     if (this._isSelected() && isPlaying) return 'playing';

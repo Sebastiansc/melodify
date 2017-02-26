@@ -1,0 +1,17 @@
+.collections-header {
+  display: flex;
+  margin: 30px 0;
+  font-size: $font-lg;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $lightgray;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  li {
+    margin-right: 40px;
+  }
+  .active {
+    color: $orange;
+    padding-bottom: 9px;
+    border-bottom: 1px solid $orange;
+  }
+}

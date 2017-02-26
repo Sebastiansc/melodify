@@ -47,7 +47,7 @@ export default class Navbar extends React.Component {
             col-sm-2'
             >
             <li><Link to='charts/top'>Charts</Link></li>
-            <li><Link to='collection'>Collection</Link></li>
+            <li><Link to='you/collection'>Collection</Link></li>
           </ul>
 
           <SearchBarContainer
