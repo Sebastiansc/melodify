@@ -38,9 +38,10 @@ export const renewComment = comment => ({
 });
 
 
-export const fetchComments = songId => ({
+export const fetchComments = (ownerUrl, songUrl) => ({
   type: FETCH_COMMENTS,
-  songId
+  ownerUrl,
+  songUrl
 });
 
 export const receiveComments = comments => ({

@@ -28,4 +28,9 @@ class ApplicationController < ActionController::Base
   def ensure_login
     render json: [] unless current_user
   end
+
+  def find_song
+    user = User.find_by(url: params[:owner_url])
+    @song = user.songs.find_by(url: params[:song_url])
+  end
 end

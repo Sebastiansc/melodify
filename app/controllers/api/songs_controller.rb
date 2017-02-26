@@ -4,8 +4,7 @@ class Api::SongsController < ApplicationController
   end
 
   def show
-    user = User.find_by(url: params[:owner_url])
-    @song = user.songs.find_by(url: params[:song_url])
+    find_song
   end
 
   def destroy

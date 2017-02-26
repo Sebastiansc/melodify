@@ -24,9 +24,9 @@ export const patchComment = (comment, success) => {
   });
 };
 
-export const getComments = (songId, success) => {
+export const getComments = (ownerUrl, songUrl, success) => {
   $.ajax({
-    url: `/api/songs/${songId}/comments`,
+    url: `/api/comments/${ownerUrl}/${songUrl}`,
     success
   });
 };

@@ -1,6 +1,7 @@
 class Api::CommentsController < ApplicationController
   def index
-    @comments = Comment.where(song_id: params[:song_id]).includes(:author)
+    find_song
+    @comments = Comment.where(song_id: @song.id).includes(:author)
   end
 
   def create

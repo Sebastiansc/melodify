@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Loader from '../shared/loader';
 import TrackItem from './track_item';
 
 export default class TopTracks extends React.Component {
@@ -113,7 +114,10 @@ export default class TopTracks extends React.Component {
           <div className='list-header-number'>#</div>
           <div className='list-header-track'>Track</div>
           <div className='list-header-plays'>Plays (All time)</div>
+          <Loader klass='tracks-loader' data={this.props.tracks}/>
         </div>
+
+
         {this.props.tracks.map((track, idx) => (
           <TrackItem
             playing={this.props.playing}

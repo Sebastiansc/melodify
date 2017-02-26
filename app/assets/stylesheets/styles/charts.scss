@@ -22,6 +22,7 @@
 
 .charts-page-outerbox {
   position: relative;
+  margin-bottom: 100px;
 }
 
 .charts-header {
@@ -63,6 +64,8 @@
   width: 100%;
   min-height: 100vh;
   float: left;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $lightgray;
 }
 
 .charts-filter-wrapper {
@@ -100,6 +103,14 @@
   letter-spacing: 1px;
   color: $gray9;
   margin-bottom: 10px;
+  position: relative;
+}
+
+.tracks-loader {
+  position: absolute;
+  color: black;
+  top: 150px;
+  right: 50%;
 }
 
 .list-header-number {

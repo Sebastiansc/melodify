@@ -58,7 +58,10 @@ const Root = ({ store }) => {
       nextState.params.ownerUrl,
       nextState.params.songUrl)
     );
-    store.dispatch(fetchComments(nextState.params.songId));
+    store.dispatch(fetchComments(
+      nextState.params.ownerUrl,
+      nextState.params.songUrl)
+    );
     toTop();
   };
 

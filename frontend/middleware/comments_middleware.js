@@ -18,7 +18,7 @@ const CommentsMiddleware = ({dispatch}) => next => action => {
   switch(action.type) {
     case FETCH_COMMENTS:
       success = comments => dispatch(receiveComments(comments));
-      getComments(action.songId, success);
+      getComments(action.ownerUrl, action.songUrl, success);
       return next(action);
     case CREATE_COMMENT:
       success = comment => dispatch(receiveComment(comment));
