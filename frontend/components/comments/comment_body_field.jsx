@@ -21,7 +21,6 @@ export default class CommentBodyField extends React.Component{
   }
 
   componentDidUpdate() {
-    // debugger;
     if (this.input) {
       $('.comment-edit-input').focus();
     }
