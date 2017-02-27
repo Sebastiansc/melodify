@@ -128,6 +128,9 @@
   a {
     display: block;
   }
+  .track-link {
+    z-index: 100;
+  }
 }
 
 @include respond-to('medium') {

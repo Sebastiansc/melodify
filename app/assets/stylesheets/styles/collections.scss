@@ -15,3 +15,22 @@
     border-bottom: 1px solid $orange;
   }
 }
+
+.empty-box {
+  height: 70%;
+  border: 1px solid #ccc;
+  cursor: default;
+}
+
+.collection-wrapper {
+  .trending {
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid $lightgray;
+  }
+}
+.collection-header {
+  margin-bottom: 20px;
+  font-size: $font-md;
+  font-weight: 700;
+}

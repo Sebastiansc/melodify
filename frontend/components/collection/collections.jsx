@@ -14,11 +14,14 @@ export default class Collections extends React.Component {
 
   render(){
     return(
+    <div>
       <ul className='collections-header'>
-        <li><Link to='you/collection'>Overview</Link></li>
-        <li><Link to='you/likes'>Likes</Link></li>
-        <li><Link to='you/history'>History</Link></li>
+        <li><Link to='/you/collection'>Overview</Link></li>
+        <li><Link to='/you/likes'>Likes</Link></li>
+        <li><Link to='/you/history'>History</Link></li>
       </ul>
+      {this.props.children}
+    </div>
     );
   }
 }

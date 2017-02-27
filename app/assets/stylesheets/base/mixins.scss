@@ -140,3 +140,11 @@ $breakpoints: (
   border-radius: 3px;
   position: relative;
 }
+
+@mixin truncate {
+  color: inherit;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: normal;
+}

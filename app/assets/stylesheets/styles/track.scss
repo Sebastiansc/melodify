@@ -8,7 +8,6 @@
   display: block;
   height: 70%;
   opacity: 0;
-  border: 1px solid #ccc;
 }
 
 .default-bg {
@@ -38,6 +37,7 @@
   left: 34%;
   top: 34%;
   right: 34%;
+  z-index: 1000;
   bottom: 34%;
 }
 
@@ -114,4 +114,8 @@
 
 .more:before {
   @include action-button("https://res.cloudinary.com/flikr/image/upload/v1486416535/more_jgbtot.svg")
+}
+
+.track-link {
+  @include overlay;
 }

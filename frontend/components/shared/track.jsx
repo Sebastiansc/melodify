@@ -65,6 +65,9 @@ export default class Track extends React.Component {
     return(
       <li className={`track ${this.props.klass}`}>
         <div className='track-artwork default-bg'>
+          <Link
+            to={`${this.props.track.ownerUrl}/${this.props.track.url}`}
+            className='track-link'/>
           <span
             className='track-artwork-cover bg smooth-show'
             style={{backgroundImage: this.state.background}}
