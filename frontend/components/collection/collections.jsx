@@ -4,10 +4,13 @@ import { Link, IndexLink } from 'react-router';
 export default class Collections extends React.Component {
   constructor() {
     super();
+    this.componentDidMount = this.componentWillReceiveProps = this.highlight;
   }
 
-  componentDidMount() {
-    $(`.collections-header a[href^="#${this.props.location.pathname}"]`)
+  highlight(props) {
+    props = props || this.props;
+    $('.collections-header a').removeClass('active');
+    $(`.collections-header a[href^="#${props.location.pathname}"]`)
       .addClass('active');
   }
 

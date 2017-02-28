@@ -133,6 +133,9 @@
   align-items: center;
   font-size: 11px;
   color: $gray9;
+  a {
+    display: inline;
+  }
   li {
     margin-right: 10px;
   }
