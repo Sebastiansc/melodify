@@ -5,7 +5,8 @@
     margin-right: 15px;
   }
   a {
-    display: inline;
+    display: block;
+    @include truncate;
   }
   .like-track-actions-wrapper {
     display: block;
@@ -108,7 +109,7 @@
 }
 
 .like-history-container {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   position: relative;
   min-height: 250px;
   a:hover {
@@ -119,6 +120,7 @@
 .l-bar-fixed {
   position: fixed;
   width: inherit;
+  top: 65px;
 }
 
 .like-history-item {

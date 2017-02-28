@@ -34,11 +34,20 @@
 .play-overlay {
   display: none;
   position: absolute;
-  left: 34%;
-  top: 34%;
-  right: 34%;
   z-index: 1000;
-  bottom: 34%;
+  left: 35%;
+  top: 35%;
+  right: 35%;
+  bottom: 31%;
+}
+
+@include respond-to('medium') {
+  .play-overlay {
+    left: 34%;
+    top: 34%;
+    right: 34%;
+    bottom: 34%;
+  }
 }
 
 .track-artwork:hover {
@@ -118,4 +127,9 @@
 
 .track-link {
   @include overlay;
+}
+
+.track-title-text {
+  display: block;
+  @include truncate
 }

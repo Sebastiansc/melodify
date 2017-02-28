@@ -28,12 +28,6 @@ export default class Collection extends React.Component{
   }
 
   render() {
-    if (this.props.headerText === 'Likes') {
-      window.that = this;
-    } else {
-      window.there = this;
-    }
-
     return(
       <div className='collection-wrapper'>
         <div className='collection-header'>

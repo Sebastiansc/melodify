@@ -29,8 +29,17 @@
     border-bottom: 1px solid $lightgray;
   }
 }
+
 .collection-header {
   margin-bottom: 20px;
   font-size: $font-md;
   font-weight: 700;
+}
+
+.likes-wrapper {
+  .collection-header {
+    margin-bottom: 25px;
+    font-size: $font-md;
+    color: $gray9;
+  }
 }

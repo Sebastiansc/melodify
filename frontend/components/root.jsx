@@ -6,7 +6,9 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import AppContainer from './app_container';
 import Chart from './charts/chart';
 import Collections from './collection/collections';
+import Likes from './collection/likes';
 import Overview from './collection/overview';
+import Plays from './collection/plays';
 import Splash from './splash/splash';
 import TrackDetailContainer from './track/track_detail_container';
 import UploadContainer from './upload/upload_container';
@@ -77,9 +79,17 @@ const Root = ({ store }) => {
     window.scroll(0, 0);
   };
 
-  const getCollections = nextState => {
+  const fetchLikes = nextState => {
     store.dispatch(getLikes());
+  };
+
+  const fetchPlays = nextState => {
     store.dispatch(getPlays());
+  };
+
+  const getCollections = nextState => {
+    fetchLikes();
+    fetchPlays();
   };
 
   return(
@@ -99,13 +109,23 @@ const Root = ({ store }) => {
             onEnter={fetchTracks}
             onChange={fetchNewTracks}
           />
-        
+
         <Route path='you' component={Collections}>
           <Route
             path='collection'
             component={Overview}
             onEnter={getCollections}
-            />
+          />
+          <Route
+            path='likes'
+            component={Likes}
+            onEnter={fetchLikes}
+          />
+          <Route
+            path='history'
+            component={Plays}
+            onEnter={fetchPlays}
+          />
         </Route>
 
           <Route path='upload' component={UploadContainer}/>

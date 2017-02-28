@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Collection from './collection';
 import { nowPlaying } from '../../actions/playing_actions';
 
-const mapStateToProps = ({likes, plays}, {collection}) => {
+const mapStateToProps = ({likes, plays}, {collection, location}) => {
   let tracks;
   switch (collection) {
     case "likes":
