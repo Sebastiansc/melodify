@@ -8,6 +8,7 @@ import ListenHistoryReducer from './listen_history_reducer';
 import CacheReducer from './cache_reducer';
 import CommentsReducer from './comments_reducer';
 import PopupReducer from './popup_reducer';
+import PlaylistsReducer from './playlists_reducer';
 
 export default combineReducers({
   session: SessionReducer,
@@ -19,4 +20,5 @@ export default combineReducers({
   plays: ListenHistoryReducer,
   comments: CommentsReducer,
   popup: PopupReducer,
+  playlists: PlaylistsReducer,
 });

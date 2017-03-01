@@ -1,4 +1,8 @@
 class Api::PlaylistsController < ApplicationController
+  def index
+    @playlists = current_user.playlists
+  end
+
   def tracks
     @playlist = Playlist.find_by(url: params[:url])
     @tracks = @playlist.tracks
@@ -27,6 +31,10 @@ class Api::PlaylistsController < ApplicationController
 
   def update
     Playlist.find(params[:id]).update_attributes(playlist_params)
+  end
+
+  def add_track
+    Playlist.find(params[:id]).songs << Song.find(params[:song_url])
   end
 
   private
