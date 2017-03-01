@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :songs, only: [:create, :index]
     resources :likes, only: [:index]
     resources :plays, only: [:index]
+    resources :playlists, only: [:destroy, :update, :create]
     resources :comments, only: [:create, :destroy, :update]
   end
 
@@ -22,4 +23,7 @@ Rails.application.routes.draw do
   get 'api/plays/recent', to: 'api/plays#recent_plays'
 
   get 'api/comments/:owner_url/:song_url', to: 'api/comments#index'
+
+  get 'api/playlists/:url/tracks', to: 'api/playlists#tracks'
+  get 'api/playlists/:song_url/', to: 'api/playlists#playlists'
 end
