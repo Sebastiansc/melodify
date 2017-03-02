@@ -1,6 +1,5 @@
 // Needs a play method to be passed from its parent component.
 // Play method should dispatch nowPlaying with the parents track collection and this tracks trackId.
-
 import React from 'react';
 import { Link } from 'react-router';
 import LikeContainer from './like_container';

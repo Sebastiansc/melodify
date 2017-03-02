@@ -1,7 +1,8 @@
 import React from 'react';
+import LikePopupContainer from './shared/like_popup_container';
 import NavBar from './shared/nav_bar';
 import PlayerContainer from './shared/player_container';
-import LikePopupContainer from './shared/like_popup_container';
+import PlaylistModalContainer from './playlists/playlist_modal_container';
 import Splash from './splash/splash';
 
 export default class App extends React.Component {
@@ -29,6 +30,7 @@ export default class App extends React.Component {
           display={display}
         />
         <LikePopupContainer />
+        <PlaylistModalContainer />
         {this.props.children}
         <PlayerContainer/>
       </div>

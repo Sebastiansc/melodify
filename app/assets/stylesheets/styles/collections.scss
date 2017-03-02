@@ -9,11 +9,12 @@
   li {
     margin-right: 40px;
   }
-  .active {
-    color: $orange;
-    padding-bottom: 9px;
-    border-bottom: 1px solid $orange;
-  }
+}
+
+.active {
+  color: $orange;
+  padding-bottom: 9px;
+  border-bottom: 1px solid $orange;
 }
 
 .empty-box {
