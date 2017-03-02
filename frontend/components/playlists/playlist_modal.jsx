@@ -26,7 +26,7 @@ export default class PlaylistModal extends React.Component {
     $(this.refs[ref]).addClass('active');
   }
 
-  open(ref) {
+  openView(ref) {
     this.highlight(ref);
     // Create copy of state
     const newState = merge({}, this.state);
@@ -57,10 +57,10 @@ export default class PlaylistModal extends React.Component {
         <div className='playlist-headers-wrapper'>
           <ul className='playlist-headers'>
             <li
-              onClick={e => this.open('add')} >
+              onClick={e => this.openView('add')} >
               <span ref='add' className='active'>Add to playlist</span>
             </li>
-            <li onClick={e => this.open('create')}>
+            <li onClick={e => this.openView('create')}>
               <span ref='create'>Create a playlist</span>
             </li>
           </ul>

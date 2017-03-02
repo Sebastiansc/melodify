@@ -8,12 +8,12 @@ export default class PlaylistList extends React.Component {
   }
 
   componentDidMount() {
-    $(this.refs.searchBox).focus();
+    $('#input').focus();
   }
 
   filterPlaylists(query) {
     let playlists = [];
-    this.state.playlists.forEach( playlist => {
+    this.props.playlists.forEach( playlist => {
       if (playlist.startsWith(query)) {
         playlists.push(playlist);
       }
@@ -36,9 +36,9 @@ export default class PlaylistList extends React.Component {
           onSubmit={ e => this.handleSubmit(e)}>
           <input
             type='text'
+            id='input'
             placeholder='Filter playlists'
-            className='playlist-input'
-            ref='searchBox'>
+            className='playlist-input'>
           </input>
         </form>
         <ul className='playlists-ul'>
