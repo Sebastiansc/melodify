@@ -1,5 +1,5 @@
 import React from 'react';
-import TrackContainer from '../shared/track_container';
+import SoundItemContainer from '../sound_item/sound_item_container';
 
 export default class HistoryItem extends React.Component {
   play(e) {
@@ -9,7 +9,7 @@ export default class HistoryItem extends React.Component {
   render() {
     return(
       <div className='charts-like-track' onClick={e => this.play(e)}>
-        <TrackContainer
+        <SoundItemContainer
           klass="like-history-item chart-item"
           track={this.props.track}
           ref={player => this.player = player}

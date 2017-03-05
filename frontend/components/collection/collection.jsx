@@ -1,6 +1,6 @@
 import React from 'react';
 // import CollectionItem from './collection_item';
-import TrackContainer from '../shared/track_container';
+import SoundItemContainer from '../sound_item/sound_item_container';
 
 // idx might not work as key. request random key from parent;
 // size: amount of items to show
@@ -35,7 +35,7 @@ export default class Collection extends React.Component{
         </div>
         <ul className='trending'>
           {this.props.tracks.slice(0, this.props.size).map( (track, idx) => (
-            <TrackContainer
+            <SoundItemContainer
               klass='trending-item collection-item'
               play={ trackUrl => this.play(trackUrl)}
               track={track}

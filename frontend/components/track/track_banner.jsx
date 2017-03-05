@@ -1,5 +1,5 @@
 import React from 'react';
-import TrackContainer from '../shared/track_container';
+import SoundItemContainer from '../sound_item/sound_item_container';
 import WavePlayerContainer from './wave_player_container';
 
 // Canvas not longer being added to document so this line is not necessary.
@@ -57,7 +57,7 @@ export default class TrackBanner extends React.Component {
 
         <div
           className='gradient-wrap smooth-show'
-          ref={wrapper => this.wrapper = wrapper}>
+          ref={wrapper => { this.wrapper = wrapper; }}>
           <img
             src={this.props.track.cover_photo}
             id='image'
@@ -69,8 +69,8 @@ export default class TrackBanner extends React.Component {
 
         <div className='track-detail-actions-wrapper'>
           <div className='track-detail-actions'>
-            <TrackContainer
-              ref={player => this.player = player}
+            <SoundItemContainer
+              ref={player => { this.player = player; }}
               play={trackUrl => this.play(trackUrl)}
               klass='track-detail-player'
               track={this.props.track}/>

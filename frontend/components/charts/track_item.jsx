@@ -1,5 +1,5 @@
 import React from 'react';
-import TrackContainer from '../shared/track_container';
+import SoundItemContainer from '../sound_item/sound_item_container';
 import LikeContainer from '../shared/like_container';
 import PlaylistButtonContainer from '../playlists/playlist_button_container';
 
@@ -38,7 +38,7 @@ export default class TrackItem extends React.Component {
         ref={wrapper => this.wrapper = wrapper}
         onClick={e => this.togglePlay(e)}>
         <div className='chart-track-position'>{this.props.position}</div>
-        <TrackContainer
+        <SoundItemContainer
           track={this.props.track}
           play={trackUrl => this.play(trackUrl)}
           klass='chart-item'

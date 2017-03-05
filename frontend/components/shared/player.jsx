@@ -196,7 +196,9 @@ export default class Player extends React.Component {
               <div className='player-timeline'>
                 <div className='playbacktime'>
                   <div className='playback-duration time-passed'>
-                    <span ref={timeElapsed => this.timeElapsed = timeElapsed}>
+                    <span
+                      ref={timeElapsed => {this.timeElapsed = timeElapsed; }}
+                    >
                       0:00
                     </span>
                   </div>
@@ -214,7 +216,7 @@ export default class Player extends React.Component {
                     </div>
                     <div
                       className='playback-progress-handle'
-                      ref={handle => this.handle = handle} >
+                      ref={handle => { this.handle = handle; }}>
                     </div>
                   </div>
                   <div className='playback-duration duration'>

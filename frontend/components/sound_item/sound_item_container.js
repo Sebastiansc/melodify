@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Track from './track';
+import SoundItem from './sound_item';
 import { pause } from '../../actions/playing_actions';
 
 const mapStateToProps = ({session, playing}) => ({
@@ -16,4 +16,4 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps,
   null,
-  { withRef: true })(Track);
+  { withRef: true })(SoundItem);

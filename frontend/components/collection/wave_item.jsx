@@ -1,6 +1,6 @@
 import React from 'react';
 import WavePlayer from '../track/wave_player_container';
-import TrackContainer from '../track/track_container';
+import SoundItemContainer from '../track/track_container';
 import Like from '../shared/like';
 
 export default class WaveItem extends React.Component {

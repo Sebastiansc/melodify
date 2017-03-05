@@ -23,6 +23,7 @@ class Api::PlaylistsController < ApplicationController
     @playlist = Playlist.new(playlist_params)
     @playlist.user_id = current_user.id
     if @playlist.save
+      params[:tracks].each { |track_id| @playlist.songs << Song.find(track_id) }
       render :show
     else
       render json: @playlist.errors.full_messages, status: 422

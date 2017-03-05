@@ -1,6 +1,6 @@
 import React from 'react';
 import Masonry from 'react-masonry-component';
-import TrackContainer from '../shared/track_container';
+import SoundItemContainer from '../sound_item/sound_item_container';
 
 export default class Trending extends React.Component {
   constructor(props){
