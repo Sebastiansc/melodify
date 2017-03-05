@@ -28,3 +28,10 @@ export const addTrack = (playlistId, trackId) => {
     type: 'post'
   });
 };
+
+export const getUserPlaylists = success => {
+  $.ajax({
+    url: `api/playlists/`,
+    success
+  });
+};

@@ -39,6 +39,35 @@ export default class PlaylistModal extends React.Component {
     this.setState(newState);
   }
 
+  renderHeaders() {
+    return(
+      <div className='playlist-headers-wrapper'>
+        <ul className='playlist-headers'>
+          <li
+            onClick={e => this.openView('add')} >
+            <span ref='add' className='active'>Add to playlist</span>
+          </li>
+          <li onClick={e => this.openView('create')}>
+            <span ref='create'>Create a playlist</span>
+          </li>
+        </ul>
+      </div>
+    );
+  }
+
+  renderViews() {
+    return(
+      <div className='playlist-modal-main-content'>
+        <PlaylistList
+          open={this.state.addView}
+          playlists={this.props.playlists}/>
+        <PlaylistCreate
+          open={this.state.createView}
+          createPlaylist={this.props.createView}/>
+      </div>
+    );
+  }
+
   render() {
     window.that = this;
     return(
@@ -53,26 +82,9 @@ export default class PlaylistModal extends React.Component {
            playlist-modal`
         }
         overlayClassName='react-modal-overlay playlist-modal-overlay'
-        >
-        <div className='playlist-headers-wrapper'>
-          <ul className='playlist-headers'>
-            <li
-              onClick={e => this.openView('add')} >
-              <span ref='add' className='active'>Add to playlist</span>
-            </li>
-            <li onClick={e => this.openView('create')}>
-              <span ref='create'>Create a playlist</span>
-            </li>
-          </ul>
-        </div>
-        <div className='playlist-modal-main-content'>
-          <PlaylistList
-            open={this.state.addView}
-            playlists={this.props.playlists}/>
-          <PlaylistCreate
-            open={this.state.createView}
-            createPlaylist={this.props.createView}/>
-        </div>
+      >
+        {this.renderHeaders()}
+        {this.renderViews()}
       </Modal>
     );
   }

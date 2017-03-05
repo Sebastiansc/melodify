@@ -23,10 +23,21 @@ class Api::PlaylistsController < ApplicationController
     @playlist = Playlist.new(playlist_params)
     @playlist.user_id = current_user.id
     if @playlist.save
-      params[:tracks].each { |track_id| @playlist.songs << Song.find(track_id) }
+      populate_list
       render :show
     else
       render json: @playlist.errors.full_messages, status: 422
+    end
+  end
+
+  def populate_list
+    params[:tracks].each_with_index do |track_id, idx|
+      song = Song.find(track_id)
+      # Set cover photo to first tracks cover photo if user didn't input one.
+      if !@playlist.cover_photo && idx.zero?
+        @playlist.cover_photo = song.cover_photo
+      end
+      @playlist.songs << song
     end
   end
 

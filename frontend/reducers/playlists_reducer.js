@@ -14,7 +14,7 @@ const PlaylistsReducer = (state = _null, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_PLAYLISTS:
-      return merge(newState, {lists: action.playlists });
+      return merge(newState, { lists: action.playlists });
     case TOGGLE_PLAYLIST_MODAL:
       newState.modal = !newState.modal;
       newState.track = action.track;

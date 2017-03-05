@@ -3,6 +3,8 @@ export const UPDATE_PLAYLIST = "UPDATE_PLAYLIST";
 export const DELETE_PLAYLIST = "DELETE_PLAYLIST";
 export const ADD_TRACK = "ADD_TRACK";
 export const TOGGLE_PLAYLIST_MODAL = "TOGGLE_PlAYLIST_MODAL";
+export const GET_USER_PLAYLISTS = "GET_USER_PLAYLISTS";
+export const RECEIVE_PLAYLISTS = "RECEIVE_PLAYLISTS";
 
 export const createPlaylist = (playlist, tracks) => ({
   type: CREATE_PLAYLIST,
@@ -29,4 +31,13 @@ export const addTrack = (playlistId, track) => ({
 export const toggleModal = track => ({
   type: TOGGLE_PLAYLIST_MODAL,
   track
+});
+
+export const getUserPlaylists = () => ({
+  type: GET_USER_PLAYLISTS,
+});
+
+export const receivePlaylists = playlists => ({
+  type: GET_USER_PLAYLISTS,
+  playlists
 });
