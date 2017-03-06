@@ -12,6 +12,8 @@ export default class PlaylistModal extends React.Component {
 
   componentWillReceiveProps(props) {
     if (this.state.open !== props.open) {
+      // Request playlists every time the modal opens.
+      this.props.getUserPlaylists();
       this.setState({ open: props.open });
     }
   }
@@ -30,7 +32,7 @@ export default class PlaylistModal extends React.Component {
     this.highlight(ref);
     // Create copy of state
     const newState = merge({}, this.state);
-    // close the old display open the new one
+    // Close the old display and open the new one
     for (let key in newState) {
       if (key === 'open') continue;
       newState[key] = false;
@@ -63,13 +65,13 @@ export default class PlaylistModal extends React.Component {
           playlists={this.props.playlists}/>
         <PlaylistCreate
           open={this.state.createView}
-          createPlaylist={this.props.createView}/>
+          createPlaylist={this.props.createPlaylist}
+          track={this.props.track}/>
       </div>
     );
   }
 
   render() {
-    window.that = this;
     return(
       <Modal
         isOpen={this.state.open}

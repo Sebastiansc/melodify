@@ -1,0 +1,97 @@
+.playlist-create-tracks-wrapper {
+  border: 1px solid $lightgray;
+  .playlist-create-track-wrapper:last-child {
+    border-bottom: none;
+  }
+}
+
+.playlist-create-track-wrapper {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $lightgray;
+  padding-left: 5px;
+  font-size: 13px;
+}
+
+.playlist-create-track-cover {
+  width: 20px;
+  margin-right: 7px;
+  display: inline-block;
+  height: 20px;
+  background-size: cover;
+}
+
+.playlist-create-artist-name {
+  color: $gray9;
+  margin-right: 3px;
+}
+
+.playlist-create-separator {
+  background-color: rgba(242,242,242,.9);
+  height: 5px;
+  margin: 15px -30px;
+}
+
+
+.recommendations-wrapper {
+  h3 {
+    font-size: $font-sm;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $lightgray;
+    margin: 0;
+  }
+  .playlist-create-track-wrapper {
+    height: 65px;
+  }
+}
+
+.recommendations-track-cover {
+  width: 50px;
+  margin-right: 10px;
+  display: inline-block;
+  height: 50px;
+  background-size: cover;
+}
+
+.recommendations-track-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.playlist-add-button {
+  margin-left: auto;
+  height: 100%;
+  background: linear-gradient(to right,rgba(255,255,255,.1),#fff 20px);
+  button {
+    vertical-align: -23px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 100;
+    padding: 5px 10px;
+    border: 1px solid $bordergray;
+  }
+  .added {
+    border-color: $orange;
+    color: $orange;
+  }
+}
+
+
+.return-button-wrapper {
+  margin-left: auto;
+  margin-right: 5px;
+}
+
+.playlist-create-return-button {
+  display: inline-block;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAPklEQVQ4y2NIS0v7D8IMZAK4fqoZhFOAVAOobhCxCoi2kGoG4dJAdqRQzSCqGUAzlwxcGA2edDR48tqgK48ATdKVBR2e0ZQAAAAASUVORK5CYII=') no-repeat 50% 50%;
+  background-size: 9px 9px;
+  width: 15px;
+  height: 15px;
+  vertical-align: -1px;
+  border: 0;
+  margin: 0 2px 0 0;
+  padding: 0;
+}

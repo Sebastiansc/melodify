@@ -104,8 +104,16 @@ li {
   list-style: none;
 }
 
-.hide {
+.shown {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 600ms linear;
+}
+
+.hid {
+  visibility: hidden;
   opacity: 0;
+  transition: visibility 0s 600ms, opacity 600ms linear;
 }
 
 .smooth-show {
