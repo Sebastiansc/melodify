@@ -8,6 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.photoUrl = "https://res.cloudinary.com/flikr/image/upload/v1486934639/avatars-000292048508-r656e6-t120x120_eotdip.jpg";
 
+  $.fn.extend({
+    animateCss: function (animationName, onEnd) {
+        const animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        this.addClass('animated ' + animationName).one(animationEnd, () => {
+            $(this).removeClass('animated ' + animationName);
+            if (onEnd) onEnd();
+        });
+    }
+  });
+
+
   let store;
   if (window.currentUser) {
     store = configureStore(

@@ -6,7 +6,7 @@ import { createPlaylist,
 import { toArray } from '../../reducers/selectors';
 
 const mapStateToProps = ({playlists}) => ({
-  playlists: toArray(playlists.list),
+  playlists: toArray(playlists.lists),
   open: playlists.modal,
   track: playlists.track
 });

@@ -4,46 +4,60 @@ import PlaylistItem from './playlist_item';
 export default class PlaylistList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { playlists: props.playlists };
+    this.state = { playlists: [] };
   }
 
   componentDidMount() {
-    $('#input').focus();
+    $(this.refs.input).focus();
   }
 
   filterPlaylists(query) {
     let playlists = [];
     this.props.playlists.forEach( playlist => {
-      if (playlist.startsWith(query)) {
+      if (playlist.name.startsWith(query)) {
         playlists.push(playlist);
       }
     });
     return playlists;
   }
 
-  handleSubmit(e) {
+  componentWillReceiveProps(props) {
+    if (!this.state.playlists.length) {
+      this.setState({ playlists: props.playlists });
+    }
+  }
+
+  search(e) {
     e.preventDefault();
     const playlists = this.filterPlaylists(e.target.value);
     this.setState({ playlists });
   }
 
+  blurField(e) {
+    e.preventDefault();
+    $(this.refs.input).blur();
+  }
+
   render() {
+    window.that = this;
     if (!this.props.open) return null;
     return(
       <div className="playlist-list-wrapper">
-        <form
-          className='playlist-form'
-          onSubmit={ e => this.handleSubmit(e)}>
+        <form onSubmit={e => this.blurField(e)}>
           <input
             type='text'
-            id='input'
+            ref='input'
+            onChange={e => this.search(e)}
             placeholder='Filter playlists'
             className='playlist-input'>
           </input>
         </form>
         <ul className='playlists-ul'>
           {this.state.playlists.map( playlist => (
-            <PlaylistItem playlist={playlist}/>
+            <PlaylistItem
+              playlist={playlist}
+              track={this.props.track}
+              key={playlist.id}/>
           ))}
         </ul>
       </div>

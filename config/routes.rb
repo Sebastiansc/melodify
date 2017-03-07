@@ -26,5 +26,5 @@ Rails.application.routes.draw do
 
   get 'api/playlists/:url/tracks', to: 'api/playlists#tracks'
   get 'api/playlists/:song_url/', to: 'api/playlists#playlists'
-  get 'api/playlists/:id/:song_id', to: 'api/playlists#addTrack'
+  post 'api/playlists/:id/:song_id', to: 'api/playlists#add_track'
 end

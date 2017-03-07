@@ -22,10 +22,10 @@ export const deletePlaylist = playlistId => ({
   playlistId
 });
 
-export const addTrack = (playlistId, track) => ({
-  type: DELETE_PLAYLIST,
+export const addTrack = (playlistId, trackId) => ({
+  type: ADD_TRACK,
   playlistId,
-  track
+  trackId
 });
 
 export const toggleModal = track => ({
@@ -38,6 +38,6 @@ export const getUserPlaylists = () => ({
 });
 
 export const receivePlaylists = playlists => ({
-  type: GET_USER_PLAYLISTS,
+  type: RECEIVE_PLAYLISTS,
   playlists
 });

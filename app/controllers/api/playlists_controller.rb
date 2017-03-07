@@ -22,23 +22,21 @@ class Api::PlaylistsController < ApplicationController
   def create
     @playlist = Playlist.new(playlist_params)
     @playlist.user_id = current_user.id
-    if @playlist.save
+    if @playlist.valid?
       populate_list
-      render :show
+      @playlist.save
+      render json: {}
     else
       render json: @playlist.errors.full_messages, status: 422
     end
   end
 
   def populate_list
-    params[:tracks].each_with_index do |track_id, idx|
-      song = Song.find(track_id)
-      # Set cover photo to first tracks cover photo if user didn't input one.
-      if !@playlist.cover_photo && idx.zero?
-        @playlist.cover_photo = song.cover_photo
-      end
-      @playlist.songs << song
-    end
+    # Use fast_inserter gem if performance needed is necessary.
+    songs = Song.where(id: params[:tracks])
+    # Set cover photo to first tracks cover photo if user didn't input one.
+    @playlist.cover_photo = songs.first.cover_photo
+    @playlist.songs << songs
   end
 
   def update
@@ -46,7 +44,7 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def add_track
-    Playlist.find(params[:id]).songs << Song.find(params[:song_url])
+    Playlist.find(params[:id]).songs << Song.find(params[:song_id])
   end
 
   private

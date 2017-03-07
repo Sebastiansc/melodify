@@ -29,36 +29,56 @@ export default class PlaylistCreate extends React.Component {
   returnItem(track) {
     let idx;
     for (let i = 0; i < this.state.tracks.length; i++) {
-      if(this.state.tracks[i].id === track.id) {
+      if (this.state.tracks[i].id === track.id) {
         idx = i;
         break;
       }
     }
     // Remove track from local collection.
-    const tracks = this.state.tracks;
-    tracks.splice(1, idx);
-    this.setState({ tracks });
+    this.reorderTracks(idx);
     // Return track to recommendations box.
     this.rcmBox.getWrappedInstance().receiveItem(track);
+  }
+
+  reorderTracks(idx) {
+    const tracks = this.state.tracks;
+    tracks.splice(idx, 1);
+    tracks.push(null);
+    this.setState({ tracks });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const playlist = {
+      name: this.refs.title.value,
+      public: $('input[name="privacy"]:checked').val() === "public"
+    };
+    let tracks = this.state.tracks.filter( track => track );
+    // Get array of ids to populate playlist on db.
+    tracks = tracks.map( track => track.id );
+    this.props.createPlaylist(playlist, tracks);
+    this.props.closeModal();
   }
 
   renderForm() {
     return(
       <div className='playlist-create-form-wrapper'>
-        <label>Playlist title</label>
-        <form className='playlist-form'>
-          <input className='playlist-input' type='text'>
+        <label>Playlist title <span className='asterisk'>*</span></label>
+        <form className='playlist-form' onSubmit={e => this.handleSubmit(e)}>
+          <input className='playlist-input' type='text' ref='title'>
           </input>
         </form>
         <div className='submit-wrapper'>
           <div className='privacy-options'>
             <label>Playlist will be</label>
-            <input type='radio' name='privacy' value='public'/>
+            <input type='radio' name='privacy' value='public' defaultChecked />
             <label htmlFor='public'>public</label>
             <input type='radio' name='privacy' value='private'/>
             <label htmlFor='private'>private</label>
           </div>
-          <button className='signup'>Save</button>
+          <button className='signup' onClick={e => this.handleSubmit(e)}>
+            Save
+          </button>
         </div>
       </div>
     );

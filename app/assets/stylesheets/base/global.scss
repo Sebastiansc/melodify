@@ -116,6 +116,12 @@ li {
   transition: visibility 0s 600ms, opacity 600ms linear;
 }
 
+.overlay-hid {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 300ms, opacity 300ms linear;
+}
+
 .smooth-show {
   opacity: 0;
   transition: opacity 500ms;

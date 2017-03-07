@@ -2,11 +2,13 @@ import { CREATE_PLAYLIST,
          UPDATE_PLAYLIST,
          DELETE_PLAYLIST,
          GET_USER_PLAYLISTS,
+         ADD_TRACK,
          receivePlaylists } from '../actions/playlist_actions';
 import { createPlaylist,
          updatePlaylist,
          deletePlaylist,
-         getUserPlaylists } from '../util/playlist_api_util';
+         getUserPlaylists,
+         addTrack } from '../util/playlist_api_util';
 
 export default ({ getState, dispatch }) => next => action => {
   switch(action.type) {
@@ -19,10 +21,11 @@ export default ({ getState, dispatch }) => next => action => {
     case DELETE_PLAYLIST:
       deletePlaylist(action.playlistId);
       return next(action);
+    case ADD_TRACK:
+      addTrack(action.playlistId, action.trackId);
+      return next(action);
     case GET_USER_PLAYLISTS:
-      getUserPlaylists(action.playlistId, lists => (
-        dispatch(receivePlaylists(lists))
-      ));
+      getUserPlaylists(lists => dispatch(receivePlaylists(lists) ));
       return next(action);
     default:
       return next(action);

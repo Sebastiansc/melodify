@@ -13,14 +13,19 @@ export default class PlaylistModal extends React.Component {
   componentWillReceiveProps(props) {
     if (this.state.open !== props.open) {
       // Request playlists every time the modal opens.
+      $('.playlist-modal').animateCss('fadeInDownBig');
       this.props.getUserPlaylists();
       this.setState({ open: props.open });
     }
   }
 
   closeModal() {
-    this.props.toggleModal();
-    this.setState({ open: false });
+    // Transition opacity of overlay.
+    $('.playlist-modal-overlay').addClass('overlay-hid');
+    $('.playlist-modal').animateCss('fadeOutUpBig', () => {
+      this.props.toggleModal();
+      this.setState({ open: false, addView: true, createView: false });
+    });
   }
 
   highlight(ref) {
@@ -62,9 +67,11 @@ export default class PlaylistModal extends React.Component {
       <div className='playlist-modal-main-content'>
         <PlaylistList
           open={this.state.addView}
-          playlists={this.props.playlists}/>
+          playlists={this.props.playlists}
+          track={this.props.track}/>
         <PlaylistCreate
           open={this.state.createView}
+          closeModal={() => this.closeModal()}
           createPlaylist={this.props.createPlaylist}
           track={this.props.track}/>
       </div>
@@ -80,10 +87,9 @@ export default class PlaylistModal extends React.Component {
         className={
           `react-modal
            center-block
-           animated fadeInDownBig
            playlist-modal`
         }
-        overlayClassName='react-modal-overlay playlist-modal-overlay'
+        overlayClassName='react-modal-overlay playlist-modal-overlay shown'
       >
         {this.renderHeaders()}
         {this.renderViews()}

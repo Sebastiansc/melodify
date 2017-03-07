@@ -15,9 +15,9 @@ export default class Trending extends React.Component {
     return(
       <ul className='trending'>
         {this.props.tracks.slice(0, 12).map((track, idx) => (
-            <TrackContainer track={track} key={track.id}
-                            klass='trending-item'
-                            play={trackUrl => this.play(trackUrl)}/>)
+            <SoundItemContainer track={track} key={track.id}
+                                klass='trending-item'
+                                play={trackUrl => this.play(trackUrl)}/>)
           )}
       </ul>
     );
