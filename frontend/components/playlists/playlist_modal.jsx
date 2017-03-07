@@ -13,9 +13,11 @@ export default class PlaylistModal extends React.Component {
   componentWillReceiveProps(props) {
     if (this.state.open !== props.open) {
       // Request playlists every time the modal opens.
-      $('.playlist-modal').animateCss('fadeInDownBig');
       this.props.getUserPlaylists();
-      this.setState({ open: props.open });
+      // Animate after state has successfully updated or it wont show.
+      this.setState({ open: props.open }, () => (
+        $('.playlist-modal').animateCss('fadeInDownBig')
+      ));
     }
   }
 

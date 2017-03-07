@@ -96,12 +96,6 @@
   padding: 0;
 }
 
-.playlist-modal {
-  .track-artwork {
-    margin-right: 10px;
-  }
-}
-
 .audio-image:before {
   @include before-image;
   background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCI+PHBhdGggZmlsbD0iIzIyMiIgZD0iTTUgMTJoMnY0SDV6TTIxIDEyaDJ2NGgtMnpNMTcgMTBoMnY4aC0yek05IDhoMnYxMkg5ek0xMyA1aDJ2MThoLTJ6Ii8+PC9zdmc+');
@@ -118,11 +112,11 @@
 }
 
 .playlist-modal {
-  -webkit-animation-duration: 300ms;
+  -webkit-animation-duration: 600ms;
   -webkit-animation-delay: 0;
-  -moz-animation-duration: 300ms;
+  -moz-animation-duration: 600ms;
   -moz-animation-delay: 0;
-  -ms-animation-duration: 300ms;
+  -ms-animation-duration: 600ms;
   -ms-animation-delay: 0;
   overflow-x: hidden;
   height: auto;
@@ -130,6 +124,9 @@
   display: block;
   border: none;
   width: 550px;
+  .track-artwork {
+    margin-right: 10px;
+  }
 }
 
 .playlist-modal-overlay {
