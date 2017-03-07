@@ -32,11 +32,10 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def populate_list
-    # Use fast_inserter gem if performance needed is necessary.
-    songs = Song.where(id: params[:tracks])
+    # Use fast_inserter gem if performance upgrade is necessary.
     # Set cover photo to first tracks cover photo if user didn't input one.
-    @playlist.cover_photo = songs.first.cover_photo
-    @playlist.songs << songs
+    @playlist.cover_photo = Song.find(params[:tracks][0]).cover_photo
+    @playlist.songs << Song.where(id: params[:tracks])
   end
 
   def update
