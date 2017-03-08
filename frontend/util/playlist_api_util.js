@@ -1,9 +1,10 @@
 // tracks: array of track ids to add to playlist
-export const createPlaylist = (playlist, tracks) => {
+export const createPlaylist = (playlist, tracks, success) => {
   $.ajax({
     url: 'api/playlists',
     data: {playlist, tracks},
-    type: 'post'
+    type: 'post',
+    success
   });
 };
 

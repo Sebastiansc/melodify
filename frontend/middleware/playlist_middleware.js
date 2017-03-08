@@ -3,6 +3,7 @@ import { CREATE_PLAYLIST,
          DELETE_PLAYLIST,
          GET_USER_PLAYLISTS,
          ADD_TRACK,
+         receivePlaylist,
          receivePlaylists } from '../actions/playlist_actions';
 import { createPlaylist,
          updatePlaylist,
@@ -13,7 +14,10 @@ import { createPlaylist,
 export default ({ getState, dispatch }) => next => action => {
   switch(action.type) {
     case CREATE_PLAYLIST:
-      createPlaylist(action.playlist, action.tracks);
+      createPlaylist(
+        action.playlist,
+        action.tracks,
+        playlist => dispatch(receivePlaylist(playlist)));
       return next(action);
     case UPDATE_PLAYLIST:
       updatePlaylist(action.playlist);

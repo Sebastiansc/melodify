@@ -1,5 +1,6 @@
 import { RECEIVE_PLAYLISTS,
-         TOGGLE_PLAYLIST_MODAL } from '../actions/playlist_actions';
+         TOGGLE_PLAYLIST_MODAL,
+         RECEIVE_PLAYLIST } from '../actions/playlist_actions';
 import merge from 'lodash/merge';
 
 const _null = {
@@ -18,6 +19,9 @@ const PlaylistsReducer = (state = _null, action) => {
     case TOGGLE_PLAYLIST_MODAL:
       newState.modal = !newState.modal;
       newState.track = action.track;
+      return newState;
+    case RECEIVE_PLAYLIST:
+      newState.lists[action.playlist.id] = action.playlist;
       return newState;
     default:
       return state;

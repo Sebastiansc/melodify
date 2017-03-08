@@ -39,7 +39,6 @@ export default class PlaylistList extends React.Component {
   }
 
   render() {
-    window.that = this;
     if (!this.props.open) return null;
     return(
       <div className="playlist-list-wrapper">
@@ -55,6 +54,7 @@ export default class PlaylistList extends React.Component {
         <ul className='playlists-ul'>
           {this.state.playlists.map( playlist => (
             <PlaylistItem
+              closeModal={this.props.closeModal}
               playlist={playlist}
               track={this.props.track}
               key={playlist.id}/>

@@ -26,11 +26,9 @@ export default class Upload extends React.Component {
 
   componentDidMount() {
     $(document).on('cloudinarywidgetclosed', function(e, data) {
-      debugger;
       $('.upload-overlay').addClass('upload-loading');
     });
     $(document).on('cloudinarywidgetsuccess', function(e, data) {
-      debugger;
       $('.upload-overlay').addClass('upload-loading');
     });
   }
@@ -48,32 +46,34 @@ export default class Upload extends React.Component {
 
 
   openUploadModal() {
-    window.cloudinary.openUploadWidget(window.cloudinaryOptions,
-    (errors, track) => {
+    cloudinary.openUploadWidget(cloudinaryOptions, (errors, track) => {
       $('.upload-overlay').removeClass('upload-loading');
       if(!values(errors).length) {
-        // NOTE: Remember that it was necessary to remove some source code from
-        // jsmediatags to get it to work.
-        new jsmediatags.Reader(track[0].secure_url)
-          .setTagsToRead(["title", "artist", "picture"])
-          .read({
-            onSuccess: (tag) => {
-              this.setState({
-                title: tag.tags.title,
-                audio_url: track[0].secure_url,
-                artist: tag.tags.artist,
-                uploaded: true,
-                cover_photo: this.getImage(tag.tags.picture)
-              });
-            },
-            onError: function(error) {
-              alert("Sorry, something went wrong with the file upload. Please" +
-                    "refresh your browser");
-            }
-          });
-
+        this.readTags(track);
       }
     });
+  }
+
+  readTags(track) {
+    // NOTE: Remember that it was necessary to remove some source code from
+    // jsmediatags to get it to work.
+    new jsmediatags.Reader(track[0].secure_url)
+      .setTagsToRead(["title", "artist", "picture"])
+      .read({
+        onSuccess: (tag) => {
+          this.setState({
+            title: tag.tags.title,
+            audio_url: track[0].secure_url,
+            artist: tag.tags.artist,
+            uploaded: true,
+            cover_photo: this.getImage(tag.tags.picture)
+          });
+        },
+        onError: function(error) {
+          alert("Sorry, something went wrong with the file upload. Please" +
+                "refresh your browser");
+        }
+      });
   }
 
   restart() {

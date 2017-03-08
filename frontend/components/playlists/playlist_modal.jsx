@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 import Modal from 'react-modal';
 import PlaylistList from './playlist_list';
 import PlaylistCreate from './playlist_create';
@@ -69,12 +69,14 @@ export default class PlaylistModal extends React.Component {
       <div className='playlist-modal-main-content'>
         <PlaylistList
           open={this.state.addView}
+          closeModal={() => this.closeModal()}
           playlists={this.props.playlists}
           track={this.props.track}/>
         <PlaylistCreate
           open={this.state.createView}
           closeModal={() => this.closeModal()}
           createPlaylist={this.props.createPlaylist}
+          playlists={this.props.playlists}
           track={this.props.track}/>
       </div>
     );

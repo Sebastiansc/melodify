@@ -10,3 +10,11 @@ export const findTrackIdx = (array, track) => {
   }
   return -1;
 };
+
+
+export const customUrl = (string) => {
+  return string.toLowerCase()
+               .replace(/[^a-z0-9 ]/g, '')
+               .replace(/ +/g, ' ')
+               .replace(/\s/g, '-');
+};

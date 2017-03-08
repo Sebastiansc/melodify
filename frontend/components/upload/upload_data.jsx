@@ -1,5 +1,6 @@
 import React from 'react';
 import { values } from 'lodash';
+import { customUrl } from '../../reducers/selectors';
 
 export default class UploadData extends React.Component {
   constructor(props) {
@@ -29,15 +30,8 @@ export default class UploadData extends React.Component {
       $('.custom-url-wrapper').width() - ($('.custom-url').width() + 36)
     );
 
-    this.setState({ url: this.customUrl()});
-  }
-
-  customUrl() {
-    return this.props.data.title
-            .toLowerCase()
-            .replace(/[^a-z0-9 ]/g, '')
-            .replace(/ +/g, ' ')
-            .replace(/\s/g, '-');
+    // Format url to be a string of lowercase letters and dashes as spaces.
+    this.setState({ url: customUrl(this.props.data.title) });
   }
 
   componentWillUnmount() {
@@ -57,6 +51,7 @@ export default class UploadData extends React.Component {
   }
 
   selectGenre(e) {
+    // Avoid updating genre when clicking on non li child element.
     if (e.target.tagName === 'LI') {
       this.setState({
         genre: this.uncodedText(e.target.innerHTML),
@@ -69,6 +64,7 @@ export default class UploadData extends React.Component {
   }
 
   formatUrl(url) {
+    // Create thumbnail size image url.
     const rootUrl = url.slice(0,46);
     const tailUrl = url.slice(46);
     return `${rootUrl}c_scale,h_120/${tailUrl}`;
@@ -82,7 +78,8 @@ export default class UploadData extends React.Component {
       cover_photo: this.state.cover_photo,
       audio_url: this.props.data.audio_url,
       genre: this.state.genre,
-      thumbnail: this.formatUrl(this.state.cover_photo)
+      thumbnail: this.formatUrl(this.state.cover_photo),
+      url: this.state.url
     };
     this.props.createSong(song);
     this.props.restart();
@@ -102,10 +99,100 @@ export default class UploadData extends React.Component {
     $('.url-input-toggle').addClass('hide');
   }
 
+  renderGenres() {
+    return(
+      <div className='track-upload-genre-field'>
+        <button className='genre'>
+          {this.state.genre}
+        </button>
+        <ul className={`genres`}
+            onClick={e => this.selectGenre(e)}
+            onChange={e => this.update('genre', e)}>
+          <li>None</li>
+          <li>Classical</li>
+          <li>Country</li>
+          <li>Dance & EDM</li>
+          <li>Disco</li>
+          <li>Electronic</li>
+          <li>Folk</li>
+          <li>Hip-Hop & Rap</li>
+          <li>Indie</li>
+          <li>Latin</li>
+          <li>Pop</li>
+          <li>R&B & Soul</li>
+          <li>Reggae</li>
+          <li>Reggaeton</li>
+          <li>Reggaeton</li>
+          <li>Rock</li>
+        </ul>
+      </div>
+    );
+  }
+
+  renderCustomUrl() {
+    return(
+      <div className='custom-url-wrapper'>
+        <span
+          className='custom-url'>{`melodify.com/${this.props.user.url}/`}
+        </span>
+        <input
+          className='url-input'
+          id='url-input'
+          onBlur={() => $('.url-input-toggle').removeClass('hide')}
+          onFocus={() => $('.url-input-toggle').addClass('hide')}
+          onChange={e => this.update('url', e)}
+          value={this.state.url}>
+        </input>
+        <button
+          className='url-input-toggle'
+          onClick={() => this.focusUrlInput()}>
+        </button>
+      </div>
+    );
+  }
+
+  renderTitle() {
+    return(
+      <div className='track-upload-text-field'>
+        <input
+          type='text'
+          placeholder='Name your track'
+          onChange={e => this.update('title', e)}
+          value={this.state.title}>
+        </input>
+      </div>
+    );
+  }
+
+  renderArtist() {
+    return(
+      <div className='track-upload-artist-field'>
+        <input
+          type='text'
+          placeholder="Who's your track by"
+          onChange={e => this.update('artist', e)}
+          value={this.state.artist}>
+        </input>
+      </div>
+    );
+  }
+
+  renderUploadFooter() {
+    return(
+      <div className='active-upload-wrapper'>
+        <p className='legend'>
+          <span className='asterisk'>*</span> Required Fields
+        </p>
+        <button className='upload-save' onClick={() => this.submit()}>
+          Save
+        </button>
+      </div>
+    );
+  }
 
   render() {
     return(
-      <div className=''>
+      <div>
         <div className='upload-data-details'>
           <span>Ready. Click save to post this track.</span>
         </div>
@@ -125,70 +212,17 @@ export default class UploadData extends React.Component {
         </div>
 
         <section className='upload-data-fields'>
-          <label>Title <span className='asterisk'>*</span></label>
-          <div className='track-upload-text-field'>
-            <input
-              type='text'
-              placeholder='Name your track'
-              onChange={e => this.update('title', e)}
-              value={this.state.title}>
-            </input>
-          </div>
 
-          <div className='custom-url-wrapper'>
-            <span
-              className='custom-url'>{`melodify.com/${this.props.user.url}/`}
-            </span>
-            <input
-              className='url-input'
-              id='url-input'
-              onBlur={() => $('.url-input-toggle').removeClass('hide')}
-              onFocus={() => $('.url-input-toggle').addClass('hide')}
-              onChange={e => this.update('url', e)}
-              value={this.state.url}>
-            </input>
-            <button
-              className='url-input-toggle'
-              onClick={() => this.focusUrlInput()}>
-            </button>
-          </div>
+          <label>Title <span className='asterisk'>*</span></label>
+          { this.renderTitle() }
+
+          { this.renderCustomUrl() }
 
           <label>Artist</label>
-          <div className='track-upload-artist-field'>
-            <input
-              type='text'
-              placeholder="Who's your track by"
-              onChange={e => this.update('artist', e)}
-              value={this.state.artist}>
-            </input>
-          </div>
+          { this.renderArtist() }
 
           <label>Genre</label>
-          <div className='track-upload-genre-field'>
-            <button className='genre'>
-              {this.state.genre}
-            </button>
-            <ul className={`genres`}
-                onClick={e => this.selectGenre(e)}
-                onChange={e => this.update('genre', e)}>
-              <li>None</li>
-              <li>Classical</li>
-              <li>Country</li>
-              <li>Dance & EDM</li>
-              <li>Disco</li>
-              <li>Electronic</li>
-              <li>Folk</li>
-              <li>Hip-Hop & Rap</li>
-              <li>Indie</li>
-              <li>Latin</li>
-              <li>Pop</li>
-              <li>R&B & Soul</li>
-              <li>Reggae</li>
-              <li>Reggaeton</li>
-              <li>Reggaeton</li>
-              <li>Rock</li>
-            </ul>
-          </div>
+          { this.renderGenres() }
 
           <label>Additional tags</label>
           <div className='track-upload-tag-field'>
@@ -206,17 +240,11 @@ export default class UploadData extends React.Component {
               onChange={e => this.update('description', e)}>
             </textarea>
           </div>
+
         </section>
         <div className='clearfix'></div>
 
-        <div className='active-upload-wrapper'>
-          <p className='legend'>
-            <span className='asterisk'>*</span> Required Fields
-          </p>
-          <button className='upload-save' onClick={() => this.submit()}>
-            Save
-          </button>
-        </div>
+        { this.renderUploadFooter() }
       </div>
     );
   }

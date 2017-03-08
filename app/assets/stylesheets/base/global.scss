@@ -139,10 +139,15 @@ textarea {
   background: linear-gradient(135deg,#e6846e,#846170);
 }
 
-.product-hover {
-  background-size: 30px 30px;
-
+.warn {
+  border: 1px solid $orange !important;
+  font-size: 12px;
 }
+
+.font-orange {
+  color: $orange;
+}
+
 .animation-stripes{
   background: repeating-linear-gradient(
     -45deg,

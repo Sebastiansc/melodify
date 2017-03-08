@@ -18,6 +18,7 @@
 .track-artwork-cover {
   @include overlay;
   background-size: cover;
+  cursor: pointer;
   background-position: 50% 50%;
 }
 

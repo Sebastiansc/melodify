@@ -83,7 +83,9 @@ export default class Recommendations extends React.Component {
         </div>
 
         <div className='playlist-add-button'>
-          <button onClick={e => this.addToPlaylist(e, track)}>
+          <button
+            className='add-to-playlist recommend-button'
+            onClick={e => this.addToPlaylist(e, track)}>
             Add to playlist
           </button>
         </div>

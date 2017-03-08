@@ -5,6 +5,7 @@ export const ADD_TRACK = "ADD_TRACK";
 export const TOGGLE_PLAYLIST_MODAL = "TOGGLE_PlAYLIST_MODAL";
 export const GET_USER_PLAYLISTS = "GET_USER_PLAYLISTS";
 export const RECEIVE_PLAYLISTS = "RECEIVE_PLAYLISTS";
+export const RECEIVE_PLAYLIST = "RECEIVE_PLAYLIST";
 
 export const createPlaylist = (playlist, tracks) => ({
   type: CREATE_PLAYLIST,
@@ -40,4 +41,9 @@ export const getUserPlaylists = () => ({
 export const receivePlaylists = playlists => ({
   type: RECEIVE_PLAYLISTS,
   playlists
+});
+
+export const receivePlaylist = playlist => ({
+  type: RECEIVE_PLAYLIST,
+  playlist
 });

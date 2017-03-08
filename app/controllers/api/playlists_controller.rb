@@ -25,7 +25,7 @@ class Api::PlaylistsController < ApplicationController
     if @playlist.valid?
       populate_list
       @playlist.save
-      render json: {}
+      render :show
     else
       render json: @playlist.errors.full_messages, status: 422
     end
