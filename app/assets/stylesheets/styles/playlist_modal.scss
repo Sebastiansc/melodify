@@ -125,7 +125,10 @@
   border: none;
   width: 550px;
   .track-artwork {
-    margin-right: 10px;
+    margin-right: 15px;
+  }
+  .track-text-info {
+    width: auto;
   }
 }
 
@@ -179,10 +182,21 @@
 .playlist-item {
   padding-right: 0;
   cursor: default;
-  padding: 10px 0;
+  padding: 15px 0;
   border-bottom: 1px solid $lightgray;
   .track-link {
-    z-index: 100;
+    z-index: 0;
+    background-image: url(https://res.cloudinary.com/flikr/image/upload/v1488953101/playlist-covers_yecotf.png);
+    box-sizing: content-box;
+    padding: 6px 6px;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    position: absolute;
+    top: -6px;
+    bottom: 0;
+    left: -6px;
+    right: 0;
   }
 }
 
