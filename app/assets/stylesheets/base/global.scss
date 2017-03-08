@@ -138,3 +138,54 @@ textarea {
 .orange-bg {
   background: linear-gradient(135deg,#e6846e,#846170);
 }
+
+.product-hover {
+  background-size: 30px 30px;
+
+}
+.animation-stripes{
+  background: repeating-linear-gradient(
+    -45deg,
+    #b9b9b9,
+    #b9b9b9 10px,
+    #9c9c9c 10px,
+    #9c9c9c 20px
+  );
+  -webkit-animation:progress 500ms linear infinite;
+  -moz-animation:progress 500ms linear infinite;
+  -ms-animation:progress 500ms linear infinite;
+  animation:progress 500ms linear infinite;
+}
+
+@-webkit-keyframes progress{
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -75px 0px;
+  }
+}
+@-moz-keyframes progress{
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -75px 0px;
+  }
+}
+@-ms-keyframes progress{
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -75px 0px;
+  }
+}
+@keyframes progress {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -70px 0px;
+  }
+}

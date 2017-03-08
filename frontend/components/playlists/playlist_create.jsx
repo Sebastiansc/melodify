@@ -57,7 +57,11 @@ export default class PlaylistCreate extends React.Component {
     // Get array of ids to populate playlist on db.
     tracks = tracks.map( track => track.id );
     this.props.createPlaylist(playlist, tracks);
-    this.props.closeModal();
+    $(this.refs.save).addClass('animation-stripes');
+    setTimeout(() => {
+      this.props.closeModal();
+      $(this.refs.save).removeClass('animation-stripes');
+    }, 1500);
   }
 
   renderForm() {
@@ -76,7 +80,10 @@ export default class PlaylistCreate extends React.Component {
             <input type='radio' name='privacy' value='private'/>
             <label htmlFor='private'>private</label>
           </div>
-          <button className='signup' onClick={e => this.handleSubmit(e)}>
+          <button
+            className='signup'
+            onClick={e => this.handleSubmit(e)}
+            ref='save'>
             Save
           </button>
         </div>
